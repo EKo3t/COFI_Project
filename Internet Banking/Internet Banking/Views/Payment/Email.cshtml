@@ -1,0 +1,14 @@
+﻿@{
+    ViewBag.Title = "Отправка чека";
+}
+
+<h4 class="textcentred">Введите адрес электронной почты:<br/><br/></h4>
+<form action="/Payment/SendEmail" method="post">   
+  <div class="form-group">
+    <label for="exampleInputEmail1">Введите адрес электронной почты:</label>
+    <input type="email" class="form-control" id="customerEmail" placeholder="Enter email">
+  </div>
+  <button type="submit" class="btn btn-default">Отправить чек</button>
+</form>
+                
+

@@ -1,0 +1,52 @@
+﻿@using Microsoft.Ajax.Utilities
+@model Internet_Banking.Models.TransfersModel
+@{
+    ViewBag.Title = "TransferResources";
+}
+
+<h2>TransferResources</h2>
+
+@using (Html.BeginForm("TransferResources", "Transfers", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="row-fluid myrow">
+
+        <div class="span12 myspan2">
+            <div class="editor-label">
+                <nobr>Введите номер счета для снятия средств:</nobr>
+            </div>
+            <div class="editor-field">
+                @Html.EditorFor(model => model.AccountFrom)
+                @Html.ValidationMessageFor(model => model.AccountFrom)
+            </div>            
+            <div class="editor-label">
+                <nobr>Введите номер отправного счета:</nobr>
+            </div>
+            <div class="editor-field">
+                @Html.EditorFor(model => model.AccountTo)
+                @Html.ValidationMessageFor(model => model.AccountTo)
+            </div>
+            <div class="editor-label">
+                <nobr>Введите сумму для перевода</nobr>
+            </div>
+            <div class="editor-field">
+                @Html.EditorFor(model => model.TransferValue)
+                @Html.ValidationMessageFor(model => model.TransferValue)
+            </div>
+            <div>
+                @{
+                    var list = new SelectList(
+                        Model.CurrencyList.Select(x => new {Value = x, Text = x.name + "(" + x.alphacode + ")"}),
+                        "Value", "Text");
+                    @Html.DropDownList("Currency", list)
+                }
+            </div>
+        </div>
+    </div>    
+    <div>
+        <input type="submit" value="Перечислить средства" />
+    </div>
+}
+
+@Html.ActionLink("Вернуться к переводам", "Index", "Transfers")

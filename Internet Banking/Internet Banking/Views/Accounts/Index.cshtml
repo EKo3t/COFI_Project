@@ -1,0 +1,61 @@
+﻿@using System.Globalization
+@model PagedList.IPagedList<Internet_Banking.Models.AccountDetailModel>
+@using PagedList.Mvc;
+<link href="/Content/PagedList.css" rel="stylesheet" type="text/css" />
+
+@{
+    ViewBag.Title = "Мои счета";
+}
+
+<h2>Мои счета</h2>
+<hr/>
+
+<table class="table">
+    <thead>
+        <tr>
+        <th>
+            Тип счёта
+        </th>
+        <th>
+            Номер счёта
+        </th>
+        <th>
+            Карты
+        </th>
+        <th>
+            Остаток
+        </th>
+        </tr>
+    </thead>
+    
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.AccountType.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Number)
+        </td>
+        <td>
+            @if (item.Cards != null && item.Cards.Count >= 0)
+            {
+                @Html.DisplayName(item.Cards.Count.ToString(CultureInfo.InvariantCulture))
+            }
+            else
+            {
+                @Html.DisplayName(" - ")
+            }
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Amount)
+        </td>
+        <td>
+            @Html.ActionLink("Подробнее", "Details", new { id = item.AccountId })
+        </td>
+    </tr>
+}
+</table>
+Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
+@Html.PagedListPager(Model, page => Url.Action("Index", new { page }))
+<br />
+@section Scripts { @Scripts.Render("~/bundles/jqueryval")}

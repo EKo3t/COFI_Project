@@ -1,0 +1,54 @@
+﻿@model Internet_Banking.Models.LoginModel
+@{
+    ViewBag.Title = "Вход в систему";
+}
+
+<hgroup class="title textcentred">
+    <h1>@ViewBag.Title</h1>
+</hgroup>
+<hr/>
+
+<p class="text-center1 pagination-left">
+    <strong>Уважаемые клиенты!</strong><br/><br/>
+    Мы настоятельно рекомендуем вам ознакомиться с правилами по работе с интернет-банком «Мбанк». 
+    Если у вас есть подозрения, что вас пытаются обмануть, сообщите об этом в телефонный центр 
+    нашего банка по номеру, указанному на обратной стороне вашей карты.<br/>
+</p>
+
+<section class="loginForm centred form-horizontal bordered">
+<p><br/></p>
+@using (Html.BeginForm(new { ReturnUrl = ViewBag.ReturnUrl })) {
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+            <div class="control-group">
+                <label class="control-label">
+                    @Html.LabelFor(m => m.UserName)
+                </label>
+                <div class="controls unstyled">
+                    @Html.TextBoxFor(m => m.UserName)
+                    @Html.ValidationMessageFor(m => m.UserName)
+                </div>
+            </div>
+            <div class="control-group">
+                <label class="control-label">
+                    @Html.LabelFor(m => m.Password)
+                </label>
+                <div class="controls unstyled">
+                    @Html.PasswordFor(m => m.Password)
+                    @Html.ValidationMessageFor(m => m.Password)
+                </div>
+                
+            </div>
+    
+    <div class="control-group">
+        <div class="controls">
+            <input type="submit" class="btn-success text-center" value="Войти">
+        </div>
+    </div>
+}
+</section>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

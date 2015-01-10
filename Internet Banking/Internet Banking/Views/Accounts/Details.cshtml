@@ -1,0 +1,101 @@
+﻿@model Internet_Banking.Models.AccountDetailModel
+
+@{
+    ViewBag.Title = "Детальная информация по счету";
+}
+
+<h2>Подробнее о счете</h2>
+<fieldset>
+    <legend></legend>
+
+    <div class="display-label" style="color: Black;">
+        @Html.DisplayNameFor(model => model.AccountType)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.AccountType.Name)
+    </div>
+    <div class="display-label" style="color: Black;">
+        @Html.DisplayNameFor(model => model.Number)
+    </div>
+    <div class="display-field" >
+        @Html.DisplayFor(model => model.Number)
+    </div>
+    <div class="display-label" style="color: Black;">
+        @Html.DisplayNameFor(model => model.Amount)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Amount)
+    </div>
+    <div class="display-label" style="color: Black;">
+        @Html.DisplayNameFor(model => model.Currency)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Currency)
+    </div>
+    <div class="display-label" style="color: Black;">
+        @* @Html.DisplayNameFor(model => model.Cards) *@
+    </div>
+    <div class="display-field">
+        @* @Html.DisplayFor(model => model.Cards.Count)  *@
+    </div>
+    
+    <div class="display-label" style="color: Black;">
+        @Html.DisplayNameFor(model => model.StartDate)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.StartDate)
+    </div>
+
+    <div class="display-label" style="color: Black;">
+        @Html.DisplayNameFor(model => model.OverdraftLimit)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.OverdraftLimit)
+    </div>
+
+    <hr />
+    <h4>КАРТЫ, ПРИВЯЗАННЫЕ К ЭТОМУ СЧЕТУ</h4>
+    
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayName("Название карты")
+                </th>
+                <th>
+                    @Html.DisplayName("Номер")
+                </th>
+                <th>
+                    @Html.DisplayName("Держатель")
+                </th>
+                <th>
+                    @Html.DisplayName("Статус")
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        @foreach (var item in Model.Cards)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Number)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.UserSignature)
+                </td>
+                <td>
+                    @Html.DisplayName(new InternetBankingDal.EnumHelper().GetDisplayName((InternetBankingDal.CardState) item.State))
+                </td>
+                <td>
+                    @Html.ActionLink("Подробнее", "Details", "Cards", new { id = item.CardId }, "")
+                </td>
+            </tr>
+        }
+    </table>
+</fieldset>
+<p style="color: Black;">
+    @Html.ActionLink("Назад к спику", "Index")
+</p>

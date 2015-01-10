@@ -1,0 +1,66 @@
+﻿@model PagedList.IPagedList<Internet_Banking.Models.CardDetailModel>
+@using PagedList.Mvc;
+<link href="/Content/PagedList.css" rel="stylesheet" type="text/css" />
+
+@{
+    ViewBag.Title = "Мои карты";
+}
+
+<h2>Мои карты</h2>
+<hr/>
+
+@*<p>
+   @Html.ActionLink("Создать карту", "Create")
+</p>*@
+<table class="table">
+    <thead>
+    <tr>
+        <th>
+            @Html.DisplayName("Название карты")
+        </th>
+        <th>
+            @Html.DisplayName("Номер")
+        </th>
+        <th>
+            @Html.DisplayName("Тип счёта")
+        </th>
+        <th>
+            @Html.DisplayName("Держатель")
+        </th>
+        <th>
+            @Html.DisplayName("Статус")
+        </th>
+        <th></th>
+   </tr>
+   </thead>
+
+@foreach (var item in Model)
+{
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Number)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.AccountType)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.UserSignature)
+        </td>
+        <td>
+            @Html.DisplayName(new InternetBankingDal.EnumHelper().GetDisplayName((InternetBankingDal.CardState)item.State))
+        </td>
+        <td>
+            @*@Html.ActionLink("Редактировать", "Edit", new {id = item.CardId}) |*@
+            @Html.ActionLink("Подробнее", "Details", new {id = item.CardId}) 
+            @*@Html.ActionLink("Удалить", "Delete", new {id = item.CardId})*@
+        </td>
+    </tr>
+}
+</table>
+Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
+@Html.PagedListPager(Model, page => Url.Action("Index", new { page }))
+<br />
+@section Scripts { @Scripts.Render("~/bundles/jqueryval")}

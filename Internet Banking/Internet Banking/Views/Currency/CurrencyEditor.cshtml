@@ -1,0 +1,37 @@
+﻿@model IEnumerable<InternetBankingDal.Currency>
+
+@{
+    ViewBag.Title = "CurrencyEditor";
+}
+
+<h4>Конвертер валюты</h4>
+
+@using (Html.BeginForm("Convert", "Currency", FormMethod.Post))
+{
+    <p>
+        @Html.Label("Введите исходную валюту")
+        @Html.DropDownList("currencySource", new SelectList(
+            Model.Select(x => new { Value = x.alphacode, Text = x.name + "(" + x.alphacode + ")" }),
+            "Value", "Text"))
+    </p>
+    
+    <p>
+        @Html.Label("Введите нужную валюту")
+        @Html.DropDownList("currencyTarget", new SelectList(
+            Model.Select(x => new { Value = x.alphacode, Text = x.name + "(" + x.alphacode + ")" }),
+            "Value", "Text"))
+    </p>
+
+    <p>
+        @Html.Label("Введите количество исходной валюты")
+        @Html.Editor("amount")
+    </p>
+    
+    if(Request.Params.AllKeys.Contains("Result"))
+    {
+        <p>
+            @Html.Label("Количество нужной валюты: " + Request.Params["Result"])
+        </p>
+    }
+    <input type="submit" value="Пересчитать" />
+}

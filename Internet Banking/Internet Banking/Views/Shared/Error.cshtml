@@ -1,0 +1,11 @@
+﻿@model System.Web.Mvc.HandleErrorInfo
+@using System.Web;
+@{
+    ViewBag.Title = "Ошибка";
+}
+
+<hgroup class="title textcentred">
+    <h3 class="error">Произошла ошибка:</h3>
+</hgroup>
+<p><span>@Html.Raw(HttpUtility.HtmlDecode(Session["ErrorText"].ToString()))</span></p>    
+

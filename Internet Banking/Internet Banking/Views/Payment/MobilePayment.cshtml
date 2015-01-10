@@ -1,0 +1,129 @@
+﻿@model Internet_Banking.Models.PaymentModel
+@using System.Linq;
+@{
+    ViewBag.Title = "Оплата мобильного телефона";
+}
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#AccountNumber').change(function () {
+            var cardsList = $('#cardsList');
+            cardsList.empty();
+            $.get('../GetCards', data = {
+                accountNumber: $(this).val()
+            }, success = function (cards) {
+                if (cards.length)
+                {
+                    for (var i = 0; i < cards.length; i++) {
+                        var number = cards[i],
+                            option = $('<option>').attr('value', number).html(number);
+                        cardsList.append(option);
+                    }
+                }
+            });
+        });
+        $('#AccountNumber').change();
+        $('#savebtn1').click(function () {
+            $('#formId').attr('action', "/Payment/SavePattern");
+        });
+        $('#savebtn2').click(function () {
+            $('#PhoneNumber').change(jVal.PhoneNumber);
+            $('#formId').attr('action', "/Payment/PhonePayment");
+        });
+        jVal = {
+            'PhoneNumber': function () {
+                $('body').append('<div id="nameInfo" class="info"></div>');
+                var nameInfo = $('#nameInfo');
+                var ele = $('#PhoneNumber');
+                var pos = ele.offset();
+                nameInfo.css({
+                    top: pos.top - 3,
+                    left: pos.left + ele.width() + 15
+                });
+                if (ele.val().length < 6) {
+                    Session["ErrorText"] = "недостаточно средств для совершения данной операции.";
+                    location.href = $(this).attr('/Payment/GetErrorPage');
+                    //jVal.errors = true;
+                    //nameInfo.removeClass('correct').addClass('error').html('← at least 6 characters').show();
+                    //ele.removeClass('normal').addClass('wrong');
+                } else {
+                    nameInfo.removeClass('error').addClass('correct').html('√').show();
+                    ele.removeClass('wrong').addClass('normal');
+                }
+            }
+        };
+    });
+</script>        
+
+<h2>Оплата мобильного телефона</h2>
+<h2>Оператор @Model.Name</h2>
+<hr/>
+<h3>Заполните форму платежа</h3>
+
+    <div class="container-fluid mycontainer">
+    @using (Html.BeginForm("", "", FormMethod.Post, new { @id="formId"}))
+    {
+        @Html.AntiForgeryToken()
+        @Html.ValidationSummary()
+
+        <div class="row-fluid myrow">
+
+            <div class="span4 myspan2">
+                <div class="editor-label">
+                    <nobr>Введите фамилию (обязательно):</nobr>
+                </div>
+                <div class="editor-field">
+                    @Html.EditorFor(model => model.PayerSurname)
+                    @Html.ValidationMessageFor(model => model.PayerSurname)
+                </div>
+                <div class="editor-label">
+                    <nobr>Введите номер телефона<br/>(в формате +375XXXXXXXXX):</nobr>
+                </div>
+                <div class="editor-field">
+                    @Html.EditorFor(model => model.PhoneNumber)
+                    @*Html.ValidationMessageFor(model => model.PhoneNumber)*@
+                </div>
+            </div>
+
+            <div class="span4 myspan2">
+                <div class="editor-label">
+                    Введите имя (обязательно):
+                </div>
+                <div class="editor-field">
+                    @Html.EditorFor(model => model.PayerName)
+                    @Html.ValidationMessageFor(model => model.PayerName)
+                </div>
+                <div class="editor-label">
+                    Выберите номер счёта:<br/>&nbsp;
+                </div>
+                <div class="editor-field">
+                    @Html.DropDownListFor(model => model.AccountNumber, Model.AccountNumbers)
+                    @Html.ValidationMessageFor(model => model.AccountNumbers)
+                </div>
+            </div>
+
+            <div class="span4 myspan2">
+                <div class="editor-label">
+                    <nobr>Введите отчество (опционально):</nobr>
+                </div>
+                <div class="editor-field">
+                    @Html.EditorFor(model => model.PayerPatronymic)
+                    @Html.ValidationMessageFor(model => model.PayerPatronymic)
+                </div>
+                <div class="editor-label">
+                    <label>Выберите номер карты:<br/>&nbsp;</label>
+                </div>
+                <div>
+                    <select id="cardsList" name="cardNumber"></select>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="textcentred">
+            <!--input id="savebtn1" class="btn-large" type="submit" value="  Сохранить как шаблон   "/-->
+            <!--input id="savebtn2" class="btn-large" type="submit" value="Продолжить без сохранения"/-->
+            <input id="savebtn2" class="btn-large" type="submit" value="Продолжить"/>
+        </div>
+    }
+   </div>

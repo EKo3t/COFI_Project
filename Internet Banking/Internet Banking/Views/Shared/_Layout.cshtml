@@ -1,0 +1,115 @@
+﻿<!DOCTYPE html>
+<html lang="en" class="myhtml">
+    <head>
+        <meta charset="utf-8" />
+        <title>@ViewBag.Title</title>
+        <meta name="viewport" content="width=device-width" />
+        @Scripts.Render("~/bundles/jquery")
+        @Styles.Render("~/Content/bootstrapcss")
+        @Styles.Render("~/Content/LoginStyle.css")
+    </head>
+    <body class="mybody">
+
+        <header>
+            <div class="content-wrapper">
+               <img src="~/Content/images/header1.jpg" width="100%"/> 
+            </div>
+        </header>
+
+        <div class="container-fluid mycontainer">
+            <ul class="myrow">
+
+                <li class="cell1">
+                     <div class="span2 myspan2">
+                         <div class="well sidebar-nav leftPanel">
+                             <ul class="nav nav-list">
+                             <li class="nav-header" style="font-size:14px">Меню</li>
+                             <li>&nbsp</li>
+                             <li><a href="/Home/Index">Главная</a></li>
+                             <li class="nav-header" style="font-size:14px"> </li>
+                             @if (Request.IsAuthenticated)
+                             { 
+                                 <li><a href="/Accounts">Счета</a></li>
+    	                         <li><a href="/Cards">Карты</a></li> 
+                                 if (!Roles.IsUserInRole("Admin"))
+                                 {
+                                     <li><a href="/Payment">Платежи</a></li>
+                                 }
+                                 <li>@Html.ActionLink("Переводы", "Index", "Transfers")</li>
+                                 <li><a href="#">Настройки</a><span class="divider"></span></li>
+                                 <li>@Html.ActionLink("О банке", "About", "Home")</li>
+                                 <li>@Html.ActionLink("Контакты", "Contact", "Home")</li> 
+                                 <li><a href="#">Помощь</a><span class="divider"></span></li>
+                                 <li>@using (Html.BeginForm("LogOff", "UserPage", FormMethod.Post, new { id = "logoutForm" }))
+                                    {
+                                        @Html.AntiForgeryToken()
+                                        <a href="javascript:document.getElementById('logoutForm').submit()">Выход</a>
+                                    }</li>
+                             }
+                             else
+                             {
+                                <li>@Html.ActionLink("О банке", "About", "Home")</li>
+                                <li>@Html.ActionLink("Контакты", "Contact", "Home")</li> 
+                                <li><a href="#">Помощь</a><span class="divider"/></li>
+                                <li>@Html.ActionLink("Вход","Login", "UserPage")</li>
+                             }
+                             </ul>
+                        </div>         
+                     </div>
+                </li>
+             
+                <li class="cell1">
+                     <div class="span7 myspan8">
+                         @RenderSection("featured", required: false)
+                         <div class="row-fluid middleSpan">
+                            @RenderBody()
+                         </div>
+                     </div>
+                </li>
+
+                <li class="cell1">
+                    <div class="span3 myspan3">
+                     <div class="well sidebar-nav leftPanel overflowV">
+                     <ul class="nav nav-list">
+                     @if (Request.IsAuthenticated)
+                     {
+                      <li class="nav-header" style="font-size:14px">Быстрая навигация</li>
+                     } else {
+                      <li class="nav-header" style="font-size:14px">Новости</li>    
+                     }
+                         <li>&nbsp</li>
+                         @if(Roles.IsUserInRole("Admin")){
+                            <li>@Html.ActionLink("Панель администрирования", "Dashboard", "Admin")</li>
+                         }
+                         else {
+                             if (Request.IsAuthenticated) {
+                                <li>
+                                    @Html.ActionLink("Профиль "+User.Identity.Name, "Manage", "UserPage", routeValues: null, htmlAttributes: new { @class = "username", title = "Manage" })
+                                </li>
+                             } else {
+                                <li>@Html.ActionLink("04.01.2015 : Итоги декабря", "News1", "UserPage")</li>
+                                <li>@Html.ActionLink("02.01.2015 : Перерывы в облуживании держателей банковских карт", "News2", "UserPage")</li>
+                                <li>@Html.ActionLink("30.12.2014 : Выпуск юбилейных пластиковых банковских карт", "News3", "UserPage")</li>
+                                <!--li>@Html.ActionLink("Архив новостей", "ArchiveNews", "UserPage")</li-->
+                             }
+                         }
+                     </ul>
+                    </div>
+                 </div>
+                </li> 
+
+            </ul>
+        </div>
+
+        <br/>
+        <hr/>
+        <footer class="ftr">
+            <div class="content-wrapper">
+                 <p class="text-center">&copy; @DateTime.Now.Year - ЗАО «Мир Веб-технологий». Все права защищены.</p>
+            </div>
+        </footer>
+
+         @Scripts.Render("~/bundles/bootstrapjs")
+         @RenderSection("scripts", required: false)
+    </body>
+</html>

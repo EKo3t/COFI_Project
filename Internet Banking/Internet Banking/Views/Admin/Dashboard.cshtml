@@ -1,0 +1,14 @@
+﻿@{
+    ViewBag.Title = "Панель администрирования";
+}
+
+<h2>Панель администрирования</h2>
+
+<ul>
+    <li>@Html.ActionLink("Список пользователей", "UsersList", "Admin")</li>
+    <li>@Html.ActionLink("Создать счет", "CreateAccount", "Admin")</li>
+    <li>@Html.ActionLink("Добавить карту", "CreateCard", "Admin")</li>
+    <li>@Html.ActionLink("Пополнить счет", "AddFunds", "Admin")</li>
+    <li>@Html.ActionLink("Сброс пароля", "ResetPassword", "Admin")</li>
+    <li>@Html.ActionLink("Редактировать валюты", "Index", "Currency")</li>
+</ul>

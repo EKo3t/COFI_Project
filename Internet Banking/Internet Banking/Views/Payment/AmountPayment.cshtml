@@ -1,0 +1,61 @@
+﻿@model Internet_Banking.Models.TransactionModel
+@using System.Linq;
+@{
+    ViewBag.Title = "Ввод суммы";
+}
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#cancelbtn').click(function () {
+            $('#formId').attr('action', "/Home/Index");
+        });
+        $('#savebtn').click(function () {
+            $('#formId').attr('action', "/Payment/CompletePayment");
+        });
+    });
+</script>
+
+<h2>Оплата мобильного телефона</h2>
+<!--h2>Оператор @Model.Fld005</!--h2-->
+<hr/>
+<h3>Введите сумму</h3>
+
+    <div class="container-fluid mycontainer">
+    @using (Html.BeginForm("", "", FormMethod.Post, new { @id="formId"}))
+    {
+        @Html.AntiForgeryToken()
+        @Html.ValidationSummary()
+
+        <div class="row-fluid myrow">
+
+            <div class="span12 myspan2">
+                <div class="editor-label">
+                    <nobr>Введите сумму:</nobr>
+                </div>
+                <div class="editor-field">
+                    @Html.EditorFor(model => model.Amount)
+                    @Html.ValidationMessageFor(model => model.Amount)
+                </div>
+                <input type="hidden" name="Fld001" value="@Model.Fld001">
+                <input type="hidden" name="Fld002" value="@Model.Fld002">
+                <input type="hidden" name="Fld003" value="@Model.Fld003">
+                <input type="hidden" name="Fld004" value="@Model.Fld004">
+                <input type="hidden" name="Fld005" value="@Model.Fld005">
+                <input type="hidden" name="CommissionsId" value="@Model.CommissionsId">
+                <input type="hidden" name="CurrencyId" value="@Model.CurrencyId">
+                <input type="hidden" name="ParentPaymentsId" value="@Model.ParentPaymentsId">
+                <input type="hidden" name="PaymentsId" value="@Model.PaymentsId">
+                <input type="hidden" name="ReverseTime" value="@Model.ReverseTime">
+                <input type="hidden" name="Status" value="@Model.Status">
+                <input type="hidden" name="Time" value="@Model.Time">
+                <input type="hidden" name="VendorsId" value="@Model.VendorsId">
+
+            </div>
+        </div>
+        
+        <div class="textcentred">
+            <input id="cancelbtn" class="btn-large" type="submit" value="Отмена"/>
+            <input id="savebtn" class="btn-large" type="submit" value="Оплата"/>
+        </div>
+    }
+    </div>

@@ -1,0 +1,16 @@
+﻿@model Internet_Banking.Models.UserSavedViewModel
+@{
+    ViewBag.Title = "Пользователь добавлен";
+}
+
+<h2>Добавлен новый пользователь</h2>
+<ul>
+    <li>
+        @Html.LabelFor(model=>model.UserName)
+        @Model.UserName
+    </li>
+    <li>
+        @Html.LabelFor(model=>model.Password)
+        @Model.Password
+    </li>
+</ul>
