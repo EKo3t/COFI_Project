@@ -153,6 +153,7 @@
     <Compile Include="CurrencyRatio.cs">
       <DependentUpon>InternetBankingEntities.tt</DependentUpon>
     </Compile>
+    <Compile Include="CurrencyToString.cs" />
     <Compile Include="Deposit.cs">
       <DependentUpon>InternetBankingEntities.tt</DependentUpon>
     </Compile>

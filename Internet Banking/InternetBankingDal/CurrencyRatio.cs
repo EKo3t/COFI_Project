@@ -18,13 +18,13 @@ using System;
 public partial class CurrencyRatio
 {
 
+    public int id { get; set; }
+
     public string StartCurrency { get; set; }
 
     public string EndCurrency { get; set; }
 
     public double Ratio { get; set; }
-
-    public int id { get; set; }
 
 }
 

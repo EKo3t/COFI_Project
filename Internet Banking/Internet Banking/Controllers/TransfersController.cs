@@ -49,8 +49,12 @@ namespace Internet_Banking.Controllers
 
         [Authorize]
         [HttpPost]
-        public ActionResult TransferResources(TransfersModel model, string currencyList)
+        public ActionResult TransferResources(TransfersModel model, string Currency)
         {
+            var errors = ModelState
+                .Where(x => x.Value.Errors.Count > 0)
+                .Select(x => new { x.Key, x.Value.Errors })
+                .ToArray();
             if (ModelState.IsValid)
             {
                 var entities = new InternetBankingEntities();
@@ -68,7 +72,9 @@ namespace Internet_Banking.Controllers
                 {
                     var userId = (Guid)Membership.GetUser(User.Identity.Name).ProviderUserKey;
                     var accFrom = listFrom.First();
-                    var accTo = listTo.First();       
+                    var accTo = listTo.First();  
+                    if (model.AccountFrom == model.AccountTo)
+                        ModelState.AddModelError("AccountTo", "Счета не должны совпадать");
                     if (accFrom == null)
                         ModelState.AddModelError("AccountFrom", "Не удалось определить счет");
                     else if (accTo == null)
@@ -78,23 +84,24 @@ namespace Internet_Banking.Controllers
                     else if (accFrom.Amount < (decimal) model.TransferValue)
                         ModelState.AddModelError("TransferValue", "На счету нет столько средств");
                     else
-                    {                        
-                        accFrom.Amount -= (decimal) model.TransferValue;
-                        accTo.Amount += (decimal) model.TransferValue;
+                    {         
+
+                        CurrencyConverter converter = 
+                            new CurrencyConverter(Currency, entities.Currencies.First(x => x.id == accFrom.Currency).alphacode);
+                        accFrom.Amount -= (decimal) converter.GetExchangeAmount(model.TransferValue);
+                        converter =
+                            new CurrencyConverter(Currency, entities.Currencies.First(x => x.id == accTo.Currency).alphacode);
+                        accTo.Amount += (decimal) converter.GetExchangeAmount(model.TransferValue);
                         entities.Accounts.First(x => x.AccountId == accFrom.AccountId).Amount = accFrom.Amount;                        
-                        entities.Accounts.First(x => x.AccountId == accTo.AccountId).Amount = accTo.Amount;      
+                        entities.Accounts.First(x => x.AccountId == accTo.AccountId).Amount = accTo.Amount;
+                        model.Currency = Currency;
                         TransferList newTransfer = new TransferList();
                         newTransfer.AccountFrom = accFrom.Number;
                         newTransfer.AccountTo = accTo.Number;
                         newTransfer.TransferValue = model.TransferValue;
-                        newTransfer.Currency = "USD";
+                        newTransfer.Currency = Currency;
                         newTransfer.UserFromId = userId.ToString();
                         newTransfer.UserToId = accTo.UserId.ToString();
-                        var count = entities.TransferLists.Count();
-                        if (count == 0)
-                            newTransfer.id = 1;
-                        else
-                            newTransfer.id = entities.TransferLists.Last().id + 1;
                         entities.TransferLists.Add(newTransfer);
                         entities.SaveChanges();
                         return View("TransferConfirmation", model);

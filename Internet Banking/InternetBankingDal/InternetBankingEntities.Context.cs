@@ -140,9 +140,9 @@ public partial class InternetBankingEntities : DbContext
 
     public DbSet<Pattern> Patterns { get; set; }
 
-    public DbSet<CurrencyRatio> CurrencyRatios { get; set; }
-
     public DbSet<TransferList> TransferLists { get; set; }
+
+    public DbSet<CurrencyRatio> CurrencyRatios { get; set; }
 
 
     public virtual ObjectResult<string> aspnet_AnyDataInTables(Nullable<int> tablesToCheck)

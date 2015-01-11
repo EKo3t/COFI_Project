@@ -38,7 +38,7 @@
                     var list = new SelectList(
                         Model.CurrencyList.Select(x => new {Value = x, Text = x.name + "(" + x.alphacode + ")"}),
                         "Value", "Text");
-                    @Html.DropDownList("CurrencyList", list)                   
+                    @Html.DropDownList("Currency", list)                   
                 }
             </div>
         </div>
