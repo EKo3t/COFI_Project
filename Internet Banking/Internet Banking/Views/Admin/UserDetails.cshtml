@@ -1,0 +1,43 @@
+﻿@model Internet_Banking.Models.AdditionalUserDataModel
+@{
+    ViewBag.Title = "UserDetails";
+}
+
+<h3>Пользователь @Model.UserName</h3>
+<fieldset>
+    <legend></legend>
+
+    <div class="display-label" style="color: Black;">
+        @Html.DisplayName("Фамилия Имя Отчество")
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.FIO)
+    </div>
+    <div class="display-label" style="color: Black;">
+        @Html.DisplayName("Дата рождения")
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.BirthDate)
+    </div>
+    <div class="display-label" style="color: Black;">
+        @Html.DisplayNameFor(model => model.Nationality)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Nationality)
+    </div>
+    <div class="display-label" style="color: Black;">
+        @Html.DisplayNameFor(model => model.IdentificationNumber)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.IdentificationNumber)
+    </div>
+    <div class="display-label" style="color: Black;">
+        @Html.DisplayNameFor(model => model.PassportNumber)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.PassportNumber)
+    </div>
+</fieldset>
+<p style="color: Black;">
+    @Html.ActionLink("Назад к спику", "UsersList")
+</p>

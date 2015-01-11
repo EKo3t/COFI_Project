@@ -15,35 +15,55 @@
         <li>
             @Html.LabelFor(m => m.UserName)
             @Html.TextBoxFor(m => m.UserName)
+            @Html.ValidationMessageFor(m => m.UserName)
         </li>
         <li>
             @Html.LabelFor(m => m.LastName)
             @Html.TextBoxFor(m => m.LastName)
+            @Html.ValidationMessageFor(m => m.LastName)
         </li>
         <li>
             @Html.LabelFor(m => m.FirstName)
             @Html.TextBoxFor(m => m.FirstName)
+            @Html.ValidationMessageFor(m => m.FirstName)
         </li>
         <li>
             @Html.LabelFor(m => m.MiddleName)
             @Html.TextBoxFor(m => m.MiddleName)
+            @Html.ValidationMessageFor(m => m.MiddleName)
         </li>
         <li>
             @Html.LabelFor(m => m.BirthDate)
-            @Html.TextBoxFor(m => m.BirthDate, new { @class = "form-control datepicker" })
+            @Html.TextBoxFor(m => m.BirthDate)
             @Html.ValidationMessageFor(m => m.BirthDate)
         </li>
         <li>
             @Html.LabelFor(m => m.Nationality)
-            @Html.TextBoxFor(m => m.Nationality)
+            <select id="Nationality" name="Nationality" size="1">
+                <option value="BY" selected="selected">Беларусь</option>
+                <option value="RU">Россия</option>
+                <option value="UA">Украина</option>
+                <option value="PL">Польша</option>
+                <option value="LT">Литва</option>
+                <option value="LV">Латвия</option>
+                <option value="EE">Эстония</option>
+                <option value="DE">Германия</option>
+                <option value="CN">Китай</option>
+                <option value="CZ">Чешская Респ.</option>
+                <option value="AU">Австралия</option>
+                <option value="CA">Канада</option>
+                <option value="CH">Швейцария</option>
+            </select>
         </li>
         <li>
             @Html.LabelFor(m => m.IdentificationNumber)
             @Html.TextBoxFor(m => m.IdentificationNumber)
+            @Html.ValidationMessageFor(m => m.IdentificationNumber)
         </li>
         <li>
             @Html.LabelFor(m => m.PassportNumber)
             @Html.TextBoxFor(m => m.PassportNumber)
+            @Html.ValidationMessageFor(m => m.PassportNumber)
         </li>
         @if (Model.Password != null)
         {
@@ -56,13 +76,4 @@
     </ul>
     <button type="submit">Добавить пользователя</button>
 }
-@section Scripts 
-{ 
-    @Scripts.Render("~/bundles/jqueryval")
-
-    <script type="text/javascript">
-        $(document).ready(function () {
-            $('#BirthDate').datepicker({ dateFormat: 'dd.mm.yy' });
-        });
-    </script>
-}
+@section Scripts  {@Scripts.Render("~/bundles/jqueryval")}

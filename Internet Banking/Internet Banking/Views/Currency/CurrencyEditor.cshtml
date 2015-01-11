@@ -4,11 +4,22 @@
     ViewBag.Title = "CurrencyEditor";
 }
 
-<h4>Конвертер валюты</h4>
+<h3>Конвертер валюты</h3>
 
 @using (Html.BeginForm("Convert", "Currency", FormMethod.Post))
 {
-    <p>
+    if(Request.Params.AllKeys.Contains("Result"))
+    {
+        <p>
+            @Html.Label("Для конвертации " + Request.Params["Amount"] + " " + Request.Params["Source"])
+        </p>
+        <p>
+            @Html.Label("Количество нужной валюты: " + Request.Params["Result"])
+        </p>
+    }
+    else
+    {
+            <p>
         @Html.Label("Введите исходную валюту")
         @Html.DropDownList("currencySource", new SelectList(
             Model.Select(x => new { Value = x.alphacode, Text = x.name + "(" + x.alphacode + ")" }),
@@ -26,12 +37,12 @@
         @Html.Label("Введите количество исходной валюты")
         @Html.Editor("amount")
     </p>
-    
-    if(Request.Params.AllKeys.Contains("Result"))
-    {
-        <p>
-            @Html.Label("Количество нужной валюты: " + Request.Params["Result"])
-        </p>
+
     }
+    
     <input type="submit" value="Пересчитать" />
+    <br/><br/>
+    <div>
+        @Html.ActionLink("Назад","Index", "Currency")
+    </div>
 }

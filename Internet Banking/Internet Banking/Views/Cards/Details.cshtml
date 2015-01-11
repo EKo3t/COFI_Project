@@ -30,7 +30,8 @@
         @Html.DisplayNameFor(model => model.AccountNumber)
     </div>
     <div class="display-field">
-        @Html.DisplayFor(model => model.AccountNumber)
+        @Html.ActionLink(Model.AccountNumber, "Details", "Accounts", new { id = ViewBag.AccountId }, "")
+        @*@Html.DisplayFor(model => model.AccountNumber)*@
     </div>
     <div class="display-label" style="color: Black;">
         @Html.DisplayNameFor(model => model.StartDate)

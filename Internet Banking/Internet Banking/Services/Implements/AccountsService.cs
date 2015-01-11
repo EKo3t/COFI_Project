@@ -57,6 +57,7 @@ namespace Internet_Banking.Services.Implements
             if (account == null) return null;
             var model = AccountMapper.FromDBToViewModel(account);
             GetCards(model);
+            model.CurrencyName = _accountsProvider.GetCurrencyName(model.Currency);
             return model;
         }
 
@@ -69,6 +70,7 @@ namespace Internet_Banking.Services.Implements
                 }).ToList();
             foreach (var account in accounts)
             {
+                account.CurrencyName = _accountsProvider.GetCurrencyCode(account.Currency);
                 GetCards(account);
             }
             return accounts;

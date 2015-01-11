@@ -34,7 +34,9 @@ namespace Internet_Banking.Controllers
 
         public ActionResult Details(Guid id)
         {
-            return View(_cardService.GetCard(id));
+            var model = _cardService.GetCard(id);
+            ViewBag.AccountId = model.AccountId;
+            return View(model);
         }
     }
 }

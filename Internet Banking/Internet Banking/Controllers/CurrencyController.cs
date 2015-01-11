@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.UI;
+using DotNetOpenAuth.AspNet.Clients;
 using InternetBankingDal;
 using Internet_Banking.Utilities;
 
@@ -18,12 +20,14 @@ namespace Internet_Banking.Controllers
             return View();
         }
 
-        public ActionResult RedirectToEditor(string result)
+        public ActionResult RedirectToEditor(string result, string source, double amount)
         {
             ViewBag.Result = result;
             return RedirectToAction("CurrencyEditor",
             new {
-                Result = result
+                Result = result,
+                Source = source,
+                Amount = amount
             });            
         }
 
@@ -35,16 +39,16 @@ namespace Internet_Banking.Controllers
 
         public ActionResult Convert(string currencySource, string currencyTarget, double amount)
         {
-            Currency currency_from = entities.Currencies.First(c => c.alphacode == currencySource);
-            Currency currency_to = entities.Currencies.First(c => c.alphacode == currencyTarget);
+            //var currencyFrom = entities.Currencies.First(c => c.alphacode == currencySource);
+            //var currencyTo = entities.Currencies.First(c => c.alphacode == currencyTarget);
 
-            CurrencyRatio ratio =
+            var ratio =
                 entities.CurrencyRatios.First(
                     r => (r.StartCurrency == currencySource) && (r.EndCurrency == currencyTarget));
 
-            double result = amount*ratio.Ratio;
+            var result = amount*ratio.Ratio;
 
-            return RedirectToEditor(Math.Round(result).ToString() + " " + currencyTarget);
+            return RedirectToEditor(Math.Round(result, 4) + " " + currencyTarget, currencySource, amount);
         }
 
         [HttpGet]

@@ -1,0 +1,91 @@
+﻿@*@model IEnumerable<InternetBankingDal.CurrencyRatio>*@
+@model Internet_Banking.Models.CurrencyWithCrossModel
+    @{
+        ViewBag.Title = "Currency";
+    }
+
+    <h3>Курсы валют</h3>
+@*<table class="table">
+    <thead>
+        <tr>
+            @*<th>
+                Тип счёта
+            </th>
+            <th>
+                Номер счёта
+            </th>
+        </tr>
+    </thead>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.StartCurrency)/
+                @Html.DisplayFor(modelItem => item.EndCurrency)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Ratio)
+            </td>
+        </tr>
+    }
+</table>*@
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                
+            </th>
+            <th>
+                Покупка
+            </th>
+            <th>
+                Продажа
+            </th>
+        </tr>
+    </thead>
+
+    @foreach (var item in Model.Models)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Currency)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Purchase)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Sale)
+            </td>
+        </tr>
+    }
+</table>
+<hr/>
+<h4>Кросс-курсы валют</h4>
+
+<table class="table">
+        <thead>
+            <tr>
+                <th>
+                    @*Тип счёта*@
+                </th>
+                <th>
+                    @*Номер счёта*@
+                </th>
+            </tr>
+        </thead>
+
+        @foreach (var item in Model.Cross)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.StartCurrency)/
+                    @Html.DisplayFor(modelItem => item.EndCurrency)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Ratio)
+                </td>
+            </tr>
+        }
+    </table>
