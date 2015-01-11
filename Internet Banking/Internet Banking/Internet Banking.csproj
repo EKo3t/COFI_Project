@@ -210,6 +210,7 @@
     <Compile Include="Mappers\CardMapper.cs" />
     <Compile Include="Models\AccountModels.cs" />
     <Compile Include="Models\AccountTypeViewModel.cs" />
+    <Compile Include="Models\CurrencyModel.cs" />
     <Compile Include="Models\DateAttribute.cs" />
     <Compile Include="Models\PaymentModel.cs" />
     <Compile Include="Models\RequiredMessage.cs" />
@@ -346,6 +347,7 @@
     <Content Include="Views\Currency\ChangeCurrency.cshtml" />
     <Content Include="Views\Home\Help.cshtml" />
     <Content Include="Views\Admin\UserDetails.cshtml" />
+    <Content Include="Views\Home\Currency.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

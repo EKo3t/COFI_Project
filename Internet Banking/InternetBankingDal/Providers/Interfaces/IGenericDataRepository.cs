@@ -13,6 +13,6 @@ namespace InternetBankingDal.Providers.Interfaces
         void Update(params T[] items);
         void Remove(params T[] items);
         string GetCurrencyName(int id);
-
+        string GetCurrencyCode(int id);
     }
 }

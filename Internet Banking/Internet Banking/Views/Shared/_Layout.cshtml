@@ -33,9 +33,11 @@
     	                         <li><a href="/Cards">Карты</a></li> 
                                  //if (!Roles.IsUserInRole("Admin"))
                                  //{
-                                     <li><a href="/Payment">Платежи</a></li>
+                                 <li><a href="/Payment">Платежи</a></li>
+
                                  //}
                                  <li>@Html.ActionLink("Переводы", "Index", "Transfers")</li>
+                                 <li><a href="/Home/Currency">Курсы валют</a></li>
                                  <li>@*<a href="#">Настройки</a>*@<span class="divider"></span></li>
                                  <li>@Html.ActionLink("О банке", "About", "Home")</li>
                                  <li>@Html.ActionLink("Контакты", "Contact", "Home")</li> 

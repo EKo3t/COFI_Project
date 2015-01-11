@@ -110,5 +110,16 @@ namespace InternetBankingDal.Providers.Implements
             }
             return result;
         }
+        public string GetCurrencyCode(int id)
+        {
+            string result = null;
+            using (var context = new InternetBankingEntities())
+            {
+                var singleOrDefault = context.Currencies.SingleOrDefault(x => x.id == id);
+                if (singleOrDefault != null)
+                    result = singleOrDefault.alphacode;
+            }
+            return result;
+        }
     }
 }

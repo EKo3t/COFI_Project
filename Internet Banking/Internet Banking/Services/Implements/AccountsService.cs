@@ -70,6 +70,7 @@ namespace Internet_Banking.Services.Implements
                 }).ToList();
             foreach (var account in accounts)
             {
+                account.CurrencyName = _accountsProvider.GetCurrencyCode(account.Currency);
                 GetCards(account);
             }
             return accounts;
