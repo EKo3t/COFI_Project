@@ -23,6 +23,12 @@
             });
         });
         $('#AccountNumber').change();
+        $('#savebtn1').click(function () {
+            $('#formId').attr('action', "/Payment/SavePattern");
+        });
+        $('#savebtn2').click(function () {
+            $('#formId').attr('action', "/Payment/DoPayment");
+        });
     });
 </script>
 
@@ -31,7 +37,7 @@
 <h3>Заполните форму платежа</h3>
 
     <div class="container-fluid mycontainer">
-    @using (Html.BeginForm("SavePayment", "Payment", FormMethod.Post))
+    @using (Html.BeginForm("", "", FormMethod.Post, new { @id = "formId" }))
     {
         @Html.AntiForgeryToken()
         @Html.ValidationSummary()
@@ -80,6 +86,13 @@
                     @Html.DropDownListFor(model=>model.AccountNumber, Model.AccountNumbers)
                     @Html.ValidationMessageFor(model => model.AccountNumbers)
                 </div>
+                <div class="editor-label">
+                    <nobr>Введите лицевой счёт:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</nobr>
+                </div>
+                <div class="editor-field">
+                    @Html.EditorFor(model => model.ContractNumber)
+                    @Html.ValidationMessageFor(model => model.ContractNumber)
+                </div>
             </div>
             <div class="span6 myspan2">
                 <div class="editor-label">
@@ -88,13 +101,20 @@
                 <div>
                     <select id="cardsList" name="cardNumber"></select>
                 </div>
+                <div class="editor-label">
+                    <nobr>Значение счётчика (в кВт⋅ч) :</nobr>
+                </div>
+                <div class="editor-field">
+                    @Html.EditorFor(model => model.ContractValue)
+                    @Html.ValidationMessageFor(model => model.ContractValue)
+                </div>
             </div>
 
         </div>
 
         <div class="textcentred">
-            <input class="btn-large savebtn" type="submit" value="   Сохранить как шаблон  " onClick="savepayment()"/>
-            <input class="btn-large contbtn" type="submit" value="Продолжить без сохранения" onClick="cont()"/>
+            <input id="savebtn1" class="btn-large" type="submit" value="  Сохранить как шаблон   "/>
+            <input id="savebtn2" class="btn-large" type="submit" value="Продолжить без сохранения"/>
         </div>
-   }
+    }
    </div>

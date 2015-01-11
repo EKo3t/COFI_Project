@@ -40,5 +40,15 @@ namespace Internet_Banking.Models
         public string Fld004 { get; set; }
 
         public string Fld005 { get; set; }
+
+        public string Fld006 { get; set; }
+
+        public string Fld007 { get; set; }
+
+        public string Fld008 { get; set; }
+
+        public string Fld009 { get; set; }
+
+        public string Fld010 { get; set; }
     }
 }

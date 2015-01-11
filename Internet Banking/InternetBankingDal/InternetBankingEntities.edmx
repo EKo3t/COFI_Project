@@ -4,7 +4,262 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="Хранилище InternetBankingModel" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="Хранилище InternetBankingModel" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityContainer Name="Хранилище InternetBankingModelContainer">
+          <EntitySet Name="AccountOperations" EntityType="Хранилище InternetBankingModel.AccountOperations" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Accounts" EntityType="Хранилище InternetBankingModel.Accounts" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="AccountType" EntityType="Хранилище InternetBankingModel.AccountType" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="AdditionalUserData" EntityType="Хранилище InternetBankingModel.AdditionalUserData" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Album" EntityType="Хранилище InternetBankingModel.Album" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Artist" EntityType="Хранилище InternetBankingModel.Artist" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="aspnet_Applications" EntityType="Хранилище InternetBankingModel.aspnet_Applications" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="aspnet_Membership" EntityType="Хранилище InternetBankingModel.aspnet_Membership" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="aspnet_Paths" EntityType="Хранилище InternetBankingModel.aspnet_Paths" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="aspnet_PersonalizationAllUsers" EntityType="Хранилище InternetBankingModel.aspnet_PersonalizationAllUsers" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="aspnet_PersonalizationPerUser" EntityType="Хранилище InternetBankingModel.aspnet_PersonalizationPerUser" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="aspnet_Profile" EntityType="Хранилище InternetBankingModel.aspnet_Profile" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="aspnet_Roles" EntityType="Хранилище InternetBankingModel.aspnet_Roles" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="aspnet_SchemaVersions" EntityType="Хранилище InternetBankingModel.aspnet_SchemaVersions" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="aspnet_Users" EntityType="Хранилище InternetBankingModel.aspnet_Users" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="aspnet_UsersInRoles" EntityType="Хранилище InternetBankingModel.aspnet_UsersInRoles" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="aspnet_WebEvent_Events" EntityType="Хранилище InternetBankingModel.aspnet_WebEvent_Events" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="CardOperations" EntityType="Хранилище InternetBankingModel.CardOperations" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Cards" EntityType="Хранилище InternetBankingModel.Cards" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Cart" EntityType="Хранилище InternetBankingModel.Cart" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="ClientRemittances" EntityType="Хранилище InternetBankingModel.ClientRemittances" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="ClientRemittancesTemplates" EntityType="Хранилище InternetBankingModel.ClientRemittancesTemplates" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Commissions" EntityType="Хранилище InternetBankingModel.Commissions" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Convertations" EntityType="Хранилище InternetBankingModel.Convertations" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="ConvertationTemplates" EntityType="Хранилище InternetBankingModel.ConvertationTemplates" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Credit" EntityType="Хранилище InternetBankingModel.Credit" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="CreditOperations" EntityType="Хранилище InternetBankingModel.CreditOperations" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="CreditPayments" EntityType="Хранилище InternetBankingModel.CreditPayments" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Currency" EntityType="Хранилище InternetBankingModel.Currency" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="CurrencyRatio" EntityType="Хранилище InternetBankingModel.CurrencyRatio" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Deposit" EntityType="Хранилище InternetBankingModel.Deposit" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="DepositOperations" EntityType="Хранилище InternetBankingModel.DepositOperations" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Genre" EntityType="Хранилище InternetBankingModel.Genre" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Merchants" EntityType="Хранилище InternetBankingModel.Merchants" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Order" EntityType="Хранилище InternetBankingModel.Order" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="OrderDetail" EntityType="Хранилище InternetBankingModel.OrderDetail" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Payments" EntityType="Хранилище InternetBankingModel.Payments" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="PaymentsDetails" EntityType="Хранилище InternetBankingModel.PaymentsDetails" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="PaymentsStages" EntityType="Хранилище InternetBankingModel.PaymentsStages" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="PaymentTemplates" EntityType="Хранилище InternetBankingModel.PaymentTemplates" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Remittances" EntityType="Хранилище InternetBankingModel.Remittances" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="RemittanceTemplates" EntityType="Хранилище InternetBankingModel.RemittanceTemplates" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Transactions" EntityType="Хранилище InternetBankingModel.Transactions" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="TransferList" EntityType="Хранилище InternetBankingModel.TransferList" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Vendors" EntityType="Хранилище InternetBankingModel.Vendors" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="VendorsMerchantsMap" EntityType="Хранилище InternetBankingModel.VendorsMerchantsMap" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="vw_aspnet_Applications" EntityType="Хранилище InternetBankingModel.vw_aspnet_Applications" store:Type="Views" store:Schema="dbo" store:Name="vw_aspnet_Applications">
+            <DefiningQuery>SELECT 
+      [vw_aspnet_Applications].[ApplicationName] AS [ApplicationName], 
+      [vw_aspnet_Applications].[LoweredApplicationName] AS [LoweredApplicationName], 
+      [vw_aspnet_Applications].[ApplicationId] AS [ApplicationId], 
+      [vw_aspnet_Applications].[Description] AS [Description]
+      FROM [dbo].[vw_aspnet_Applications] AS [vw_aspnet_Applications]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="vw_aspnet_MembershipUsers" EntityType="Хранилище InternetBankingModel.vw_aspnet_MembershipUsers" store:Type="Views" store:Schema="dbo" store:Name="vw_aspnet_MembershipUsers">
+            <DefiningQuery>SELECT 
+      [vw_aspnet_MembershipUsers].[UserId] AS [UserId], 
+      [vw_aspnet_MembershipUsers].[PasswordFormat] AS [PasswordFormat], 
+      [vw_aspnet_MembershipUsers].[MobilePIN] AS [MobilePIN], 
+      [vw_aspnet_MembershipUsers].[Email] AS [Email], 
+      [vw_aspnet_MembershipUsers].[LoweredEmail] AS [LoweredEmail], 
+      [vw_aspnet_MembershipUsers].[PasswordQuestion] AS [PasswordQuestion], 
+      [vw_aspnet_MembershipUsers].[PasswordAnswer] AS [PasswordAnswer], 
+      [vw_aspnet_MembershipUsers].[IsApproved] AS [IsApproved], 
+      [vw_aspnet_MembershipUsers].[IsLockedOut] AS [IsLockedOut], 
+      [vw_aspnet_MembershipUsers].[CreateDate] AS [CreateDate], 
+      [vw_aspnet_MembershipUsers].[LastLoginDate] AS [LastLoginDate], 
+      [vw_aspnet_MembershipUsers].[LastPasswordChangedDate] AS [LastPasswordChangedDate], 
+      [vw_aspnet_MembershipUsers].[LastLockoutDate] AS [LastLockoutDate], 
+      [vw_aspnet_MembershipUsers].[FailedPasswordAttemptCount] AS [FailedPasswordAttemptCount], 
+      [vw_aspnet_MembershipUsers].[FailedPasswordAttemptWindowStart] AS [FailedPasswordAttemptWindowStart], 
+      [vw_aspnet_MembershipUsers].[FailedPasswordAnswerAttemptCount] AS [FailedPasswordAnswerAttemptCount], 
+      [vw_aspnet_MembershipUsers].[FailedPasswordAnswerAttemptWindowStart] AS [FailedPasswordAnswerAttemptWindowStart], 
+      [vw_aspnet_MembershipUsers].[Comment] AS [Comment], 
+      [vw_aspnet_MembershipUsers].[ApplicationId] AS [ApplicationId], 
+      [vw_aspnet_MembershipUsers].[UserName] AS [UserName], 
+      [vw_aspnet_MembershipUsers].[MobileAlias] AS [MobileAlias], 
+      [vw_aspnet_MembershipUsers].[IsAnonymous] AS [IsAnonymous], 
+      [vw_aspnet_MembershipUsers].[LastActivityDate] AS [LastActivityDate]
+      FROM [dbo].[vw_aspnet_MembershipUsers] AS [vw_aspnet_MembershipUsers]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="vw_aspnet_Profiles" EntityType="Хранилище InternetBankingModel.vw_aspnet_Profiles" store:Type="Views" store:Schema="dbo" store:Name="vw_aspnet_Profiles">
+            <DefiningQuery>SELECT 
+      [vw_aspnet_Profiles].[UserId] AS [UserId], 
+      [vw_aspnet_Profiles].[LastUpdatedDate] AS [LastUpdatedDate], 
+      [vw_aspnet_Profiles].[DataSize] AS [DataSize]
+      FROM [dbo].[vw_aspnet_Profiles] AS [vw_aspnet_Profiles]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="vw_aspnet_Roles" EntityType="Хранилище InternetBankingModel.vw_aspnet_Roles" store:Type="Views" store:Schema="dbo" store:Name="vw_aspnet_Roles">
+            <DefiningQuery>SELECT 
+      [vw_aspnet_Roles].[ApplicationId] AS [ApplicationId], 
+      [vw_aspnet_Roles].[RoleId] AS [RoleId], 
+      [vw_aspnet_Roles].[RoleName] AS [RoleName], 
+      [vw_aspnet_Roles].[LoweredRoleName] AS [LoweredRoleName], 
+      [vw_aspnet_Roles].[Description] AS [Description]
+      FROM [dbo].[vw_aspnet_Roles] AS [vw_aspnet_Roles]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="vw_aspnet_Users" EntityType="Хранилище InternetBankingModel.vw_aspnet_Users" store:Type="Views" store:Schema="dbo" store:Name="vw_aspnet_Users">
+            <DefiningQuery>SELECT 
+      [vw_aspnet_Users].[ApplicationId] AS [ApplicationId], 
+      [vw_aspnet_Users].[UserId] AS [UserId], 
+      [vw_aspnet_Users].[UserName] AS [UserName], 
+      [vw_aspnet_Users].[LoweredUserName] AS [LoweredUserName], 
+      [vw_aspnet_Users].[MobileAlias] AS [MobileAlias], 
+      [vw_aspnet_Users].[IsAnonymous] AS [IsAnonymous], 
+      [vw_aspnet_Users].[LastActivityDate] AS [LastActivityDate]
+      FROM [dbo].[vw_aspnet_Users] AS [vw_aspnet_Users]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="vw_aspnet_UsersInRoles" EntityType="Хранилище InternetBankingModel.vw_aspnet_UsersInRoles" store:Type="Views" store:Schema="dbo" store:Name="vw_aspnet_UsersInRoles">
+            <DefiningQuery>SELECT 
+      [vw_aspnet_UsersInRoles].[UserId] AS [UserId], 
+      [vw_aspnet_UsersInRoles].[RoleId] AS [RoleId]
+      FROM [dbo].[vw_aspnet_UsersInRoles] AS [vw_aspnet_UsersInRoles]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="vw_aspnet_WebPartState_Paths" EntityType="Хранилище InternetBankingModel.vw_aspnet_WebPartState_Paths" store:Type="Views" store:Schema="dbo" store:Name="vw_aspnet_WebPartState_Paths">
+            <DefiningQuery>SELECT 
+      [vw_aspnet_WebPartState_Paths].[ApplicationId] AS [ApplicationId], 
+      [vw_aspnet_WebPartState_Paths].[PathId] AS [PathId], 
+      [vw_aspnet_WebPartState_Paths].[Path] AS [Path], 
+      [vw_aspnet_WebPartState_Paths].[LoweredPath] AS [LoweredPath]
+      FROM [dbo].[vw_aspnet_WebPartState_Paths] AS [vw_aspnet_WebPartState_Paths]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="vw_aspnet_WebPartState_Shared" EntityType="Хранилище InternetBankingModel.vw_aspnet_WebPartState_Shared" store:Type="Views" store:Schema="dbo" store:Name="vw_aspnet_WebPartState_Shared">
+            <DefiningQuery>SELECT 
+      [vw_aspnet_WebPartState_Shared].[PathId] AS [PathId], 
+      [vw_aspnet_WebPartState_Shared].[DataSize] AS [DataSize], 
+      [vw_aspnet_WebPartState_Shared].[LastUpdatedDate] AS [LastUpdatedDate]
+      FROM [dbo].[vw_aspnet_WebPartState_Shared] AS [vw_aspnet_WebPartState_Shared]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="vw_aspnet_WebPartState_User" EntityType="Хранилище InternetBankingModel.vw_aspnet_WebPartState_User" store:Type="Views" store:Schema="dbo" store:Name="vw_aspnet_WebPartState_User">
+            <DefiningQuery>SELECT 
+      [vw_aspnet_WebPartState_User].[PathId] AS [PathId], 
+      [vw_aspnet_WebPartState_User].[UserId] AS [UserId], 
+      [vw_aspnet_WebPartState_User].[DataSize] AS [DataSize], 
+      [vw_aspnet_WebPartState_User].[LastUpdatedDate] AS [LastUpdatedDate]
+      FROM [dbo].[vw_aspnet_WebPartState_User] AS [vw_aspnet_WebPartState_User]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="FK__Album__ArtistId__276EDEB3" Association="Хранилище InternetBankingModel.FK__Album__ArtistId__276EDEB3">
+            <End Role="Artist" EntitySet="Artist" />
+            <End Role="Album" EntitySet="Album" />
+          </AssociationSet>
+          <AssociationSet Name="FK__aspnet_Me__Appli__30C33EC3" Association="Хранилище InternetBankingModel.FK__aspnet_Me__Appli__30C33EC3">
+            <End Role="aspnet_Applications" EntitySet="aspnet_Applications" />
+            <End Role="aspnet_Membership" EntitySet="aspnet_Membership" />
+          </AssociationSet>
+          <AssociationSet Name="FK__aspnet_Me__UserI__31B762FC" Association="Хранилище InternetBankingModel.FK__aspnet_Me__UserI__31B762FC">
+            <End Role="aspnet_Users" EntitySet="aspnet_Users" />
+            <End Role="aspnet_Membership" EntitySet="aspnet_Membership" />
+          </AssociationSet>
+          <AssociationSet Name="FK__aspnet_Pa__Appli__32AB8735" Association="Хранилище InternetBankingModel.FK__aspnet_Pa__Appli__32AB8735">
+            <End Role="aspnet_Applications" EntitySet="aspnet_Applications" />
+            <End Role="aspnet_Paths" EntitySet="aspnet_Paths" />
+          </AssociationSet>
+          <AssociationSet Name="FK__aspnet_Pe__PathI__339FAB6E" Association="Хранилище InternetBankingModel.FK__aspnet_Pe__PathI__339FAB6E">
+            <End Role="aspnet_Paths" EntitySet="aspnet_Paths" />
+            <End Role="aspnet_PersonalizationAllUsers" EntitySet="aspnet_PersonalizationAllUsers" />
+          </AssociationSet>
+          <AssociationSet Name="FK__aspnet_Pe__PathI__3493CFA7" Association="Хранилище InternetBankingModel.FK__aspnet_Pe__PathI__3493CFA7">
+            <End Role="aspnet_Paths" EntitySet="aspnet_Paths" />
+            <End Role="aspnet_PersonalizationPerUser" EntitySet="aspnet_PersonalizationPerUser" />
+          </AssociationSet>
+          <AssociationSet Name="FK__aspnet_Pe__UserI__3587F3E0" Association="Хранилище InternetBankingModel.FK__aspnet_Pe__UserI__3587F3E0">
+            <End Role="aspnet_Users" EntitySet="aspnet_Users" />
+            <End Role="aspnet_PersonalizationPerUser" EntitySet="aspnet_PersonalizationPerUser" />
+          </AssociationSet>
+          <AssociationSet Name="FK__aspnet_Pr__UserI__367C1819" Association="Хранилище InternetBankingModel.FK__aspnet_Pr__UserI__367C1819">
+            <End Role="aspnet_Users" EntitySet="aspnet_Users" />
+            <End Role="aspnet_Profile" EntitySet="aspnet_Profile" />
+          </AssociationSet>
+          <AssociationSet Name="FK__aspnet_Ro__Appli__37703C52" Association="Хранилище InternetBankingModel.FK__aspnet_Ro__Appli__37703C52">
+            <End Role="aspnet_Applications" EntitySet="aspnet_Applications" />
+            <End Role="aspnet_Roles" EntitySet="aspnet_Roles" />
+          </AssociationSet>
+          <AssociationSet Name="FK__aspnet_Us__Appli__3864608B" Association="Хранилище InternetBankingModel.FK__aspnet_Us__Appli__3864608B">
+            <End Role="aspnet_Applications" EntitySet="aspnet_Applications" />
+            <End Role="aspnet_Users" EntitySet="aspnet_Users" />
+          </AssociationSet>
+          <AssociationSet Name="FK__aspnet_Us__RoleI__395884C4" Association="Хранилище InternetBankingModel.FK__aspnet_Us__RoleI__395884C4">
+            <End Role="aspnet_Roles" EntitySet="aspnet_Roles" />
+            <End Role="aspnet_UsersInRoles" EntitySet="aspnet_UsersInRoles" />
+          </AssociationSet>
+          <AssociationSet Name="FK__aspnet_Us__UserI__3A4CA8FD" Association="Хранилище InternetBankingModel.FK__aspnet_Us__UserI__3A4CA8FD">
+            <End Role="aspnet_Users" EntitySet="aspnet_Users" />
+            <End Role="aspnet_UsersInRoles" EntitySet="aspnet_UsersInRoles" />
+          </AssociationSet>
+          <AssociationSet Name="FK__InvoiceLi__Invoi__2F10007B" Association="Хранилище InternetBankingModel.FK__InvoiceLi__Invoi__2F10007B">
+            <End Role="Order" EntitySet="Order" />
+            <End Role="OrderDetail" EntitySet="OrderDetail" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Accounts_AccountType" Association="Хранилище InternetBankingModel.FK_Accounts_AccountType">
+            <End Role="AccountType" EntitySet="AccountType" />
+            <End Role="Accounts" EntitySet="Accounts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Accounts_aspnet_Users" Association="Хранилище InternetBankingModel.FK_Accounts_aspnet_Users">
+            <End Role="aspnet_Users" EntitySet="aspnet_Users" />
+            <End Role="Accounts" EntitySet="Accounts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AdditionalUserData_Accounts" Association="Хранилище InternetBankingModel.FK_AdditionalUserData_Accounts">
+            <End Role="aspnet_Users" EntitySet="aspnet_Users" />
+            <End Role="AdditionalUserData" EntitySet="AdditionalUserData" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Album_Genre" Association="Хранилище InternetBankingModel.FK_Album_Genre">
+            <End Role="Genre" EntitySet="Genre" />
+            <End Role="Album" EntitySet="Album" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CardOperations_Cards" Association="Хранилище InternetBankingModel.FK_CardOperations_Cards">
+            <End Role="Cards" EntitySet="Cards" />
+            <End Role="CardOperations" EntitySet="CardOperations" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Cards_Accounts" Association="Хранилище InternetBankingModel.FK_Cards_Accounts">
+            <End Role="Accounts" EntitySet="Accounts" />
+            <End Role="Cards" EntitySet="Cards" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Cart_Album" Association="Хранилище InternetBankingModel.FK_Cart_Album">
+            <End Role="Album" EntitySet="Album" />
+            <End Role="Cart" EntitySet="Cart" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ClientRemittances_AccountOperations" Association="Хранилище InternetBankingModel.FK_ClientRemittances_AccountOperations">
+            <End Role="AccountOperations" EntitySet="AccountOperations" />
+            <End Role="ClientRemittances" EntitySet="ClientRemittances" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ClientRemittances_Accounts" Association="Хранилище InternetBankingModel.FK_ClientRemittances_Accounts">
+            <End Role="Accounts" EntitySet="Accounts" />
+            <End Role="ClientRemittances" EntitySet="ClientRemittances" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Credit_Accounts" Association="Хранилище InternetBankingModel.FK_Credit_Accounts">
+            <End Role="Accounts" EntitySet="Accounts" />
+            <End Role="Credit" EntitySet="Credit" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Credit_CreditPayments" Association="Хранилище InternetBankingModel.FK_Credit_CreditPayments">
+            <End Role="CreditPayments" EntitySet="CreditPayments" />
+            <End Role="Credit" EntitySet="Credit" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CreditOperations_Credit" Association="Хранилище InternetBankingModel.FK_CreditOperations_Credit">
+            <End Role="Credit" EntitySet="Credit" />
+            <End Role="CreditOperations" EntitySet="CreditOperations" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Deposit_Accounts" Association="Хранилище InternetBankingModel.FK_Deposit_Accounts">
+            <End Role="Accounts" EntitySet="Accounts" />
+            <End Role="Deposit" EntitySet="Deposit" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DepositOperations_Deposit" Association="Хранилище InternetBankingModel.FK_DepositOperations_Deposit">
+            <End Role="Deposit" EntitySet="Deposit" />
+            <End Role="DepositOperations" EntitySet="DepositOperations" />
+          </AssociationSet>
+          <AssociationSet Name="FK_InvoiceLine_Album" Association="Хранилище InternetBankingModel.FK_InvoiceLine_Album">
+            <End Role="Album" EntitySet="Album" />
+            <End Role="OrderDetail" EntitySet="OrderDetail" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Remittances_AccountOperations" Association="Хранилище InternetBankingModel.FK_Remittances_AccountOperations">
+            <End Role="AccountOperations" EntitySet="AccountOperations" />
+            <End Role="Remittances" EntitySet="Remittances" />
+          </AssociationSet>
+        </EntityContainer>
         <EntityType Name="AccountOperations">
           <Key>
             <PropertyRef Name="AccountOperationId" />
@@ -36,7 +291,7 @@
             <PropertyRef Name="AccountTypeId" />
           </Key>
           <Property Name="AccountTypeId" Type="int" Nullable="false" />
-          <Property Name="Name" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="30" />
         </EntityType>
         <EntityType Name="AdditionalUserData">
           <Key>
@@ -56,26 +311,26 @@
           <Key>
             <PropertyRef Name="AlbumId" />
           </Key>
-          <Property Name="AlbumId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AlbumId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="GenreId" Type="int" Nullable="false" />
           <Property Name="ArtistId" Type="int" Nullable="false" />
-          <Property Name="Title" Type="nvarchar" MaxLength="160" Nullable="false" />
-          <Property Name="Price" Type="numeric" Precision="10" Scale="2" Nullable="false" />
+          <Property Name="Title" Type="nvarchar" Nullable="false" MaxLength="160" />
+          <Property Name="Price" Type="numeric" Nullable="false" Precision="10" Scale="2" />
           <Property Name="AlbumArtUrl" Type="nvarchar" MaxLength="1024" />
         </EntityType>
         <EntityType Name="Artist">
           <Key>
             <PropertyRef Name="ArtistId" />
           </Key>
-          <Property Name="ArtistId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ArtistId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="Name" Type="nvarchar" MaxLength="120" />
         </EntityType>
         <EntityType Name="aspnet_Applications">
           <Key>
             <PropertyRef Name="ApplicationId" />
           </Key>
-          <Property Name="ApplicationName" Type="nvarchar" MaxLength="256" Nullable="false" />
-          <Property Name="LoweredApplicationName" Type="nvarchar" MaxLength="256" Nullable="false" />
+          <Property Name="ApplicationName" Type="nvarchar" Nullable="false" MaxLength="256" />
+          <Property Name="LoweredApplicationName" Type="nvarchar" Nullable="false" MaxLength="256" />
           <Property Name="ApplicationId" Type="uniqueidentifier" Nullable="false" />
           <Property Name="Description" Type="nvarchar" MaxLength="256" />
         </EntityType>
@@ -85,9 +340,9 @@
           </Key>
           <Property Name="ApplicationId" Type="uniqueidentifier" Nullable="false" />
           <Property Name="UserId" Type="uniqueidentifier" Nullable="false" />
-          <Property Name="Password" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="Password" Type="nvarchar" Nullable="false" MaxLength="128" />
           <Property Name="PasswordFormat" Type="int" Nullable="false" />
-          <Property Name="PasswordSalt" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="PasswordSalt" Type="nvarchar" Nullable="false" MaxLength="128" />
           <Property Name="MobilePIN" Type="nvarchar" MaxLength="16" />
           <Property Name="Email" Type="nvarchar" MaxLength="256" />
           <Property Name="LoweredEmail" Type="nvarchar" MaxLength="256" />
@@ -111,8 +366,8 @@
           </Key>
           <Property Name="ApplicationId" Type="uniqueidentifier" Nullable="false" />
           <Property Name="PathId" Type="uniqueidentifier" Nullable="false" />
-          <Property Name="Path" Type="nvarchar" MaxLength="256" Nullable="false" />
-          <Property Name="LoweredPath" Type="nvarchar" MaxLength="256" Nullable="false" />
+          <Property Name="Path" Type="nvarchar" Nullable="false" MaxLength="256" />
+          <Property Name="LoweredPath" Type="nvarchar" Nullable="false" MaxLength="256" />
         </EntityType>
         <EntityType Name="aspnet_PersonalizationAllUsers">
           <Key>
@@ -148,8 +403,8 @@
           </Key>
           <Property Name="ApplicationId" Type="uniqueidentifier" Nullable="false" />
           <Property Name="RoleId" Type="uniqueidentifier" Nullable="false" />
-          <Property Name="RoleName" Type="nvarchar" MaxLength="256" Nullable="false" />
-          <Property Name="LoweredRoleName" Type="nvarchar" MaxLength="256" Nullable="false" />
+          <Property Name="RoleName" Type="nvarchar" Nullable="false" MaxLength="256" />
+          <Property Name="LoweredRoleName" Type="nvarchar" Nullable="false" MaxLength="256" />
           <Property Name="Description" Type="nvarchar" MaxLength="256" />
         </EntityType>
         <EntityType Name="aspnet_SchemaVersions">
@@ -157,8 +412,8 @@
             <PropertyRef Name="Feature" />
             <PropertyRef Name="CompatibleSchemaVersion" />
           </Key>
-          <Property Name="Feature" Type="nvarchar" MaxLength="128" Nullable="false" />
-          <Property Name="CompatibleSchemaVersion" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="Feature" Type="nvarchar" Nullable="false" MaxLength="128" />
+          <Property Name="CompatibleSchemaVersion" Type="nvarchar" Nullable="false" MaxLength="128" />
           <Property Name="IsCurrentVersion" Type="bit" Nullable="false" />
         </EntityType>
         <EntityType Name="aspnet_Users">
@@ -167,8 +422,8 @@
           </Key>
           <Property Name="ApplicationId" Type="uniqueidentifier" Nullable="false" />
           <Property Name="UserId" Type="uniqueidentifier" Nullable="false" />
-          <Property Name="UserName" Type="nvarchar" MaxLength="256" Nullable="false" />
-          <Property Name="LoweredUserName" Type="nvarchar" MaxLength="256" Nullable="false" />
+          <Property Name="UserName" Type="nvarchar" Nullable="false" MaxLength="256" />
+          <Property Name="LoweredUserName" Type="nvarchar" Nullable="false" MaxLength="256" />
           <Property Name="MobileAlias" Type="nvarchar" MaxLength="16" />
           <Property Name="IsAnonymous" Type="bit" Nullable="false" />
           <Property Name="LastActivityDate" Type="datetime" Nullable="false" />
@@ -185,18 +440,18 @@
           <Key>
             <PropertyRef Name="EventId" />
           </Key>
-          <Property Name="EventId" Type="char" MaxLength="32" Nullable="false" />
+          <Property Name="EventId" Type="char" Nullable="false" MaxLength="32" />
           <Property Name="EventTimeUtc" Type="datetime" Nullable="false" />
           <Property Name="EventTime" Type="datetime" Nullable="false" />
-          <Property Name="EventType" Type="nvarchar" MaxLength="256" Nullable="false" />
-          <Property Name="EventSequence" Type="decimal" Precision="19" Scale="0" Nullable="false" />
-          <Property Name="EventOccurrence" Type="decimal" Precision="19" Scale="0" Nullable="false" />
+          <Property Name="EventType" Type="nvarchar" Nullable="false" MaxLength="256" />
+          <Property Name="EventSequence" Type="decimal" Nullable="false" Precision="19" />
+          <Property Name="EventOccurrence" Type="decimal" Nullable="false" Precision="19" />
           <Property Name="EventCode" Type="int" Nullable="false" />
           <Property Name="EventDetailCode" Type="int" Nullable="false" />
           <Property Name="Message" Type="nvarchar" MaxLength="1024" />
           <Property Name="ApplicationPath" Type="nvarchar" MaxLength="256" />
           <Property Name="ApplicationVirtualPath" Type="nvarchar" MaxLength="256" />
-          <Property Name="MachineName" Type="nvarchar" MaxLength="256" Nullable="false" />
+          <Property Name="MachineName" Type="nvarchar" Nullable="false" MaxLength="256" />
           <Property Name="RequestUrl" Type="nvarchar" MaxLength="1024" />
           <Property Name="ExceptionType" Type="nvarchar" MaxLength="256" />
           <Property Name="Details" Type="ntext" />
@@ -232,8 +487,8 @@
           <Key>
             <PropertyRef Name="RecordId" />
           </Key>
-          <Property Name="RecordId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="CartId" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="RecordId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="CartId" Type="varchar" Nullable="false" MaxLength="50" />
           <Property Name="AlbumId" Type="int" Nullable="false" />
           <Property Name="Count" Type="int" Nullable="false" />
           <Property Name="DateCreated" Type="datetime" Nullable="false" />
@@ -265,7 +520,7 @@
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="int" Nullable="false" />
-          <Property Name="AlgorithmId" Type="nchar" MaxLength="99" Nullable="false" />
+          <Property Name="AlgorithmId" Type="nchar" Nullable="false" MaxLength="99" />
           <Property Name="PercentCommission" Type="float" Nullable="false" />
         </EntityType>
         <EntityType Name="Convertations">
@@ -332,16 +587,16 @@
             <PropertyRef Name="id" />
           </Key>
           <Property Name="id" Type="int" Nullable="false" />
-          <Property Name="alphacode" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="alphacode" Type="nvarchar" Nullable="false" MaxLength="10" />
           <Property Name="name" Type="nvarchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="CurrencyRatio">
           <Key>
             <PropertyRef Name="id" />
           </Key>
-          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="StartCurrency" Type="nvarchar" MaxLength="30" Nullable="false" />
-          <Property Name="EndCurrency" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="StartCurrency" Type="nvarchar" Nullable="false" MaxLength="30" />
+          <Property Name="EndCurrency" Type="nvarchar" Nullable="false" MaxLength="30" />
           <Property Name="Ratio" Type="float" Nullable="false" />
         </EntityType>
         <EntityType Name="Deposit">
@@ -377,23 +632,23 @@
           <Key>
             <PropertyRef Name="GenreId" />
           </Key>
-          <Property Name="GenreId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="GenreId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="Name" Type="nvarchar" MaxLength="120" />
-          <Property Name="Description" Type="nvarchar" MaxLength="4000" />
+          <Property Name="Description" Type="nvarchar" />
         </EntityType>
         <EntityType Name="Merchants">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="nchar" MaxLength="10" Nullable="false" />
-          <Property Name="BankAccount" Type="nvarchar" MaxLength="9" Nullable="false" />
+          <Property Name="Id" Type="nchar" Nullable="false" MaxLength="10" />
+          <Property Name="BankAccount" Type="nvarchar" Nullable="false" MaxLength="9" />
           <Property Name="BankAccountCurrencyId" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="Order">
           <Key>
             <PropertyRef Name="OrderId" />
           </Key>
-          <Property Name="OrderId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="OrderId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="OrderDate" Type="datetime" Nullable="false" />
           <Property Name="Username" Type="nvarchar" MaxLength="256" />
           <Property Name="FirstName" Type="nvarchar" MaxLength="160" />
@@ -405,42 +660,17 @@
           <Property Name="Country" Type="nvarchar" MaxLength="40" />
           <Property Name="Phone" Type="nvarchar" MaxLength="24" />
           <Property Name="Email" Type="nvarchar" MaxLength="160" />
-          <Property Name="Total" Type="numeric" Precision="10" Scale="2" Nullable="false" />
+          <Property Name="Total" Type="numeric" Nullable="false" Precision="10" Scale="2" />
         </EntityType>
         <EntityType Name="OrderDetail">
           <Key>
             <PropertyRef Name="OrderDetailId" />
           </Key>
-          <Property Name="OrderDetailId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="OrderDetailId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="OrderId" Type="int" Nullable="false" />
           <Property Name="AlbumId" Type="int" Nullable="false" />
           <Property Name="Quantity" Type="int" Nullable="false" />
-          <Property Name="UnitPrice" Type="numeric" Precision="10" Scale="2" Nullable="false" />
-        </EntityType>
-        <!--Ошибки, обнаруженные при создании:
-предупреждение 6002: В таблице или представлении "InternetBanking.dbo.Patterns" не определен первичный ключ. Ключ был выведен, а определение таблицы или представления было создано в режиме только для чтения.-->
-        <EntityType Name="Patterns">
-          <Key>
-            <PropertyRef Name="Id" />
-            <PropertyRef Name="UserId" />
-            <PropertyRef Name="PayerSurname" />
-            <PropertyRef Name="PayerName" />
-            <PropertyRef Name="Account" />
-            <PropertyRef Name="PaymentId" />
-          </Key>
-          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
-          <Property Name="UserId" Type="uniqueidentifier" Nullable="false" />
-          <Property Name="PayerSurname" Type="nchar" MaxLength="30" Nullable="false" />
-          <Property Name="PayerName" Type="nchar" MaxLength="30" Nullable="false" />
-          <Property Name="PayerPatronymic" Type="nchar" MaxLength="30" />
-          <Property Name="Account" Type="nchar" MaxLength="9" Nullable="false" />
-          <Property Name="Card" Type="nchar" MaxLength="16" />
-          <Property Name="PaymentId" Type="nchar" MaxLength="9" Nullable="false" />
-          <Property Name="PaymentName" Type="nchar" MaxLength="50" />
-          <Property Name="PersonalAccount" Type="nchar" MaxLength="20" />
-          <Property Name="ContractNumber" Type="nchar" MaxLength="20" />
-          <Property Name="CounterValue" Type="nchar" MaxLength="10" />
-          <Property Name="PatternName" Type="nchar" MaxLength="30" />
+          <Property Name="UnitPrice" Type="numeric" Nullable="false" Precision="10" Scale="2" />
         </EntityType>
         <EntityType Name="Payments">
           <Key>
@@ -448,7 +678,7 @@
           </Key>
           <Property Name="Id" Type="int" Nullable="false" />
           <Property Name="ParentId" Type="int" Nullable="false" />
-          <Property Name="Name" Type="nchar" MaxLength="99" Nullable="false" />
+          <Property Name="Name" Type="nchar" Nullable="false" MaxLength="99" />
           <Property Name="VendorsId" Type="int" />
           <Property Name="DefaultCommissionId" Type="int" Nullable="false" />
         </EntityType>
@@ -482,6 +712,23 @@
           <Property Name="Prm010" Type="varchar" MaxLength="50" />
           <Property Name="Description" Type="nchar" MaxLength="99" />
         </EntityType>
+        <EntityType Name="PaymentTemplates">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="PayerSurname" Type="nchar" Nullable="false" MaxLength="30" />
+          <Property Name="PayerName" Type="nchar" Nullable="false" MaxLength="30" />
+          <Property Name="PayerPatronymic" Type="nchar" MaxLength="30" />
+          <Property Name="Account" Type="nchar" Nullable="false" MaxLength="9" />
+          <Property Name="Card" Type="nchar" MaxLength="16" />
+          <Property Name="PaymentId" Type="nchar" Nullable="false" MaxLength="9" />
+          <Property Name="PaymentName" Type="nchar" MaxLength="50" />
+          <Property Name="PatternName" Type="nchar" MaxLength="200" />
+          <Property Name="ContractNumber" Type="nchar" MaxLength="20" />
+          <Property Name="CounterValue" Type="nchar" MaxLength="10" />
+        </EntityType>
         <EntityType Name="Remittances">
           <Key>
             <PropertyRef Name="RemittanceId" />
@@ -505,7 +752,7 @@
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="Time" Type="datetime" Nullable="false" />
           <Property Name="ReverseTime" Type="datetime" />
           <Property Name="Status" Type="nchar" MaxLength="30" />
@@ -516,37 +763,37 @@
           <Property Name="VendorsId" Type="int" Nullable="false" />
           <Property Name="Amount" Type="money" Nullable="false" />
           <Property Name="Card" Type="bigint" Nullable="false" />
-          <Property Name="Fld001" Type="nvarchar" MaxLength="30" />
-          <Property Name="Fld002" Type="nvarchar" MaxLength="30" />
-          <Property Name="Fld003" Type="nvarchar" MaxLength="30" />
-          <Property Name="Fld004" Type="nvarchar" MaxLength="30" />
-          <Property Name="Fld005" Type="nvarchar" MaxLength="30" />
-          <Property Name="Fld006" Type="nvarchar" MaxLength="30" />
-          <Property Name="Fld007" Type="nvarchar" MaxLength="30" />
-          <Property Name="Fld008" Type="nvarchar" MaxLength="30" />
-          <Property Name="Fld009" Type="nvarchar" MaxLength="30" />
-          <Property Name="Fld010" Type="nvarchar" MaxLength="30" />
+          <Property Name="Fld001" Type="nchar" MaxLength="30" />
+          <Property Name="Fld002" Type="nchar" MaxLength="30" />
+          <Property Name="Fld003" Type="nchar" MaxLength="30" />
+          <Property Name="Fld004" Type="nchar" MaxLength="30" />
+          <Property Name="Fld005" Type="nchar" MaxLength="30" />
+          <Property Name="Fld006" Type="nchar" MaxLength="30" />
+          <Property Name="Fld007" Type="nchar" MaxLength="30" />
+          <Property Name="Fld008" Type="nchar" MaxLength="30" />
+          <Property Name="Fld009" Type="nchar" MaxLength="30" />
+          <Property Name="Fld010" Type="nchar" MaxLength="30" />
         </EntityType>
         <EntityType Name="TransferList">
           <Key>
             <PropertyRef Name="id" />
           </Key>
           <Property Name="id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
-          <Property Name="AccountFrom" Type="nvarchar" MaxLength="20" Nullable="false" />
-          <Property Name="AccountTo" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="AccountFrom" Type="nvarchar" Nullable="false" MaxLength="20" />
+          <Property Name="AccountTo" Type="nvarchar" Nullable="false" MaxLength="20" />
           <Property Name="TransferValue" Type="float" Nullable="false" />
-          <Property Name="Currency" Type="nvarchar" MaxLength="10" Nullable="false" />
-          <Property Name="UserFromId" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="UserToId" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Currency" Type="nvarchar" Nullable="false" MaxLength="10" />
+          <Property Name="UserFromId" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="UserToId" Type="nvarchar" Nullable="false" MaxLength="50" />
         </EntityType>
         <EntityType Name="Vendors">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="int" Nullable="false" />
-          <Property Name="ShortName" Type="nchar" MaxLength="45" Nullable="false" />
-          <Property Name="FullName" Type="nchar" MaxLength="99" Nullable="false" />
-          <Property Name="Address" Type="nchar" MaxLength="99" Nullable="false" />
+          <Property Name="ShortName" Type="nchar" Nullable="false" MaxLength="45" />
+          <Property Name="FullName" Type="nchar" Nullable="false" MaxLength="99" />
+          <Property Name="Address" Type="nchar" Nullable="false" MaxLength="99" />
           <Property Name="UNP" Type="int" Nullable="false" />
           <Property Name="DefaultCommitionId" Type="int" Nullable="false" />
         </EntityType>
@@ -559,20 +806,22 @@
           <Property Name="MerchantsId" Type="int" Nullable="false" />
         </EntityType>
         <!--Ошибки, обнаруженные при создании:
-предупреждение 6002: В таблице или представлении "InternetBanking.dbo.vw_aspnet_Applications" не определен первичный ключ. Ключ был выведен, а определение таблицы или представления было создано в режиме только для чтения.-->
+      предупреждение 6002: В таблице или представлении "InternetBanking.dbo.vw_aspnet_Applications" не определен первичный ключ. Ключ был выведен, а определение таблицы или представления было создано в режиме только для чтения.
+      -->
         <EntityType Name="vw_aspnet_Applications">
           <Key>
             <PropertyRef Name="ApplicationName" />
             <PropertyRef Name="LoweredApplicationName" />
             <PropertyRef Name="ApplicationId" />
           </Key>
-          <Property Name="ApplicationName" Type="nvarchar" MaxLength="256" Nullable="false" />
-          <Property Name="LoweredApplicationName" Type="nvarchar" MaxLength="256" Nullable="false" />
+          <Property Name="ApplicationName" Type="nvarchar" Nullable="false" MaxLength="256" />
+          <Property Name="LoweredApplicationName" Type="nvarchar" Nullable="false" MaxLength="256" />
           <Property Name="ApplicationId" Type="uniqueidentifier" Nullable="false" />
           <Property Name="Description" Type="nvarchar" MaxLength="256" />
         </EntityType>
         <!--Ошибки, обнаруженные при создании:
-предупреждение 6002: В таблице или представлении "InternetBanking.dbo.vw_aspnet_MembershipUsers" не определен первичный ключ. Ключ был выведен, а определение таблицы или представления было создано в режиме только для чтения.-->
+      предупреждение 6002: В таблице или представлении "InternetBanking.dbo.vw_aspnet_MembershipUsers" не определен первичный ключ. Ключ был выведен, а определение таблицы или представления было создано в режиме только для чтения.
+      -->
         <EntityType Name="vw_aspnet_MembershipUsers">
           <Key>
             <PropertyRef Name="UserId" />
@@ -611,13 +860,14 @@
           <Property Name="FailedPasswordAnswerAttemptWindowStart" Type="datetime" Nullable="false" />
           <Property Name="Comment" Type="ntext" />
           <Property Name="ApplicationId" Type="uniqueidentifier" Nullable="false" />
-          <Property Name="UserName" Type="nvarchar" MaxLength="256" Nullable="false" />
+          <Property Name="UserName" Type="nvarchar" Nullable="false" MaxLength="256" />
           <Property Name="MobileAlias" Type="nvarchar" MaxLength="16" />
           <Property Name="IsAnonymous" Type="bit" Nullable="false" />
           <Property Name="LastActivityDate" Type="datetime" Nullable="false" />
         </EntityType>
         <!--Ошибки, обнаруженные при создании:
-предупреждение 6002: В таблице или представлении "InternetBanking.dbo.vw_aspnet_Profiles" не определен первичный ключ. Ключ был выведен, а определение таблицы или представления было создано в режиме только для чтения.-->
+      предупреждение 6002: В таблице или представлении "InternetBanking.dbo.vw_aspnet_Profiles" не определен первичный ключ. Ключ был выведен, а определение таблицы или представления было создано в режиме только для чтения.
+      -->
         <EntityType Name="vw_aspnet_Profiles">
           <Key>
             <PropertyRef Name="UserId" />
@@ -628,7 +878,8 @@
           <Property Name="DataSize" Type="int" />
         </EntityType>
         <!--Ошибки, обнаруженные при создании:
-предупреждение 6002: В таблице или представлении "InternetBanking.dbo.vw_aspnet_Roles" не определен первичный ключ. Ключ был выведен, а определение таблицы или представления было создано в режиме только для чтения.-->
+      предупреждение 6002: В таблице или представлении "InternetBanking.dbo.vw_aspnet_Roles" не определен первичный ключ. Ключ был выведен, а определение таблицы или представления было создано в режиме только для чтения.
+      -->
         <EntityType Name="vw_aspnet_Roles">
           <Key>
             <PropertyRef Name="ApplicationId" />
@@ -638,12 +889,13 @@
           </Key>
           <Property Name="ApplicationId" Type="uniqueidentifier" Nullable="false" />
           <Property Name="RoleId" Type="uniqueidentifier" Nullable="false" />
-          <Property Name="RoleName" Type="nvarchar" MaxLength="256" Nullable="false" />
-          <Property Name="LoweredRoleName" Type="nvarchar" MaxLength="256" Nullable="false" />
+          <Property Name="RoleName" Type="nvarchar" Nullable="false" MaxLength="256" />
+          <Property Name="LoweredRoleName" Type="nvarchar" Nullable="false" MaxLength="256" />
           <Property Name="Description" Type="nvarchar" MaxLength="256" />
         </EntityType>
         <!--Ошибки, обнаруженные при создании:
-предупреждение 6002: В таблице или представлении "InternetBanking.dbo.vw_aspnet_Users" не определен первичный ключ. Ключ был выведен, а определение таблицы или представления было создано в режиме только для чтения.-->
+      предупреждение 6002: В таблице или представлении "InternetBanking.dbo.vw_aspnet_Users" не определен первичный ключ. Ключ был выведен, а определение таблицы или представления было создано в режиме только для чтения.
+      -->
         <EntityType Name="vw_aspnet_Users">
           <Key>
             <PropertyRef Name="ApplicationId" />
@@ -655,14 +907,15 @@
           </Key>
           <Property Name="ApplicationId" Type="uniqueidentifier" Nullable="false" />
           <Property Name="UserId" Type="uniqueidentifier" Nullable="false" />
-          <Property Name="UserName" Type="nvarchar" MaxLength="256" Nullable="false" />
-          <Property Name="LoweredUserName" Type="nvarchar" MaxLength="256" Nullable="false" />
+          <Property Name="UserName" Type="nvarchar" Nullable="false" MaxLength="256" />
+          <Property Name="LoweredUserName" Type="nvarchar" Nullable="false" MaxLength="256" />
           <Property Name="MobileAlias" Type="nvarchar" MaxLength="16" />
           <Property Name="IsAnonymous" Type="bit" Nullable="false" />
           <Property Name="LastActivityDate" Type="datetime" Nullable="false" />
         </EntityType>
         <!--Ошибки, обнаруженные при создании:
-предупреждение 6002: В таблице или представлении "InternetBanking.dbo.vw_aspnet_UsersInRoles" не определен первичный ключ. Ключ был выведен, а определение таблицы или представления было создано в режиме только для чтения.-->
+      предупреждение 6002: В таблице или представлении "InternetBanking.dbo.vw_aspnet_UsersInRoles" не определен первичный ключ. Ключ был выведен, а определение таблицы или представления было создано в режиме только для чтения.
+      -->
         <EntityType Name="vw_aspnet_UsersInRoles">
           <Key>
             <PropertyRef Name="UserId" />
@@ -672,7 +925,8 @@
           <Property Name="RoleId" Type="uniqueidentifier" Nullable="false" />
         </EntityType>
         <!--Ошибки, обнаруженные при создании:
-предупреждение 6002: В таблице или представлении "InternetBanking.dbo.vw_aspnet_WebPartState_Paths" не определен первичный ключ. Ключ был выведен, а определение таблицы или представления было создано в режиме только для чтения.-->
+      предупреждение 6002: В таблице или представлении "InternetBanking.dbo.vw_aspnet_WebPartState_Paths" не определен первичный ключ. Ключ был выведен, а определение таблицы или представления было создано в режиме только для чтения.
+      -->
         <EntityType Name="vw_aspnet_WebPartState_Paths">
           <Key>
             <PropertyRef Name="ApplicationId" />
@@ -682,11 +936,12 @@
           </Key>
           <Property Name="ApplicationId" Type="uniqueidentifier" Nullable="false" />
           <Property Name="PathId" Type="uniqueidentifier" Nullable="false" />
-          <Property Name="Path" Type="nvarchar" MaxLength="256" Nullable="false" />
-          <Property Name="LoweredPath" Type="nvarchar" MaxLength="256" Nullable="false" />
+          <Property Name="Path" Type="nvarchar" Nullable="false" MaxLength="256" />
+          <Property Name="LoweredPath" Type="nvarchar" Nullable="false" MaxLength="256" />
         </EntityType>
         <!--Ошибки, обнаруженные при создании:
-предупреждение 6002: В таблице или представлении "InternetBanking.dbo.vw_aspnet_WebPartState_Shared" не определен первичный ключ. Ключ был выведен, а определение таблицы или представления было создано в режиме только для чтения.-->
+      предупреждение 6002: В таблице или представлении "InternetBanking.dbo.vw_aspnet_WebPartState_Shared" не определен первичный ключ. Ключ был выведен, а определение таблицы или представления было создано в режиме только для чтения.
+      -->
         <EntityType Name="vw_aspnet_WebPartState_Shared">
           <Key>
             <PropertyRef Name="PathId" />
@@ -697,7 +952,8 @@
           <Property Name="LastUpdatedDate" Type="datetime" Nullable="false" />
         </EntityType>
         <!--Ошибки, обнаруженные при создании:
-предупреждение 6002: В таблице или представлении "InternetBanking.dbo.vw_aspnet_WebPartState_User" не определен первичный ключ. Ключ был выведен, а определение таблицы или представления было создано в режиме только для чтения.-->
+      предупреждение 6002: В таблице или представлении "InternetBanking.dbo.vw_aspnet_WebPartState_User" не определен первичный ключ. Ключ был выведен, а определение таблицы или представления было создано в режиме только для чтения.
+      -->
         <EntityType Name="vw_aspnet_WebPartState_User">
           <Key>
             <PropertyRef Name="LastUpdatedDate" />
@@ -708,8 +964,8 @@
           <Property Name="LastUpdatedDate" Type="datetime" Nullable="false" />
         </EntityType>
         <Association Name="FK__Album__ArtistId__276EDEB3">
-          <End Role="Artist" Type="Self.Artist" Multiplicity="1" />
-          <End Role="Album" Type="Self.Album" Multiplicity="*" />
+          <End Role="Artist" Type="Хранилище InternetBankingModel.Artist" Multiplicity="1" />
+          <End Role="Album" Type="Хранилище InternetBankingModel.Album" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Artist">
               <PropertyRef Name="ArtistId" />
@@ -719,9 +975,9 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__aspnet_Me__Appli__37703C52">
-          <End Role="aspnet_Applications" Type="Self.aspnet_Applications" Multiplicity="1" />
-          <End Role="aspnet_Membership" Type="Self.aspnet_Membership" Multiplicity="*" />
+        <Association Name="FK__aspnet_Me__Appli__30C33EC3">
+          <End Role="aspnet_Applications" Type="Хранилище InternetBankingModel.aspnet_Applications" Multiplicity="1" />
+          <End Role="aspnet_Membership" Type="Хранилище InternetBankingModel.aspnet_Membership" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="aspnet_Applications">
               <PropertyRef Name="ApplicationId" />
@@ -731,9 +987,9 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__aspnet_Me__UserI__3864608B">
-          <End Role="aspnet_Users" Type="Self.aspnet_Users" Multiplicity="1" />
-          <End Role="aspnet_Membership" Type="Self.aspnet_Membership" Multiplicity="0..1" />
+        <Association Name="FK__aspnet_Me__UserI__31B762FC">
+          <End Role="aspnet_Users" Type="Хранилище InternetBankingModel.aspnet_Users" Multiplicity="1" />
+          <End Role="aspnet_Membership" Type="Хранилище InternetBankingModel.aspnet_Membership" Multiplicity="0..1" />
           <ReferentialConstraint>
             <Principal Role="aspnet_Users">
               <PropertyRef Name="UserId" />
@@ -743,9 +999,9 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__aspnet_Pa__Appli__29221CFB">
-          <End Role="aspnet_Applications" Type="Self.aspnet_Applications" Multiplicity="1" />
-          <End Role="aspnet_Paths" Type="Self.aspnet_Paths" Multiplicity="*" />
+        <Association Name="FK__aspnet_Pa__Appli__32AB8735">
+          <End Role="aspnet_Applications" Type="Хранилище InternetBankingModel.aspnet_Applications" Multiplicity="1" />
+          <End Role="aspnet_Paths" Type="Хранилище InternetBankingModel.aspnet_Paths" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="aspnet_Applications">
               <PropertyRef Name="ApplicationId" />
@@ -755,9 +1011,9 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__aspnet_Pe__PathI__395884C4">
-          <End Role="aspnet_Paths" Type="Self.aspnet_Paths" Multiplicity="1" />
-          <End Role="aspnet_PersonalizationAllUsers" Type="Self.aspnet_PersonalizationAllUsers" Multiplicity="0..1" />
+        <Association Name="FK__aspnet_Pe__PathI__339FAB6E">
+          <End Role="aspnet_Paths" Type="Хранилище InternetBankingModel.aspnet_Paths" Multiplicity="1" />
+          <End Role="aspnet_PersonalizationAllUsers" Type="Хранилище InternetBankingModel.aspnet_PersonalizationAllUsers" Multiplicity="0..1" />
           <ReferentialConstraint>
             <Principal Role="aspnet_Paths">
               <PropertyRef Name="PathId" />
@@ -767,9 +1023,9 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__aspnet_Pe__PathI__3A4CA8FD">
-          <End Role="aspnet_Paths" Type="Self.aspnet_Paths" Multiplicity="0..1" />
-          <End Role="aspnet_PersonalizationPerUser" Type="Self.aspnet_PersonalizationPerUser" Multiplicity="*" />
+        <Association Name="FK__aspnet_Pe__PathI__3493CFA7">
+          <End Role="aspnet_Paths" Type="Хранилище InternetBankingModel.aspnet_Paths" Multiplicity="0..1" />
+          <End Role="aspnet_PersonalizationPerUser" Type="Хранилище InternetBankingModel.aspnet_PersonalizationPerUser" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="aspnet_Paths">
               <PropertyRef Name="PathId" />
@@ -779,9 +1035,9 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__aspnet_Pe__UserI__3B40CD36">
-          <End Role="aspnet_Users" Type="Self.aspnet_Users" Multiplicity="0..1" />
-          <End Role="aspnet_PersonalizationPerUser" Type="Self.aspnet_PersonalizationPerUser" Multiplicity="*" />
+        <Association Name="FK__aspnet_Pe__UserI__3587F3E0">
+          <End Role="aspnet_Users" Type="Хранилище InternetBankingModel.aspnet_Users" Multiplicity="0..1" />
+          <End Role="aspnet_PersonalizationPerUser" Type="Хранилище InternetBankingModel.aspnet_PersonalizationPerUser" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="aspnet_Users">
               <PropertyRef Name="UserId" />
@@ -791,9 +1047,9 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__aspnet_Pr__UserI__31B762FC">
-          <End Role="aspnet_Users" Type="Self.aspnet_Users" Multiplicity="1" />
-          <End Role="aspnet_Profile" Type="Self.aspnet_Profile" Multiplicity="0..1" />
+        <Association Name="FK__aspnet_Pr__UserI__367C1819">
+          <End Role="aspnet_Users" Type="Хранилище InternetBankingModel.aspnet_Users" Multiplicity="1" />
+          <End Role="aspnet_Profile" Type="Хранилище InternetBankingModel.aspnet_Profile" Multiplicity="0..1" />
           <ReferentialConstraint>
             <Principal Role="aspnet_Users">
               <PropertyRef Name="UserId" />
@@ -803,9 +1059,9 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__aspnet_Ro__Appli__2A164134">
-          <End Role="aspnet_Applications" Type="Self.aspnet_Applications" Multiplicity="1" />
-          <End Role="aspnet_Roles" Type="Self.aspnet_Roles" Multiplicity="*" />
+        <Association Name="FK__aspnet_Ro__Appli__37703C52">
+          <End Role="aspnet_Applications" Type="Хранилище InternetBankingModel.aspnet_Applications" Multiplicity="1" />
+          <End Role="aspnet_Roles" Type="Хранилище InternetBankingModel.aspnet_Roles" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="aspnet_Applications">
               <PropertyRef Name="ApplicationId" />
@@ -815,9 +1071,9 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__aspnet_Us__Appli__2CF2ADDF">
-          <End Role="aspnet_Applications" Type="Self.aspnet_Applications" Multiplicity="1" />
-          <End Role="aspnet_Users" Type="Self.aspnet_Users" Multiplicity="*" />
+        <Association Name="FK__aspnet_Us__Appli__3864608B">
+          <End Role="aspnet_Applications" Type="Хранилище InternetBankingModel.aspnet_Applications" Multiplicity="1" />
+          <End Role="aspnet_Users" Type="Хранилище InternetBankingModel.aspnet_Users" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="aspnet_Applications">
               <PropertyRef Name="ApplicationId" />
@@ -827,9 +1083,9 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__aspnet_Us__RoleI__32AB8735">
-          <End Role="aspnet_Roles" Type="Self.aspnet_Roles" Multiplicity="1" />
-          <End Role="aspnet_UsersInRoles" Type="Self.aspnet_UsersInRoles" Multiplicity="*" />
+        <Association Name="FK__aspnet_Us__RoleI__395884C4">
+          <End Role="aspnet_Roles" Type="Хранилище InternetBankingModel.aspnet_Roles" Multiplicity="1" />
+          <End Role="aspnet_UsersInRoles" Type="Хранилище InternetBankingModel.aspnet_UsersInRoles" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="aspnet_Roles">
               <PropertyRef Name="RoleId" />
@@ -839,9 +1095,9 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__aspnet_Us__UserI__339FAB6E">
-          <End Role="aspnet_Users" Type="Self.aspnet_Users" Multiplicity="1" />
-          <End Role="aspnet_UsersInRoles" Type="Self.aspnet_UsersInRoles" Multiplicity="*" />
+        <Association Name="FK__aspnet_Us__UserI__3A4CA8FD">
+          <End Role="aspnet_Users" Type="Хранилище InternetBankingModel.aspnet_Users" Multiplicity="1" />
+          <End Role="aspnet_UsersInRoles" Type="Хранилище InternetBankingModel.aspnet_UsersInRoles" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="aspnet_Users">
               <PropertyRef Name="UserId" />
@@ -852,8 +1108,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK__InvoiceLi__Invoi__2F10007B">
-          <End Role="Order" Type="Self.Order" Multiplicity="1" />
-          <End Role="OrderDetail" Type="Self.OrderDetail" Multiplicity="*" />
+          <End Role="Order" Type="Хранилище InternetBankingModel.Order" Multiplicity="1" />
+          <End Role="OrderDetail" Type="Хранилище InternetBankingModel.OrderDetail" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Order">
               <PropertyRef Name="OrderId" />
@@ -864,8 +1120,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Accounts_AccountType">
-          <End Role="AccountType" Type="Self.AccountType" Multiplicity="1" />
-          <End Role="Accounts" Type="Self.Accounts" Multiplicity="*" />
+          <End Role="AccountType" Type="Хранилище InternetBankingModel.AccountType" Multiplicity="1" />
+          <End Role="Accounts" Type="Хранилище InternetBankingModel.Accounts" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="AccountType">
               <PropertyRef Name="AccountTypeId" />
@@ -876,8 +1132,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Accounts_aspnet_Users">
-          <End Role="aspnet_Users" Type="Self.aspnet_Users" Multiplicity="1" />
-          <End Role="Accounts" Type="Self.Accounts" Multiplicity="*" />
+          <End Role="aspnet_Users" Type="Хранилище InternetBankingModel.aspnet_Users" Multiplicity="1" />
+          <End Role="Accounts" Type="Хранилище InternetBankingModel.Accounts" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="aspnet_Users">
               <PropertyRef Name="UserId" />
@@ -888,8 +1144,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_AdditionalUserData_Accounts">
-          <End Role="aspnet_Users" Type="Self.aspnet_Users" Multiplicity="1" />
-          <End Role="AdditionalUserData" Type="Self.AdditionalUserData" Multiplicity="0..1" />
+          <End Role="aspnet_Users" Type="Хранилище InternetBankingModel.aspnet_Users" Multiplicity="1" />
+          <End Role="AdditionalUserData" Type="Хранилище InternetBankingModel.AdditionalUserData" Multiplicity="0..1" />
           <ReferentialConstraint>
             <Principal Role="aspnet_Users">
               <PropertyRef Name="UserId" />
@@ -900,8 +1156,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Album_Genre">
-          <End Role="Genre" Type="Self.Genre" Multiplicity="1" />
-          <End Role="Album" Type="Self.Album" Multiplicity="*" />
+          <End Role="Genre" Type="Хранилище InternetBankingModel.Genre" Multiplicity="1" />
+          <End Role="Album" Type="Хранилище InternetBankingModel.Album" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Genre">
               <PropertyRef Name="GenreId" />
@@ -912,8 +1168,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_CardOperations_Cards">
-          <End Role="Cards" Type="Self.Cards" Multiplicity="1" />
-          <End Role="CardOperations" Type="Self.CardOperations" Multiplicity="*" />
+          <End Role="Cards" Type="Хранилище InternetBankingModel.Cards" Multiplicity="1" />
+          <End Role="CardOperations" Type="Хранилище InternetBankingModel.CardOperations" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Cards">
               <PropertyRef Name="CardId" />
@@ -924,8 +1180,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Cards_Accounts">
-          <End Role="Accounts" Type="Self.Accounts" Multiplicity="1" />
-          <End Role="Cards" Type="Self.Cards" Multiplicity="*" />
+          <End Role="Accounts" Type="Хранилище InternetBankingModel.Accounts" Multiplicity="1" />
+          <End Role="Cards" Type="Хранилище InternetBankingModel.Cards" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Accounts">
               <PropertyRef Name="AccountId" />
@@ -936,8 +1192,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Cart_Album">
-          <End Role="Album" Type="Self.Album" Multiplicity="1" />
-          <End Role="Cart" Type="Self.Cart" Multiplicity="*" />
+          <End Role="Album" Type="Хранилище InternetBankingModel.Album" Multiplicity="1" />
+          <End Role="Cart" Type="Хранилище InternetBankingModel.Cart" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Album">
               <PropertyRef Name="AlbumId" />
@@ -948,8 +1204,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_ClientRemittances_AccountOperations">
-          <End Role="AccountOperations" Type="Self.AccountOperations" Multiplicity="1" />
-          <End Role="ClientRemittances" Type="Self.ClientRemittances" Multiplicity="*" />
+          <End Role="AccountOperations" Type="Хранилище InternetBankingModel.AccountOperations" Multiplicity="1" />
+          <End Role="ClientRemittances" Type="Хранилище InternetBankingModel.ClientRemittances" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="AccountOperations">
               <PropertyRef Name="AccountOperationId" />
@@ -960,8 +1216,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_ClientRemittances_Accounts">
-          <End Role="Accounts" Type="Self.Accounts" Multiplicity="1" />
-          <End Role="ClientRemittances" Type="Self.ClientRemittances" Multiplicity="*" />
+          <End Role="Accounts" Type="Хранилище InternetBankingModel.Accounts" Multiplicity="1" />
+          <End Role="ClientRemittances" Type="Хранилище InternetBankingModel.ClientRemittances" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Accounts">
               <PropertyRef Name="AccountId" />
@@ -972,8 +1228,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Credit_Accounts">
-          <End Role="Accounts" Type="Self.Accounts" Multiplicity="1" />
-          <End Role="Credit" Type="Self.Credit" Multiplicity="*" />
+          <End Role="Accounts" Type="Хранилище InternetBankingModel.Accounts" Multiplicity="1" />
+          <End Role="Credit" Type="Хранилище InternetBankingModel.Credit" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Accounts">
               <PropertyRef Name="AccountId" />
@@ -984,8 +1240,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Credit_CreditPayments">
-          <End Role="CreditPayments" Type="Self.CreditPayments" Multiplicity="1" />
-          <End Role="Credit" Type="Self.Credit" Multiplicity="*" />
+          <End Role="CreditPayments" Type="Хранилище InternetBankingModel.CreditPayments" Multiplicity="1" />
+          <End Role="Credit" Type="Хранилище InternetBankingModel.Credit" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="CreditPayments">
               <PropertyRef Name="CreditPaymentId" />
@@ -996,8 +1252,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_CreditOperations_Credit">
-          <End Role="Credit" Type="Self.Credit" Multiplicity="1" />
-          <End Role="CreditOperations" Type="Self.CreditOperations" Multiplicity="*" />
+          <End Role="Credit" Type="Хранилище InternetBankingModel.Credit" Multiplicity="1" />
+          <End Role="CreditOperations" Type="Хранилище InternetBankingModel.CreditOperations" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Credit">
               <PropertyRef Name="CreditId" />
@@ -1008,8 +1264,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Deposit_Accounts">
-          <End Role="Accounts" Type="Self.Accounts" Multiplicity="1" />
-          <End Role="Deposit" Type="Self.Deposit" Multiplicity="*" />
+          <End Role="Accounts" Type="Хранилище InternetBankingModel.Accounts" Multiplicity="1" />
+          <End Role="Deposit" Type="Хранилище InternetBankingModel.Deposit" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Accounts">
               <PropertyRef Name="AccountId" />
@@ -1020,8 +1276,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_DepositOperations_Deposit">
-          <End Role="Deposit" Type="Self.Deposit" Multiplicity="1" />
-          <End Role="DepositOperations" Type="Self.DepositOperations" Multiplicity="*" />
+          <End Role="Deposit" Type="Хранилище InternetBankingModel.Deposit" Multiplicity="1" />
+          <End Role="DepositOperations" Type="Хранилище InternetBankingModel.DepositOperations" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Deposit">
               <PropertyRef Name="DepositId" />
@@ -1032,8 +1288,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_InvoiceLine_Album">
-          <End Role="Album" Type="Self.Album" Multiplicity="1" />
-          <End Role="OrderDetail" Type="Self.OrderDetail" Multiplicity="*" />
+          <End Role="Album" Type="Хранилище InternetBankingModel.Album" Multiplicity="1" />
+          <End Role="OrderDetail" Type="Хранилище InternetBankingModel.OrderDetail" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Album">
               <PropertyRef Name="AlbumId" />
@@ -1044,8 +1300,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Remittances_AccountOperations">
-          <End Role="AccountOperations" Type="Self.AccountOperations" Multiplicity="1" />
-          <End Role="Remittances" Type="Self.Remittances" Multiplicity="*" />
+          <End Role="AccountOperations" Type="Хранилище InternetBankingModel.AccountOperations" Multiplicity="1" />
+          <End Role="Remittances" Type="Хранилище InternetBankingModel.Remittances" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="AccountOperations">
               <PropertyRef Name="AccountOperationId" />
@@ -1386,277 +1642,6 @@
           <Parameter Name="ExceptionType" Type="nvarchar" Mode="In" />
           <Parameter Name="Details" Type="ntext" Mode="In" />
         </Function>
-        <EntityContainer Name="Хранилище InternetBankingModelContainer">
-          <EntitySet Name="AccountOperations" EntityType="Self.AccountOperations" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Accounts" EntityType="Self.Accounts" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="AccountType" EntityType="Self.AccountType" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="AdditionalUserData" EntityType="Self.AdditionalUserData" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Album" EntityType="Self.Album" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Artist" EntityType="Self.Artist" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="aspnet_Applications" EntityType="Self.aspnet_Applications" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="aspnet_Membership" EntityType="Self.aspnet_Membership" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="aspnet_Paths" EntityType="Self.aspnet_Paths" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="aspnet_PersonalizationAllUsers" EntityType="Self.aspnet_PersonalizationAllUsers" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="aspnet_PersonalizationPerUser" EntityType="Self.aspnet_PersonalizationPerUser" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="aspnet_Profile" EntityType="Self.aspnet_Profile" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="aspnet_Roles" EntityType="Self.aspnet_Roles" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="aspnet_SchemaVersions" EntityType="Self.aspnet_SchemaVersions" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="aspnet_Users" EntityType="Self.aspnet_Users" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="aspnet_UsersInRoles" EntityType="Self.aspnet_UsersInRoles" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="aspnet_WebEvent_Events" EntityType="Self.aspnet_WebEvent_Events" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="CardOperations" EntityType="Self.CardOperations" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Cards" EntityType="Self.Cards" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Cart" EntityType="Self.Cart" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="ClientRemittances" EntityType="Self.ClientRemittances" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="ClientRemittancesTemplates" EntityType="Self.ClientRemittancesTemplates" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Commissions" EntityType="Self.Commissions" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Convertations" EntityType="Self.Convertations" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="ConvertationTemplates" EntityType="Self.ConvertationTemplates" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Credit" EntityType="Self.Credit" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="CreditOperations" EntityType="Self.CreditOperations" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="CreditPayments" EntityType="Self.CreditPayments" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Currency" EntityType="Self.Currency" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="CurrencyRatio" EntityType="Self.CurrencyRatio" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Deposit" EntityType="Self.Deposit" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="DepositOperations" EntityType="Self.DepositOperations" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Genre" EntityType="Self.Genre" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Merchants" EntityType="Self.Merchants" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Order" EntityType="Self.Order" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="OrderDetail" EntityType="Self.OrderDetail" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Payments" EntityType="Self.Payments" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="PaymentsDetails" EntityType="Self.PaymentsDetails" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="PaymentsStages" EntityType="Self.PaymentsStages" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Remittances" EntityType="Self.Remittances" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="RemittanceTemplates" EntityType="Self.RemittanceTemplates" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Transactions" EntityType="Self.Transactions" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="TransferList" EntityType="Self.TransferList" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Vendors" EntityType="Self.Vendors" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="VendorsMerchantsMap" EntityType="Self.VendorsMerchantsMap" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Patterns" EntityType="Self.Patterns" store:Type="Tables" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-[Patterns].[Id] AS [Id], 
-[Patterns].[UserId] AS [UserId], 
-[Patterns].[PayerSurname] AS [PayerSurname], 
-[Patterns].[PayerName] AS [PayerName], 
-[Patterns].[PayerPatronymic] AS [PayerPatronymic], 
-[Patterns].[Account] AS [Account], 
-[Patterns].[Card] AS [Card], 
-[Patterns].[PaymentId] AS [PaymentId], 
-[Patterns].[PaymentName] AS [PaymentName], 
-[Patterns].[PersonalAccount] AS [PersonalAccount], 
-[Patterns].[ContractNumber] AS [ContractNumber], 
-[Patterns].[CounterValue] AS [CounterValue], 
-[Patterns].[PatternName] AS [PatternName]
-FROM [dbo].[Patterns] AS [Patterns]</DefiningQuery>
-          </EntitySet>
-          <EntitySet Name="vw_aspnet_Applications" EntityType="Self.vw_aspnet_Applications" store:Type="Views" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-[vw_aspnet_Applications].[ApplicationName] AS [ApplicationName], 
-[vw_aspnet_Applications].[LoweredApplicationName] AS [LoweredApplicationName], 
-[vw_aspnet_Applications].[ApplicationId] AS [ApplicationId], 
-[vw_aspnet_Applications].[Description] AS [Description]
-FROM [dbo].[vw_aspnet_Applications] AS [vw_aspnet_Applications]</DefiningQuery>
-          </EntitySet>
-          <EntitySet Name="vw_aspnet_MembershipUsers" EntityType="Self.vw_aspnet_MembershipUsers" store:Type="Views" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-[vw_aspnet_MembershipUsers].[UserId] AS [UserId], 
-[vw_aspnet_MembershipUsers].[PasswordFormat] AS [PasswordFormat], 
-[vw_aspnet_MembershipUsers].[MobilePIN] AS [MobilePIN], 
-[vw_aspnet_MembershipUsers].[Email] AS [Email], 
-[vw_aspnet_MembershipUsers].[LoweredEmail] AS [LoweredEmail], 
-[vw_aspnet_MembershipUsers].[PasswordQuestion] AS [PasswordQuestion], 
-[vw_aspnet_MembershipUsers].[PasswordAnswer] AS [PasswordAnswer], 
-[vw_aspnet_MembershipUsers].[IsApproved] AS [IsApproved], 
-[vw_aspnet_MembershipUsers].[IsLockedOut] AS [IsLockedOut], 
-[vw_aspnet_MembershipUsers].[CreateDate] AS [CreateDate], 
-[vw_aspnet_MembershipUsers].[LastLoginDate] AS [LastLoginDate], 
-[vw_aspnet_MembershipUsers].[LastPasswordChangedDate] AS [LastPasswordChangedDate], 
-[vw_aspnet_MembershipUsers].[LastLockoutDate] AS [LastLockoutDate], 
-[vw_aspnet_MembershipUsers].[FailedPasswordAttemptCount] AS [FailedPasswordAttemptCount], 
-[vw_aspnet_MembershipUsers].[FailedPasswordAttemptWindowStart] AS [FailedPasswordAttemptWindowStart], 
-[vw_aspnet_MembershipUsers].[FailedPasswordAnswerAttemptCount] AS [FailedPasswordAnswerAttemptCount], 
-[vw_aspnet_MembershipUsers].[FailedPasswordAnswerAttemptWindowStart] AS [FailedPasswordAnswerAttemptWindowStart], 
-[vw_aspnet_MembershipUsers].[Comment] AS [Comment], 
-[vw_aspnet_MembershipUsers].[ApplicationId] AS [ApplicationId], 
-[vw_aspnet_MembershipUsers].[UserName] AS [UserName], 
-[vw_aspnet_MembershipUsers].[MobileAlias] AS [MobileAlias], 
-[vw_aspnet_MembershipUsers].[IsAnonymous] AS [IsAnonymous], 
-[vw_aspnet_MembershipUsers].[LastActivityDate] AS [LastActivityDate]
-FROM [dbo].[vw_aspnet_MembershipUsers] AS [vw_aspnet_MembershipUsers]</DefiningQuery>
-          </EntitySet>
-          <EntitySet Name="vw_aspnet_Profiles" EntityType="Self.vw_aspnet_Profiles" store:Type="Views" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-[vw_aspnet_Profiles].[UserId] AS [UserId], 
-[vw_aspnet_Profiles].[LastUpdatedDate] AS [LastUpdatedDate], 
-[vw_aspnet_Profiles].[DataSize] AS [DataSize]
-FROM [dbo].[vw_aspnet_Profiles] AS [vw_aspnet_Profiles]</DefiningQuery>
-          </EntitySet>
-          <EntitySet Name="vw_aspnet_Roles" EntityType="Self.vw_aspnet_Roles" store:Type="Views" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-[vw_aspnet_Roles].[ApplicationId] AS [ApplicationId], 
-[vw_aspnet_Roles].[RoleId] AS [RoleId], 
-[vw_aspnet_Roles].[RoleName] AS [RoleName], 
-[vw_aspnet_Roles].[LoweredRoleName] AS [LoweredRoleName], 
-[vw_aspnet_Roles].[Description] AS [Description]
-FROM [dbo].[vw_aspnet_Roles] AS [vw_aspnet_Roles]</DefiningQuery>
-          </EntitySet>
-          <EntitySet Name="vw_aspnet_Users" EntityType="Self.vw_aspnet_Users" store:Type="Views" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-[vw_aspnet_Users].[ApplicationId] AS [ApplicationId], 
-[vw_aspnet_Users].[UserId] AS [UserId], 
-[vw_aspnet_Users].[UserName] AS [UserName], 
-[vw_aspnet_Users].[LoweredUserName] AS [LoweredUserName], 
-[vw_aspnet_Users].[MobileAlias] AS [MobileAlias], 
-[vw_aspnet_Users].[IsAnonymous] AS [IsAnonymous], 
-[vw_aspnet_Users].[LastActivityDate] AS [LastActivityDate]
-FROM [dbo].[vw_aspnet_Users] AS [vw_aspnet_Users]</DefiningQuery>
-          </EntitySet>
-          <EntitySet Name="vw_aspnet_UsersInRoles" EntityType="Self.vw_aspnet_UsersInRoles" store:Type="Views" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-[vw_aspnet_UsersInRoles].[UserId] AS [UserId], 
-[vw_aspnet_UsersInRoles].[RoleId] AS [RoleId]
-FROM [dbo].[vw_aspnet_UsersInRoles] AS [vw_aspnet_UsersInRoles]</DefiningQuery>
-          </EntitySet>
-          <EntitySet Name="vw_aspnet_WebPartState_Paths" EntityType="Self.vw_aspnet_WebPartState_Paths" store:Type="Views" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-[vw_aspnet_WebPartState_Paths].[ApplicationId] AS [ApplicationId], 
-[vw_aspnet_WebPartState_Paths].[PathId] AS [PathId], 
-[vw_aspnet_WebPartState_Paths].[Path] AS [Path], 
-[vw_aspnet_WebPartState_Paths].[LoweredPath] AS [LoweredPath]
-FROM [dbo].[vw_aspnet_WebPartState_Paths] AS [vw_aspnet_WebPartState_Paths]</DefiningQuery>
-          </EntitySet>
-          <EntitySet Name="vw_aspnet_WebPartState_Shared" EntityType="Self.vw_aspnet_WebPartState_Shared" store:Type="Views" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-[vw_aspnet_WebPartState_Shared].[PathId] AS [PathId], 
-[vw_aspnet_WebPartState_Shared].[DataSize] AS [DataSize], 
-[vw_aspnet_WebPartState_Shared].[LastUpdatedDate] AS [LastUpdatedDate]
-FROM [dbo].[vw_aspnet_WebPartState_Shared] AS [vw_aspnet_WebPartState_Shared]</DefiningQuery>
-          </EntitySet>
-          <EntitySet Name="vw_aspnet_WebPartState_User" EntityType="Self.vw_aspnet_WebPartState_User" store:Type="Views" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-[vw_aspnet_WebPartState_User].[PathId] AS [PathId], 
-[vw_aspnet_WebPartState_User].[UserId] AS [UserId], 
-[vw_aspnet_WebPartState_User].[DataSize] AS [DataSize], 
-[vw_aspnet_WebPartState_User].[LastUpdatedDate] AS [LastUpdatedDate]
-FROM [dbo].[vw_aspnet_WebPartState_User] AS [vw_aspnet_WebPartState_User]</DefiningQuery>
-          </EntitySet>
-          <AssociationSet Name="FK__Album__ArtistId__276EDEB3" Association="Self.FK__Album__ArtistId__276EDEB3">
-            <End Role="Artist" EntitySet="Artist" />
-            <End Role="Album" EntitySet="Album" />
-          </AssociationSet>
-          <AssociationSet Name="FK__aspnet_Me__Appli__37703C52" Association="Self.FK__aspnet_Me__Appli__37703C52">
-            <End Role="aspnet_Applications" EntitySet="aspnet_Applications" />
-            <End Role="aspnet_Membership" EntitySet="aspnet_Membership" />
-          </AssociationSet>
-          <AssociationSet Name="FK__aspnet_Me__UserI__3864608B" Association="Self.FK__aspnet_Me__UserI__3864608B">
-            <End Role="aspnet_Users" EntitySet="aspnet_Users" />
-            <End Role="aspnet_Membership" EntitySet="aspnet_Membership" />
-          </AssociationSet>
-          <AssociationSet Name="FK__aspnet_Pa__Appli__29221CFB" Association="Self.FK__aspnet_Pa__Appli__29221CFB">
-            <End Role="aspnet_Applications" EntitySet="aspnet_Applications" />
-            <End Role="aspnet_Paths" EntitySet="aspnet_Paths" />
-          </AssociationSet>
-          <AssociationSet Name="FK__aspnet_Pe__PathI__395884C4" Association="Self.FK__aspnet_Pe__PathI__395884C4">
-            <End Role="aspnet_Paths" EntitySet="aspnet_Paths" />
-            <End Role="aspnet_PersonalizationAllUsers" EntitySet="aspnet_PersonalizationAllUsers" />
-          </AssociationSet>
-          <AssociationSet Name="FK__aspnet_Pe__PathI__3A4CA8FD" Association="Self.FK__aspnet_Pe__PathI__3A4CA8FD">
-            <End Role="aspnet_Paths" EntitySet="aspnet_Paths" />
-            <End Role="aspnet_PersonalizationPerUser" EntitySet="aspnet_PersonalizationPerUser" />
-          </AssociationSet>
-          <AssociationSet Name="FK__aspnet_Pe__UserI__3B40CD36" Association="Self.FK__aspnet_Pe__UserI__3B40CD36">
-            <End Role="aspnet_Users" EntitySet="aspnet_Users" />
-            <End Role="aspnet_PersonalizationPerUser" EntitySet="aspnet_PersonalizationPerUser" />
-          </AssociationSet>
-          <AssociationSet Name="FK__aspnet_Pr__UserI__31B762FC" Association="Self.FK__aspnet_Pr__UserI__31B762FC">
-            <End Role="aspnet_Users" EntitySet="aspnet_Users" />
-            <End Role="aspnet_Profile" EntitySet="aspnet_Profile" />
-          </AssociationSet>
-          <AssociationSet Name="FK__aspnet_Ro__Appli__2A164134" Association="Self.FK__aspnet_Ro__Appli__2A164134">
-            <End Role="aspnet_Applications" EntitySet="aspnet_Applications" />
-            <End Role="aspnet_Roles" EntitySet="aspnet_Roles" />
-          </AssociationSet>
-          <AssociationSet Name="FK__aspnet_Us__Appli__2CF2ADDF" Association="Self.FK__aspnet_Us__Appli__2CF2ADDF">
-            <End Role="aspnet_Applications" EntitySet="aspnet_Applications" />
-            <End Role="aspnet_Users" EntitySet="aspnet_Users" />
-          </AssociationSet>
-          <AssociationSet Name="FK__aspnet_Us__RoleI__32AB8735" Association="Self.FK__aspnet_Us__RoleI__32AB8735">
-            <End Role="aspnet_Roles" EntitySet="aspnet_Roles" />
-            <End Role="aspnet_UsersInRoles" EntitySet="aspnet_UsersInRoles" />
-          </AssociationSet>
-          <AssociationSet Name="FK__aspnet_Us__UserI__339FAB6E" Association="Self.FK__aspnet_Us__UserI__339FAB6E">
-            <End Role="aspnet_Users" EntitySet="aspnet_Users" />
-            <End Role="aspnet_UsersInRoles" EntitySet="aspnet_UsersInRoles" />
-          </AssociationSet>
-          <AssociationSet Name="FK__InvoiceLi__Invoi__2F10007B" Association="Self.FK__InvoiceLi__Invoi__2F10007B">
-            <End Role="Order" EntitySet="Order" />
-            <End Role="OrderDetail" EntitySet="OrderDetail" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Accounts_AccountType" Association="Self.FK_Accounts_AccountType">
-            <End Role="AccountType" EntitySet="AccountType" />
-            <End Role="Accounts" EntitySet="Accounts" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Accounts_aspnet_Users" Association="Self.FK_Accounts_aspnet_Users">
-            <End Role="aspnet_Users" EntitySet="aspnet_Users" />
-            <End Role="Accounts" EntitySet="Accounts" />
-          </AssociationSet>
-          <AssociationSet Name="FK_AdditionalUserData_Accounts" Association="Self.FK_AdditionalUserData_Accounts">
-            <End Role="aspnet_Users" EntitySet="aspnet_Users" />
-            <End Role="AdditionalUserData" EntitySet="AdditionalUserData" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Album_Genre" Association="Self.FK_Album_Genre">
-            <End Role="Genre" EntitySet="Genre" />
-            <End Role="Album" EntitySet="Album" />
-          </AssociationSet>
-          <AssociationSet Name="FK_CardOperations_Cards" Association="Self.FK_CardOperations_Cards">
-            <End Role="Cards" EntitySet="Cards" />
-            <End Role="CardOperations" EntitySet="CardOperations" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Cards_Accounts" Association="Self.FK_Cards_Accounts">
-            <End Role="Accounts" EntitySet="Accounts" />
-            <End Role="Cards" EntitySet="Cards" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Cart_Album" Association="Self.FK_Cart_Album">
-            <End Role="Album" EntitySet="Album" />
-            <End Role="Cart" EntitySet="Cart" />
-          </AssociationSet>
-          <AssociationSet Name="FK_ClientRemittances_AccountOperations" Association="Self.FK_ClientRemittances_AccountOperations">
-            <End Role="AccountOperations" EntitySet="AccountOperations" />
-            <End Role="ClientRemittances" EntitySet="ClientRemittances" />
-          </AssociationSet>
-          <AssociationSet Name="FK_ClientRemittances_Accounts" Association="Self.FK_ClientRemittances_Accounts">
-            <End Role="Accounts" EntitySet="Accounts" />
-            <End Role="ClientRemittances" EntitySet="ClientRemittances" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Credit_Accounts" Association="Self.FK_Credit_Accounts">
-            <End Role="Accounts" EntitySet="Accounts" />
-            <End Role="Credit" EntitySet="Credit" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Credit_CreditPayments" Association="Self.FK_Credit_CreditPayments">
-            <End Role="CreditPayments" EntitySet="CreditPayments" />
-            <End Role="Credit" EntitySet="Credit" />
-          </AssociationSet>
-          <AssociationSet Name="FK_CreditOperations_Credit" Association="Self.FK_CreditOperations_Credit">
-            <End Role="Credit" EntitySet="Credit" />
-            <End Role="CreditOperations" EntitySet="CreditOperations" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Deposit_Accounts" Association="Self.FK_Deposit_Accounts">
-            <End Role="Accounts" EntitySet="Accounts" />
-            <End Role="Deposit" EntitySet="Deposit" />
-          </AssociationSet>
-          <AssociationSet Name="FK_DepositOperations_Deposit" Association="Self.FK_DepositOperations_Deposit">
-            <End Role="Deposit" EntitySet="Deposit" />
-            <End Role="DepositOperations" EntitySet="DepositOperations" />
-          </AssociationSet>
-          <AssociationSet Name="FK_InvoiceLine_Album" Association="Self.FK_InvoiceLine_Album">
-            <End Role="Album" EntitySet="Album" />
-            <End Role="OrderDetail" EntitySet="OrderDetail" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Remittances_AccountOperations" Association="Self.FK_Remittances_AccountOperations">
-            <End Role="AccountOperations" EntitySet="AccountOperations" />
-            <End Role="Remittances" EntitySet="Remittances" />
-          </AssociationSet>
-        </EntityContainer>
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
@@ -2156,9 +2141,9 @@ FROM [dbo].[vw_aspnet_WebPartState_User] AS [vw_aspnet_WebPartState_User]</Defin
           <EntitySet Name="Transactions" EntityType="InternetBankingModel.Transaction" />
           <EntitySet Name="Vendors" EntityType="InternetBankingModel.Vendor" />
           <EntitySet Name="VendorsMerchantsMaps" EntityType="InternetBankingModel.VendorsMerchantsMap" />
-          <EntitySet Name="Patterns" EntityType="InternetBankingModel.Pattern" />
           <EntitySet Name="TransferLists" EntityType="InternetBankingModel.TransferList" />
           <EntitySet Name="CurrencyRatios" EntityType="InternetBankingModel.CurrencyRatio" />
+          <EntitySet Name="PaymentTemplates" EntityType="InternetBankingModel.PaymentTemplate" />
         </EntityContainer>
         <EntityType Name="AdditionalUserData">
           <Key>
@@ -3193,16 +3178,16 @@ FROM [dbo].[vw_aspnet_WebPartState_User] AS [vw_aspnet_WebPartState_User]</Defin
           <Property Type="Int32" Name="VendorsId" Nullable="false" />
           <Property Type="Decimal" Name="Amount" Nullable="false" Precision="19" Scale="4" />
           <Property Type="Int64" Name="Card" Nullable="false" />
-          <Property Type="String" Name="Fld001" MaxLength="30" FixedLength="false" Unicode="true" />
-          <Property Type="String" Name="Fld002" MaxLength="30" FixedLength="false" Unicode="true" />
-          <Property Type="String" Name="Fld003" MaxLength="30" FixedLength="false" Unicode="true" />
-          <Property Type="String" Name="Fld004" MaxLength="30" FixedLength="false" Unicode="true" />
-          <Property Type="String" Name="Fld005" MaxLength="30" FixedLength="false" Unicode="true" />
-          <Property Type="String" Name="Fld006" MaxLength="30" FixedLength="false" Unicode="true" />
-          <Property Type="String" Name="Fld007" MaxLength="30" FixedLength="false" Unicode="true" />
-          <Property Type="String" Name="Fld008" MaxLength="30" FixedLength="false" Unicode="true" />
-          <Property Type="String" Name="Fld009" MaxLength="30" FixedLength="false" Unicode="true" />
-          <Property Type="String" Name="Fld010" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Fld001" MaxLength="30" FixedLength="true" Unicode="true" />
+          <Property Type="String" Name="Fld002" MaxLength="30" FixedLength="true" Unicode="true" />
+          <Property Type="String" Name="Fld003" MaxLength="30" FixedLength="true" Unicode="true" />
+          <Property Type="String" Name="Fld004" MaxLength="30" FixedLength="true" Unicode="true" />
+          <Property Type="String" Name="Fld005" MaxLength="30" FixedLength="true" Unicode="true" />
+          <Property Type="String" Name="Fld006" MaxLength="30" FixedLength="true" Unicode="true" />
+          <Property Type="String" Name="Fld007" MaxLength="30" FixedLength="true" Unicode="true" />
+          <Property Type="String" Name="Fld008" MaxLength="30" FixedLength="true" Unicode="true" />
+          <Property Type="String" Name="Fld009" MaxLength="30" FixedLength="true" Unicode="true" />
+          <Property Type="String" Name="Fld010" MaxLength="30" FixedLength="true" Unicode="true" />
         </EntityType>
         <EntityType Name="Vendor">
           <Key>
@@ -3222,29 +3207,6 @@ FROM [dbo].[vw_aspnet_WebPartState_User] AS [vw_aspnet_WebPartState_User]</Defin
           <Property Type="Int32" Name="Id" Nullable="false" />
           <Property Type="Int32" Name="VendorsId" Nullable="false" />
           <Property Type="Int32" Name="MerchantsId" Nullable="false" />
-        </EntityType>
-        <EntityType Name="Pattern">
-          <Key>
-            <PropertyRef Name="Id" />
-            <PropertyRef Name="UserId" />
-            <PropertyRef Name="PayerSurname" />
-            <PropertyRef Name="PayerName" />
-            <PropertyRef Name="Account" />
-            <PropertyRef Name="PaymentId" />
-          </Key>
-          <Property Name="Id" Type="Guid" Nullable="false" />
-          <Property Name="UserId" Type="Guid" Nullable="false" />
-          <Property Name="PayerSurname" Type="String" Nullable="false" MaxLength="30" FixedLength="true" Unicode="true" />
-          <Property Name="PayerName" Type="String" Nullable="false" MaxLength="30" FixedLength="true" Unicode="true" />
-          <Property Name="PayerPatronymic" Type="String" MaxLength="30" FixedLength="true" Unicode="true" />
-          <Property Name="Account" Type="String" Nullable="false" MaxLength="9" FixedLength="true" Unicode="true" />
-          <Property Name="Card" Type="String" MaxLength="16" FixedLength="true" Unicode="true" />
-          <Property Name="PaymentId" Type="String" Nullable="false" MaxLength="9" FixedLength="true" Unicode="true" />
-          <Property Name="PaymentName" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
-          <Property Name="PersonalAccount" Type="String" MaxLength="20" FixedLength="true" Unicode="true" />
-          <Property Name="ContractNumber" Type="String" MaxLength="20" FixedLength="true" Unicode="true" />
-          <Property Name="CounterValue" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
-          <Property Name="PatternName" Type="String" MaxLength="30" FixedLength="true" Unicode="true" />
         </EntityType>
         <EntityType Name="TransferList">
           <Key>
@@ -3266,6 +3228,23 @@ FROM [dbo].[vw_aspnet_WebPartState_User] AS [vw_aspnet_WebPartState_User]</Defin
           <Property Name="StartCurrency" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="true" />
           <Property Name="EndCurrency" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="true" />
           <Property Name="Ratio" Type="Double" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PaymentTemplate">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Guid" Name="UserId" Nullable="false" />
+          <Property Type="String" Name="PayerSurname" Nullable="false" MaxLength="30" FixedLength="true" Unicode="true" />
+          <Property Type="String" Name="PayerName" Nullable="false" MaxLength="30" FixedLength="true" Unicode="true" />
+          <Property Type="String" Name="PayerPatronymic" MaxLength="30" FixedLength="true" Unicode="true" />
+          <Property Type="String" Name="Account" Nullable="false" MaxLength="9" FixedLength="true" Unicode="true" />
+          <Property Type="String" Name="Card" MaxLength="16" FixedLength="true" Unicode="true" />
+          <Property Type="String" Name="PaymentId" Nullable="false" MaxLength="9" FixedLength="true" Unicode="true" />
+          <Property Type="String" Name="PaymentName" MaxLength="50" FixedLength="true" Unicode="true" />
+          <Property Type="String" Name="PatternName" MaxLength="200" FixedLength="true" Unicode="true" />
+          <Property Type="String" Name="ContractNumber" MaxLength="20" FixedLength="true" Unicode="true" />
+          <Property Type="String" Name="CounterValue" MaxLength="10" FixedLength="true" Unicode="true" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -4052,25 +4031,6 @@ FROM [dbo].[vw_aspnet_WebPartState_User] AS [vw_aspnet_WebPartState_User]</Defin
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Patterns">
-            <EntityTypeMapping TypeName="InternetBankingModel.Pattern">
-              <MappingFragment StoreEntitySet="Patterns">
-                <ScalarProperty Name="PatternName" ColumnName="PatternName" />
-                <ScalarProperty Name="CounterValue" ColumnName="CounterValue" />
-                <ScalarProperty Name="ContractNumber" ColumnName="ContractNumber" />
-                <ScalarProperty Name="PersonalAccount" ColumnName="PersonalAccount" />
-                <ScalarProperty Name="PaymentName" ColumnName="PaymentName" />
-                <ScalarProperty Name="PaymentId" ColumnName="PaymentId" />
-                <ScalarProperty Name="Card" ColumnName="Card" />
-                <ScalarProperty Name="Account" ColumnName="Account" />
-                <ScalarProperty Name="PayerPatronymic" ColumnName="PayerPatronymic" />
-                <ScalarProperty Name="PayerName" ColumnName="PayerName" />
-                <ScalarProperty Name="PayerSurname" ColumnName="PayerSurname" />
-                <ScalarProperty Name="UserId" ColumnName="UserId" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="TransferLists">
             <EntityTypeMapping TypeName="InternetBankingModel.TransferList">
               <MappingFragment StoreEntitySet="TransferList">
@@ -4091,6 +4051,24 @@ FROM [dbo].[vw_aspnet_WebPartState_User] AS [vw_aspnet_WebPartState_User]</Defin
                 <ScalarProperty Name="EndCurrency" ColumnName="EndCurrency" />
                 <ScalarProperty Name="StartCurrency" ColumnName="StartCurrency" />
                 <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PaymentTemplates">
+            <EntityTypeMapping TypeName="InternetBankingModel.PaymentTemplate">
+              <MappingFragment StoreEntitySet="PaymentTemplates">
+                <ScalarProperty Name="CounterValue" ColumnName="CounterValue" />
+                <ScalarProperty Name="ContractNumber" ColumnName="ContractNumber" />
+                <ScalarProperty Name="PatternName" ColumnName="PatternName" />
+                <ScalarProperty Name="PaymentName" ColumnName="PaymentName" />
+                <ScalarProperty Name="PaymentId" ColumnName="PaymentId" />
+                <ScalarProperty Name="Card" ColumnName="Card" />
+                <ScalarProperty Name="Account" ColumnName="Account" />
+                <ScalarProperty Name="PayerPatronymic" ColumnName="PayerPatronymic" />
+                <ScalarProperty Name="PayerName" ColumnName="PayerName" />
+                <ScalarProperty Name="PayerSurname" ColumnName="PayerSurname" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

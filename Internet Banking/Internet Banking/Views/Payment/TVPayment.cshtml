@@ -24,15 +24,21 @@
             });
         });
         $('#AccountNumber').change();
+        $('#savebtn1').click(function () {
+            $('#formId').attr('action', "/Payment/SavePattern");
+        });
+        $('#savebtn2').click(function () {
+            $('#formId').attr('action', "/Payment/DoPayment");
+        });
     });
-</script>   
+</script>       
 
 <h2>Оплата коммерческого ТВ</h2>
 <hr/>
 <h3>Заполните форму платежа</h3>
 
     <div class="container-fluid mycontainer">
-    @using (Html.BeginForm("SavePayment", "Payment", FormMethod.Post))
+    @using (Html.BeginForm("", "", FormMethod.Post, new { @id = "formId" }))
     {
         @Html.AntiForgeryToken()
         @Html.ValidationSummary()
@@ -47,6 +53,13 @@
                     @Html.EditorFor(model => model.PayerSurname)
                     @Html.ValidationMessageFor(model => model.PayerSurname)
                 </div>
+                <div class="editor-label">
+                    <nobr>Введите номер контракта:</nobr>
+                </div>
+                <div class="editor-field">
+                    @Html.EditorFor(model => model.ContractNumber)
+                    @Html.ValidationMessageFor(model => model.ContractNumber)
+                </div>
             </div>
 
             <div class="span4 myspan2">
@@ -56,6 +69,13 @@
                 <div class="editor-field">
                     @Html.EditorFor(model => model.PayerName)
                     @Html.ValidationMessageFor(model => model.PayerName)
+                </div>
+                <div class="editor-label">
+                    Выберите номер счёта:<br/>&nbsp;
+                </div>
+                <div class="editor-field">
+                    @Html.DropDownListFor(model => model.AccountNumber, Model.AccountNumbers)
+                    @Html.ValidationMessageFor(model => model.AccountNumbers)
                 </div>
             </div>
 
@@ -67,24 +87,8 @@
                     @Html.EditorFor(model => model.PayerPatronymic)
                     @Html.ValidationMessageFor(model => model.PayerPatronymic)
                 </div>
-            </div>
-
-        </div>
-        
-        <div class="row-fluid myrow">
-
-            <div class="span6 myspan2 rightalign">
                 <div class="editor-label">
-                    Выберите номер счёта:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                </div>
-                <div class="editor-field">
-                    @Html.DropDownListFor(model=>model.AccountNumber, Model.AccountNumbers)
-                    @Html.ValidationMessageFor(model => model.AccountNumbers)
-                </div>
-            </div>
-            <div class="span6 myspan2">
-                <div class="editor-label">
-                    <label>Выберите номер карты:</label>
+                    <label>Выберите номер карты:<br/>&nbsp;</label>
                 </div>
                 <div>
                     <select id="cardsList" name="cardNumber"></select>
@@ -94,9 +98,9 @@
         </div>
 
         <div class="textcentred">
-            <input class="btn-large savebtn" type="submit" value="   Сохранить как шаблон  " onClick="savepayment()"/>
-            <input class="btn-large contbtn" type="submit" value="Продолжить без сохранения" onClick="cont()"/>
+            <input id="savebtn1" class="btn-large" type="submit" value="  Сохранить как шаблон   "/>
+            <input id="savebtn2" class="btn-large" type="submit" value="Продолжить без сохранения"/>
         </div>
-   }
+    }
    </div>
 

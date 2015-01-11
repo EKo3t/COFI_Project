@@ -187,9 +187,6 @@
     <Compile Include="OrderDetail.cs">
       <DependentUpon>InternetBankingEntities.tt</DependentUpon>
     </Compile>
-    <Compile Include="Pattern.cs">
-      <DependentUpon>InternetBankingEntities.tt</DependentUpon>
-    </Compile>
     <Compile Include="Payments.cs">
       <DependentUpon>InternetBankingEntities.tt</DependentUpon>
     </Compile>
@@ -197,6 +194,9 @@
       <DependentUpon>InternetBankingEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="PaymentsStage.cs">
+      <DependentUpon>InternetBankingEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PaymentTemplate.cs">
       <DependentUpon>InternetBankingEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -35,13 +35,15 @@ namespace Internet_Banking.Models
 
         public string Amount { get; set; }
 
-        public string PhoneNumber { get; set; }
-
         public string Card { get; set; }
 
         public string AccountNumber { get; set; }
 
         public List<SelectListItem> AccountNumbers { get; set; }
+
+        public string ContractNumber { get; set; }
+
+        public int ContractValue { get; set; }
 
     }
 }

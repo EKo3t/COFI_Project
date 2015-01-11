@@ -24,7 +24,9 @@ namespace Internet_Banking.Controllers
         private readonly GenericDataRepository<Payments> _repositoryPayments = new GenericDataRepository<Payments>();
         private readonly GenericDataRepository<Transaction> _repositoryTransactions = new GenericDataRepository<Transaction>();
         private readonly GenericDataRepository<Accounts> _repositoryAccounts = new GenericDataRepository<Accounts>();
-        
+        private readonly GenericDataRepository<PaymentTemplate> _repositoryPaymentTemplates = new GenericDataRepository<PaymentTemplate>();
+        private readonly GenericDataRepository<AdditionalUserData> _repositoryUser = new GenericDataRepository<AdditionalUserData>();
+
         //
         // GET: /Payment/
 
@@ -125,285 +127,85 @@ namespace Internet_Banking.Controllers
         [HttpPost]
         public ActionResult SavePattern(PaymentModel model, FormCollection formCollection)
         {
-            if (ModelState.IsValid)
+            PaymentTemplate paymentTemplate = new PaymentTemplate();
+            var membershipUser = Membership.GetUser();
+            var userData = _repositoryUser.GetSingle(x => membershipUser.ProviderUserKey != null && x.UserId == (Guid)membershipUser.ProviderUserKey);
+            paymentTemplate.UserId =  userData.UserId;
+            paymentTemplate.PayerSurname = model.PayerSurname;
+            paymentTemplate.PayerName = model.PayerName;
+            paymentTemplate.PayerPatronymic = model.PayerPatronymic;
+            paymentTemplate.Account = model.AccountNumber;
+            paymentTemplate.Card = model.Card;
+            int paymentId = Int32.Parse(Session["paymentId"].ToString());
+            Payments payment = _repositoryPayments.GetSingle(x => x.Id == paymentId);
+            paymentTemplate.PaymentId = payment.Id.ToString();
+            paymentTemplate.ContractNumber = model.ContractNumber;
+            paymentTemplate.CounterValue = model.ContractValue.ToString();
+            paymentTemplate.PatternName = payment.Name;
+            paymentTemplate.PaymentName = payment.Name.Trim();
+            Payments pmt = payment;
+            while (pmt.Id != pmt.ParentId)
             {
-                int paymentId = Int32.Parse(Session["paymentId"].ToString());
-                if (model.PhoneNumber == null)
-                {
-                    Session["ErrorText"] = "все поля для ввода, кроме поля для ввода отчества, должны быть заполнены.";
-                    return View("Error");
-                }
-                else
-                {
-                    if (paymentId == 100000003) //МТС
-                    {
-                        string phonePattern = @"^\+37533[0-9]{7}|\+375292[0-9]{6}|\+375295[0-9]{6}|\+375297[0-9]{6}|\+375298[0-9]{6}$";
-                        MatchCollection matchesPhone = Regex.Matches(model.PhoneNumber, phonePattern,
-                                                  RegexOptions.IgnoreCase);
-                        if (matchesPhone.Count <= 0)
-                        {
-                            Session["ErrorText"] = Session["ErrorText"] + "&lt;br/&gt;номер телефона оператора МТС должен быть формата +37529ZXXXXXX либо +37533XXXXXXX,&lt;br/&gt;где Z = 2, 5, 7, 8, а X - любая цифра.";
-                            return View("Error");
-                        }
-                    }
-                    else if (paymentId == 100000004) //Velcom
-                    {
-                        string phonePattern = "^+37544[0-9]{7}|+375291[0-9]{6}|+375293[0-9]{6}|+375296[0-9]{6}|+375299[0-9]{6}$";
-                        MatchCollection matchesPhone = Regex.Matches(model.PayerPatronymic, phonePattern,
-                                                  RegexOptions.IgnoreCase);
-                        if (matchesPhone.Count <= 0)
-                        {
-                            Session["ErrorText"] = Session["ErrorText"] + "&lt;br/&gt;номер телефона оператора Velcom должен быть формата +37529ZXXXXXX либо +37544XXXXXXX,&lt;br/&gt;где Z = 1, 3, 6, 9, а X - любая цифра.";
-                            return View("Error");
-                        }
-                    }
-                    else if (paymentId == 100000005) //Life
-                    {
-                        string phonePattern = "^+37525[0-9]{7}$";
-                        MatchCollection matchesPhone = Regex.Matches(model.PayerPatronymic, phonePattern,
-                                                  RegexOptions.IgnoreCase);
-                        if (matchesPhone.Count <= 0)
-                        {
-                            Session["ErrorText"] = Session["ErrorText"] + "&lt;br/&gt;номер телефона оператора life:) должен быть формата +37525XXXXXXX,&lt;br/&gt;где X - любая цифра.";
-                            return View("Error");
-                        }
-                    }
-                    else if (paymentId == 100000007) //Diallog
-                    {
-                        string phonePattern = "^+375294[0-9]{6}$";
-                        MatchCollection matchesPhone = Regex.Matches(model.PayerPatronymic, phonePattern,
-                                                  RegexOptions.IgnoreCase);
-                        if (matchesPhone.Count <= 0)
-                        {
-                            Session["ErrorText"] = Session["ErrorText"] + "&lt;br/&gt;номер телефона оператора Diallog должен быть формата +375294XXXXXX,&lt;br/&gt;где X - любая цифра.";
-                            return View("Error");
-                        }
-                    }
-                }
-                string strPattern = "^[а-яА-Я]{3,20}$";
-                //string numPattern = "^[1-9]{1}[0-9]{3,8}$";
-                MatchCollection matchesSurname = Regex.Matches(model.PayerSurname, strPattern,
-                                              RegexOptions.IgnoreCase);
-                MatchCollection matchesName = Regex.Matches(model.PayerSurname, strPattern,
-                                              RegexOptions.IgnoreCase);
-                //MatchCollection matchesAmount = Regex.Matches(model.Amount, numPattern,
-                //RegexOptions.IgnoreCase);
-                Session["ErrorText"] = "";
-                if (matchesSurname.Count <= 0)
-                {
-                    Session["ErrorText"] = Session["ErrorText"] + "&lt;br/&gt;поле для ввода фамилии должно содержать только буквы кириллицы";
-                }
-                if (matchesName.Count <= 0)
-                {
-                    Session["ErrorText"] = Session["ErrorText"] + "&lt;br/&gt;поле для ввода имени должно содержать только буквы кириллицы";
-                }
-                if (model.PayerPatronymic != null)
-                {
-                    MatchCollection matchesPatronymic = Regex.Matches(model.PayerPatronymic, strPattern,
-                                              RegexOptions.IgnoreCase);
-                    if (matchesPatronymic.Count <= 0)
-                    {
-                        Session["ErrorText"] = Session["ErrorText"] + "&lt;br/&gt;поле для ввода отчества должно содержать только буквы кириллицы";
-                    }
-                }
-                /*if (matchesAmount.Count <= 0)
-                {
-                    Session["ErrorText"] = Session["ErrorText"] + "&lt;br/&gt;сумма платежа должна быть не меньше 1 000 рублей и не больше 100 000 000";
-                }*/
-                if (Session["ErrorText"].ToString().Length != 0)
-                {
-                    return View("Error");
-                }
-                TransactionModel transaction = new TransactionModel();//Transaction transaction = new Transaction();
-                //transaction.Id = ;  //выбрать последнее id из бд
-                //transaction.Amount = Decimal.Parse(model.Amount);
-                Accounts account = _repositoryAccounts.GetSingle(x => x.Number.ToString().Equals(model.AccountNumber));
-                if (!(account.Currency == 974))
-                {
-                    Session["ErrorText"] = "услуга доступна только при наличии рублевого текущего счёта или карт-счета.";
-                    return View("Error");
-                }
-                /*if (account.Amount < transaction.Amount)
-                {
-                    Session["ErrorText"] = "недостаточно средств для совершения данной операции.";
-                }
-                else
-                {
-                    account.Amount = account.Amount - transaction.Amount;
-                    _repositoryAccounts.Update(account);
-                }*/
-                transaction.Time = System.DateTime.Now;
-                transaction.Status = "Сompleted";
-                transaction.CurrencyId = 974;
-                transaction.CommissionsId = model.DefaultCommissionId;
-
-                Payments payment = _repositoryPayments.GetSingle(x => x.Id == paymentId);
-                transaction.PaymentsId = payment.Id;
-                transaction.ParentPaymentsId = payment.ParentId;
-                transaction.VendorsId = (payment.VendorsId != null) ? (int)payment.VendorsId : 0;
-                string cardValue = Convert.ToString(formCollection["cardNumber"]);
-                transaction.Card = (cardValue != null) ? Int64.Parse(cardValue) : 0;
-                transaction.Fld001 = model.PayerSurname;
-                transaction.Fld002 = model.PayerName;
-                transaction.Fld003 = model.PayerPatronymic;
-                transaction.Fld004 = model.AccountNumber;
-                transaction.Fld005 = model.Name;
-                //Сохранить шаблон
-
-                return View("AmountPayment", model);
-                //_repositoryTransactions.Add(transaction);
-                //return View("SuccessfulPayment", model);
-                //return View("AmountPayment", model);
+                pmt = _repositoryPayments.GetSingle(x => x.Id == pmt.ParentId);
+                paymentTemplate.PatternName = pmt.Name.Trim() + " | " + paymentTemplate.PatternName;
             }
-            Session["ErrorText"] = "все поля для ввода, кроме поля для ввода отчества, должны быть заполнены.";
-            return View("Error");
+            paymentTemplate.PatternName = paymentTemplate.PatternName.Trim();
+            _repositoryPaymentTemplates.Add(paymentTemplate);
+            TransactionModel transaction = new TransactionModel();
+            Accounts account = _repositoryAccounts.GetSingle(x => x.Number.ToString().Equals(model.AccountNumber));
+            if (!(account.Currency == 974))
+            {
+                Session["ErrorText"] = "услуга доступна только при наличии рублевого текущего счёта или карт-счета.";
+                return View("Error");
+            }
+            transaction.Time = System.DateTime.Now;
+            transaction.Status = "Сompleted";
+            transaction.CurrencyId = 974;
+            transaction.CommissionsId = model.DefaultCommissionId;
+            transaction.PaymentsId = payment.Id;
+            transaction.ParentPaymentsId = payment.ParentId;
+            transaction.VendorsId = (payment.VendorsId != null) ? (int)payment.VendorsId : 0;
+            string cardValue = Convert.ToString(formCollection["cardNumber"]);
+            transaction.Card = (cardValue != null) ? Int64.Parse(cardValue) : 0;
+            transaction.Fld001 = model.PayerSurname;
+            transaction.Fld002 = model.PayerName;
+            transaction.Fld003 = model.PayerPatronymic;
+            transaction.Fld004 = model.AccountNumber;
+            transaction.Fld005 = model.ContractNumber;
+            transaction.Fld006 = model.Name;
+            Payments parentPayment = payment;
+            while (parentPayment.Id != parentPayment.ParentId)
+            {
+                parentPayment = _repositoryPayments.GetSingle(x => x.Id == parentPayment.ParentId);
+            }
+            if (parentPayment.Id == 500000000)
+            {
+                transaction.Fld007 = model.ContractValue.ToString();
+                int amount = model.ContractValue * 500;
+                transaction.Amount = amount.ToString();
+                return View("AmountPayment", transaction);
+            }
+            return View("AmountPayment", transaction);
         }
-        /*{
-            if (ModelState.IsValid)
-            {
-                string strPattern = "^[а-яА-Я]{3,20}$";
-                string numPattern = "^[1-9]{1}[0-9]{3,8}$";
-                MatchCollection matchesSurname = Regex.Matches(model.PayerSurname, strPattern,
-                                              RegexOptions.IgnoreCase);
-                MatchCollection matchesName = Regex.Matches(model.PayerSurname, strPattern,
-                                              RegexOptions.IgnoreCase);
-                MatchCollection matchesAmount = Regex.Matches(model.Amount, numPattern,
-                                              RegexOptions.IgnoreCase);
-                ViewBag.Error = "mew";
-                Session["ErrorText"] = "";
-                if (matchesSurname.Count <= 0)
-                {
-                    Session["ErrorText"] = Session["ErrorText"] + "&lt;br/&gt;поле для ввода фамилии должно содержать только буквы кириллицы";
-                }
-                if (matchesName.Count <= 0)
-                {
-                    Session["ErrorText"] = Session["ErrorText"] + "&lt;br/&gt;поле для ввода имени должно содержать только буквы кириллицы";
-                }
-                if (model.PayerPatronymic != null)
-                {
-                    MatchCollection matchesPatronymic = Regex.Matches(model.PayerPatronymic, strPattern,
-                                              RegexOptions.IgnoreCase);
-                    if (matchesPatronymic.Count <= 0)
-                    {
-                        Session["ErrorText"] = Session["ErrorText"] + "&lt;br/&gt;поле для ввода отчества должно содержать только буквы кириллицы";
-                    }
-                }
-                if (matchesAmount.Count <= 0)
-                {
-                    Session["ErrorText"] = Session["ErrorText"] + "&lt;br/&gt;сумма платежа должна быть не меньше 1 000 рублей и не больше 100 000 000";
-                }
-                if (Session["ErrorText"].ToString().Length != 0)
-                {
-                    return View("Error");
-                }
-                Transaction transaction = new Transaction();
-                //transaction.Id = ;  //выбрать последнее id из бд
-                transaction.Amount = Decimal.Parse(model.Amount);
-                Accounts account = _repositoryAccounts.GetSingle(x => x.Number.ToString().Equals(model.AccountNumber));
-                if (!(account.Currency == 974))
-                {
-                    Session["ErrorText"] = "услуга доступна только при наличии рублевого текущего счёта или карт-счета.";
-                    return View("Error");
-                }
-                if (account.Amount < transaction.Amount)
-                {
-                    Session["ErrorText"] = "недостаточно средств для совершения данной операции.";
-                }
-                else
-                {
-                    account.Amount = account.Amount - transaction.Amount;
-                    _repositoryAccounts.Update(account);
-                }
-                transaction.Time = System.DateTime.Now;
-                transaction.Status = "Сompleted";
-                transaction.CurrencyId = 974;
-                transaction.CommissionsId = model.DefaultCommissionId;
-                string paymentId = Session["paymentId"].ToString();
-                Payments payment = _repositoryPayments.GetSingle(x => x.Id == Int32.Parse(paymentId));
-                transaction.PaymentsId = payment.Id;
-                transaction.ParentPaymentsId = payment.ParentId;
-                transaction.VendorsId = (payment.VendorsId != null) ? (int)payment.VendorsId : 0;
-                string cardValue = Convert.ToString(formCollection["cardNumber"]);
-                transaction.Card = (cardValue != null) ? Int64.Parse(cardValue) : 0;
-                transaction.Fld001 = model.PayerSurname;
-                transaction.Fld002 = model.PayerName;
-                transaction.Fld003 = model.PayerPatronymic;
-                transaction.Fld004 = model.AccountNumber;
-                _repositoryTransactions.Add(transaction);
-                return View("SuccessfulPayment", model);
-            }
-            Session["ErrorText"] = "все поля для ввода, кроме поля для ввода отчества, должны быть заполнены.";
-            return View("Error");
-        }*/
 
         //
-        // POST: /Payment/PhonePayment
+        // POST: /Payment/DoPayment
         [HttpPost]
-        public ActionResult PhonePayment(PaymentModel model, FormCollection formCollection)
+        public ActionResult DoPayment(PaymentModel model, FormCollection formCollection)
         {
             if (ModelState.IsValid)
             {
                 int paymentId = Int32.Parse(Session["paymentId"].ToString());
-                if (model.PhoneNumber == null)
+                if (model.ContractNumber == null)
                 {
                     Session["ErrorText"] = "все поля для ввода, кроме поля для ввода отчества, должны быть заполнены.";
                     return View("Error");
                 }
-                else
-                {
-                    if (paymentId == 100000003) //МТС
-                    {
-                        string phonePattern = @"^\+37533[0-9]{7}|\+375292[0-9]{6}|\+375295[0-9]{6}|\+375297[0-9]{6}|\+375298[0-9]{6}$";
-                        MatchCollection matchesPhone = Regex.Matches(model.PhoneNumber, phonePattern,
-                                                  RegexOptions.IgnoreCase);
-                        if (matchesPhone.Count <= 0)
-                        {
-                            Session["ErrorText"] = Session["ErrorText"] + "&lt;br/&gt;номер телефона оператора МТС должен быть формата +37529ZXXXXXX либо +37533XXXXXXX,&lt;br/&gt;где Z = 2, 5, 7, 8, а X - любая цифра.";
-                            return View("Error");
-                        }
-                    }
-                    else if (paymentId == 100000004) //Velcom
-                    {
-                        string phonePattern = "^+37544[0-9]{7}|+375291[0-9]{6}|+375293[0-9]{6}|+375296[0-9]{6}|+375299[0-9]{6}$";
-                        MatchCollection matchesPhone = Regex.Matches(model.PayerPatronymic, phonePattern,
-                                                  RegexOptions.IgnoreCase);
-                        if (matchesPhone.Count <= 0)
-                        {
-                            Session["ErrorText"] = Session["ErrorText"] + "&lt;br/&gt;номер телефона оператора Velcom должен быть формата +37529ZXXXXXX либо +37544XXXXXXX,&lt;br/&gt;где Z = 1, 3, 6, 9, а X - любая цифра.";
-                            return View("Error");
-                        }
-                    }
-                    else if (paymentId == 100000005) //Life
-                    {
-                        string phonePattern = "^+37525[0-9]{7}$";
-                        MatchCollection matchesPhone = Regex.Matches(model.PayerPatronymic, phonePattern,
-                                                  RegexOptions.IgnoreCase);
-                        if (matchesPhone.Count <= 0)
-                        {
-                            Session["ErrorText"] = Session["ErrorText"] + "&lt;br/&gt;номер телефона оператора life:) должен быть формата +37525XXXXXXX,&lt;br/&gt;где X - любая цифра.";
-                            return View("Error");
-                        }
-                    }
-                    else if (paymentId == 100000007) //Diallog
-                    { 
-                        string phonePattern = "^+375294[0-9]{6}$";
-                        MatchCollection matchesPhone = Regex.Matches(model.PayerPatronymic, phonePattern,
-                                                  RegexOptions.IgnoreCase);
-                        if (matchesPhone.Count <= 0)
-                        {
-                            Session["ErrorText"] = Session["ErrorText"] + "&lt;br/&gt;номер телефона оператора Diallog должен быть формата +375294XXXXXX,&lt;br/&gt;где X - любая цифра.";
-                            return View("Error");
-                        }
-                    }
-                }
                 string strPattern = "^[а-яА-Я]{3,20}$";
-                //string numPattern = "^[1-9]{1}[0-9]{3,8}$";
                 MatchCollection matchesSurname = Regex.Matches(model.PayerSurname, strPattern,
                                               RegexOptions.IgnoreCase);
                 MatchCollection matchesName = Regex.Matches(model.PayerSurname, strPattern,
                                               RegexOptions.IgnoreCase);
-                //MatchCollection matchesAmount = Regex.Matches(model.Amount, numPattern,
-                                              //RegexOptions.IgnoreCase);
                 Session["ErrorText"] = "";
                 if (matchesSurname.Count <= 0)
                 {
@@ -422,32 +224,18 @@ namespace Internet_Banking.Controllers
                         Session["ErrorText"] = Session["ErrorText"] + "&lt;br/&gt;поле для ввода отчества должно содержать только буквы кириллицы (от 3 до 20 символов)";
                     }
                 }
-                /*if (matchesAmount.Count <= 0)
-                {
-                    Session["ErrorText"] = Session["ErrorText"] + "&lt;br/&gt;сумма платежа должна быть не меньше 1 000 рублей и не больше 100 000 000";
-                }*/
                 if (Session["ErrorText"].ToString().Length != 0)
                 {
                     return View("Error");
                 }
                 TransactionModel transaction = new TransactionModel();//Transaction transaction = new Transaction();
                 //transaction.Id = ;  //выбрать последнее id из бд
-                //transaction.Amount = Decimal.Parse(model.Amount);
                 Accounts account = _repositoryAccounts.GetSingle(x => x.Number.ToString().Equals(model.AccountNumber));
                 if (!(account.Currency == 974))
                 {
                     Session["ErrorText"] = "услуга доступна только при наличии рублевого текущего счёта или карт-счета.";
                     return View("Error");
                 }
-                /*if (account.Amount < transaction.Amount)
-                {
-                    Session["ErrorText"] = "недостаточно средств для совершения данной операции.";
-                }
-                else
-                {
-                    account.Amount = account.Amount - transaction.Amount;
-                    _repositoryAccounts.Update(account);
-                }*/
                 transaction.Time = System.DateTime.Now;
                 transaction.Status = "Сompleted";
                 transaction.CurrencyId = 974;
@@ -463,9 +251,20 @@ namespace Internet_Banking.Controllers
                 transaction.Fld002 = model.PayerName;
                 transaction.Fld003 = model.PayerPatronymic;
                 transaction.Fld004 = model.AccountNumber;
-                transaction.Fld005 = model.Name;
-                //_repositoryTransactions.Add(transaction);
-                //return View("SuccessfulPayment", model);
+                transaction.Fld005 = model.ContractNumber;
+                transaction.Fld006 = model.Name;
+                Payments parentPayment = payment;
+                while (parentPayment.Id != parentPayment.ParentId)
+                {
+                    parentPayment = _repositoryPayments.GetSingle(x => x.Id == parentPayment.ParentId);
+                }
+                if (parentPayment.Id == 500000000) 
+                {
+                    transaction.Fld007 = model.ContractValue.ToString();
+                    int amount = model.ContractValue * 500;
+                    transaction.Amount = amount.ToString(); 
+                    return View("AmountPayment", transaction);
+                }
                 return View("AmountPayment", transaction);
             }
             Session["ErrorText"] = "все поля для ввода, кроме поля для ввода отчества, должны быть заполнены.";
@@ -514,7 +313,7 @@ namespace Internet_Banking.Controllers
         //GET: /Payment/GetErrorPage
         public ActionResult GetErrorPage()
         {
-            return View("~/Views/Shared/Error.cshtml");
+            return View("Shared/Error");
         }
 
         //
@@ -567,7 +366,14 @@ namespace Internet_Banking.Controllers
             _repositoryTransactions.Add(transaction);
             return View("SuccessfulPayment", model);
         }
-        
+
+        //
+        // POST: /Payment/Pattern
+        [HttpPost]
+        public ActionResult Pattern(PaymentModel model, FormCollection formCollection)
+        {
+            return View("Pattern", model);
+        }
 
         //
         // GET: /Payment/Details/5
