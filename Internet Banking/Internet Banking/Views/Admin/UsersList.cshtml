@@ -7,22 +7,22 @@
 
 @if (Model.Any())
 {
-    <h2>Список пользователей</h2>
-    <br />
+    <h3>Список пользователей</h3>
+    <hr/>
     @Html.ActionLink("Добавить нового пользователя", "AddUser", "Admin")
-    <br />
+    <hr/>
 
-    <table class="borderedTable">
-        <tbody>
+    <table class="table">
+        <thead>
             <tr>
-                <td class="borderedTable">Логин</td>
-                <td class="borderedTable">ФИО</td>
-                <td class="borderedTable">Дата рождения</td>
-                <td class="borderedTable">Гражданство</td>
-                <td class="borderedTable">Идентификационный номер</td>
-                <td class="borderedTable">Номер паспорта</td>
-                <td class="borderedTable">Пароль</td>
-                <td class="borderedTable">Действие</td>
+                <th class="borderedTable">Логин</th>
+                <th class="borderedTable">ФИО</th>
+                @*<th class="borderedTable">Дата рождения</th>
+                <th class="borderedTable">Гражданство</th>*@
+                @*<th class="borderedTable">Идентификационный номер</th>*@
+                <th class="borderedTable">Номер паспорта</th>
+                @*<th class="borderedTable">Пароль</th>*@
+                <th class="borderedTable">Действия</th>
             </tr>
 
             @foreach (var user in Model)
@@ -30,15 +30,16 @@
                 <tr>
                     <td class="borderedTable">@user.UserName</td>
                     <td class="borderedTable">@user.FIO</td>
-                    <td class="borderedTable">@user.BirthDate</td>
+                    @*<td class="borderedTable">@user.BirthDate</td>
                     <td class="borderedTable">@user.Nationality</td>
-                    <td class="borderedTable">@user.IdentificationNumber</td>
+                    <td class="borderedTable">@user.IdentificationNumber</td>*@
                     <td class="borderedTable">@user.PassportNumber</td>
-                    <td class="borderedTable">@user.Password</td>
-                    <td class="borderedTable">@Html.ActionLink("Удалить", "DeleteUser", "Admin", new {id = user.UserId}, new {})</td>
+                    @*<td class="borderedTable">@user.Password</td>*@
+                    <td class="borderedTable">@Html.ActionLink("Удалить", "DeleteUser", "Admin", new { id = user.UserId }, new { })</td>
+                    <td class="borderedTable">@Html.ActionLink("Подробнее", "UserDetails", "Admin", new { id = user.UserId }, new { })</td>
                 </tr>
             }
-        </tbody>
+        </thead>
     </table>
 }
 else

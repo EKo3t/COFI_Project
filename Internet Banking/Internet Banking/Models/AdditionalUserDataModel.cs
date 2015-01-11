@@ -1,5 +1,6 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
+using Resources;
 
 namespace Internet_Banking.Models
 {
@@ -7,42 +8,49 @@ namespace Internet_Banking.Models
     {
         const string FioTemplateString = "{0} {1} {2}";
 
-        [Display(Name = "Пользователь создан. Временный пароль:")]
+        [Display(Name = @"Пользователь создан. Временный пароль:")]
         public string Password { get; set; }
         public string FIO { get { return string.Format(FioTemplateString, LastName, FirstName, MiddleName); } }
 
         public Guid UserId { get; set; }
-        [Required]
-        [Display(Name = "Логин:")]
+        [RequiredMessage]
+        [RegularExpression(@"[A-Za-z0-9]+", ErrorMessage = @"Только символы лат. алфавита и цифры")]
+        [Display(Name = @"Логин")]
         public string UserName { get; set; }
 
-        [Required]
-        [Display(Name = "Фамилия (кириллица):")]
+        [RequiredMessage]
+        [RegularExpression(@"[А-Яа-я]+", ErrorMessage = @"Неверно введена фамилия")]
+        [Display(Name = @"Фамилия (кириллица)")]
         public string LastName { get; set; }
 
-        [Required]
-        [Display(Name = "Имя (кириллица):")]
+        [RequiredMessage]
+        [RegularExpression(@"[А-Яа-я]+", ErrorMessage = @"Неверно введено имя")]
+        [Display(Name = @"Имя (кириллица)")]
         public string FirstName { get; set; }
 
-        [Required]
-        [Display(Name = "Отчество (кириллица):")]
+        [RequiredMessage]
+        [RegularExpression(@"[А-Яа-я]+", ErrorMessage = @"Неверно введено отчество")]
+        [Display(Name = @"Отчество (кириллица)")]
         public string MiddleName { get; set; }
 
-        [Required]
+        [RequiredMessage]
         [DataType(DataType.Date)]
-        [Display(Name = "Дата рождения (формат даты дд.мм.гггг):")]
+        [DateAttribute(ErrorMessageResourceType = typeof(MyNewResource), ErrorMessageResourceName = "IncorrectlyEnteredDate")]
+        [Display(Name = @"Дата рождения (формат даты дд.мм.гггг)")]
         public string BirthDate { get; set; }
 
-        [Required]
-        [Display(Name = "Гражданство:")]
+        [RequiredMessage]
+        [Display(Name = @"Гражданство")]
         public string Nationality { get; set; }
 
-        [Required]
-        [Display(Name = "Идентификационный номер паспорта:")]
+        [RequiredMessage]
+        [Display(Name = @"Идентификационный номер")]
+        [RegularExpression(@"^[0-9]{7}[A-Za-z][0-9]{3}[A-Za-z]{2}[0-9]$", ErrorMessage = @"Номер вида ЦЦЦЦЦЦЦБЦЦЦББЦ")]
         public string IdentificationNumber { get; set; }
 
-        [Required]
-        [Display(Name = "Номер паспорта:")]
+        [RequiredMessage]
+        [RegularExpression(@"^[A-Za-z]{2}[0-9]{6}$", ErrorMessage = @"Номер вида ББЦЦЦЦЦЦ")]
+        [Display(Name = @"Номер паспорта")]
         public string PassportNumber { get; set; }
     }
 }

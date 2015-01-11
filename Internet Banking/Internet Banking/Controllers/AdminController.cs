@@ -83,7 +83,12 @@ namespace Internet_Banking.Controllers
 
         public ActionResult SaveUser(AdditionalUserDataModel model)
         {
-            ValidateBirthday(DateTime.Parse(model.BirthDate));
+            if (model.BirthDate != null)
+            {
+                DateTime birthday;
+                if (DateTime.TryParse(model.BirthDate, out birthday))
+                    ValidateBirthday(birthday);
+            }
             if (ModelState.IsValid)
             {
                 if (Membership.FindUsersByName(model.UserName).Count == 0)
@@ -110,6 +115,10 @@ namespace Internet_Banking.Controllers
             return RedirectToAction("UsersList");
         }
 
+        public ActionResult UserDetails(Guid id)
+        {
+            return View(_userService.GetUser(id));//TODO
+        }
         public ActionResult Dashboard()
         {
             return View();
@@ -139,6 +148,8 @@ namespace Internet_Banking.Controllers
                     ModelState.AddModelError("", "Операция прошла успешно.");
                     ViewBag.Created = true;
                 }
+                else
+                    ViewBag.Created = false;
                 _accountService.FillLists(account);
                 return View(account);
             }
@@ -165,13 +176,14 @@ namespace Internet_Banking.Controllers
         {
             try
             {
-                ViewBag.Created = false;
                 if (ModelState.IsValid)
                 {                    
                     _cardService.Save(model); 
                     ModelState.AddModelError("", "Операция прошла успешно.");
                     ViewBag.Created = true;
                 }
+                else
+                    ViewBag.Created = false;
                 _cardService.FillLists(model);
                 return View(model);
             }

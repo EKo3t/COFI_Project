@@ -25,5 +25,10 @@ namespace Internet_Banking.Controllers
         {
             return View();
         }
+        [AllowAnonymous]
+        public ActionResult Help()
+        {
+            return View();
+        }
     }
 }

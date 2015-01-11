@@ -52,6 +52,8 @@ namespace Internet_Banking.Models
         [Required]
         [Display(Name = "Валюта:")]
         public int Currency { get; set; }
+        [Display(Name = "Валюта:")]
+        public string CurrencyName { get; set; }
         [Required]
         [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:MM/dd/yyyy}")]
         [Display(Name = "Дата открытия:")]

@@ -1,4 +1,7 @@
-﻿using Internet_Banking.Models;
+﻿using System.Collections;
+using System.Collections.Generic;
+using System.Web.Mvc;
+using Internet_Banking.Models;
 using InternetBankingDal;
 using System;
 using System.Web.Security;
@@ -20,7 +23,7 @@ namespace Internet_Banking.Mappers
                 FirstName = userData.FirstName,
                 MiddleName = userData.MiddleName,
                 BirthDate = userData.BirthDate.ToShortDateString(),
-                Nationality = userData.Nationality,
+                Nationality = GetNationality(userData.Nationality),
                 IdentificationNumber = userData.IdentificationNumber,
                 PassportNumber = userData.PassportNumber,
                 //Password = user.GetPassword()
@@ -42,6 +45,27 @@ namespace Internet_Banking.Mappers
                 PassportNumber = userData.PassportNumber
             };
             return user;
+        }
+
+        public static string GetNationality(string nationality)
+        {
+            var nation = new Hashtable
+            {
+                {"BY", "Беларусь"},
+                {"RU", "Россия"},
+                {"UA", "Украина"},
+                {"PL", "Польша"},
+                {"LT", "Литва"},
+                {"LV", "Латвия"},
+                {"EE", "Эстония"},
+                {"DE", "Германия"},
+                {"CN", "Китай"},
+                {"CZ", "Чешская Респ."},
+                {"AU", "Австралия"},
+                {"CA", "Канада"},
+                {"CH", "Швейцария"}
+            };
+            return nation[nationality].ToString();
         }
     }
 }
