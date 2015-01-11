@@ -1,9 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Web.Mvc;
 
 namespace InternetBankingDal
@@ -24,15 +21,15 @@ namespace InternetBankingDal
         {
             get
             {
-                return new SelectList(from InternetBankingDal.CardState s in Enum.GetValues(typeof(InternetBankingDal.CardState))
+                return new SelectList(from CardState s in Enum.GetValues(typeof(CardState))
                                       select new { State = (int)s, Name = GetDisplayName(s) }, "State", "Name");
             }
         }
 
-        public string GetDisplayName(CardState State)
+        public string GetDisplayName(CardState state)
         {
             var type = typeof(CardState);
-            var memInfo = type.GetMember(State.ToString());
+            var memInfo = type.GetMember(state.ToString());
             var attributes = memInfo[0].GetCustomAttributes(typeof(DisplayAttribute),
                 false);
             return ((DisplayAttribute)attributes[0]).Name;
