@@ -1,5 +1,37 @@
-﻿@{
+﻿@model IEnumerable<InternetBankingDal.Currency>
+
+@{
     ViewBag.Title = "ChangeCurrency";
 }
 
-<h2>ChangeCurrency</h2>
+<h4>Изменить курс</h4>
+
+@using (Html.BeginForm("ChangeCurrency", "Currency", FormMethod.Post))
+{
+    <p>
+        @Html.Label("Введите исходную валюту")
+        @Html.DropDownList("currencySource", new SelectList(
+            Model.Select(x => new { Value = x.alphacode, Text = x.name + "(" + x.alphacode + ")" }),
+            "Value", "Text"))
+    </p>
+
+    <p>
+        @Html.Label("Введите конечную валюту")
+        @Html.DropDownList("currencyTarget", new SelectList(
+            Model.Select(x => new { Value = x.alphacode, Text = x.name + "(" + x.alphacode + ")" }),
+            "Value", "Text"))
+    </p>
+
+    <p>
+        @Html.Label("Введите новый курс")
+        @Html.Editor("amount")
+    </p>
+
+    if (Request.Params.AllKeys.Contains("Result"))
+    {
+        <p>
+            @Html.Label(Request.Params["Result"])
+        </p>
+    }
+    <input type="submit" value="Изменить курс" />
+}

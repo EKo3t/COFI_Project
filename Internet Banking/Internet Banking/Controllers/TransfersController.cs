@@ -34,7 +34,7 @@ namespace Internet_Banking.Controllers
                 var userId = (Guid)Membership.GetUser(User.Identity.Name).ProviderUserKey;
                 var userIdStr = userId.ToString();
                 var entities = new InternetBankingEntities();
-                var list = entities.TransferLists.Where(x => (x.UserFromId == userIdStr) || (x.UserToId == userIdStr));
+                var list = entities.TransferLists.Where(x => (x.UserFromId == userIdStr) || (x.UserToId == userIdStr)).ToList();
                 return View(list.ToPagedList(pageNumber, pageSize));
             }            
             return View();
@@ -49,7 +49,7 @@ namespace Internet_Banking.Controllers
 
         [Authorize]
         [HttpPost]
-        public ActionResult TransferResources(TransfersModel model, string currency)
+        public ActionResult TransferResources(TransfersModel model, string currencyList)
         {
             if (ModelState.IsValid)
             {
@@ -73,8 +73,6 @@ namespace Internet_Banking.Controllers
                         ModelState.AddModelError("AccountFrom", "Не удалось определить счет");
                     else if (accTo == null)
                         ModelState.AddModelError("AccountTo", "Не удалось определить счет");
-                    else if (accFrom.UserId == accTo.UserId)
-                        ModelState.AddModelError("AccountTo", "Отправитель и получатель не должны совпадать");
                     else if (accFrom.UserId != userId)
                         ModelState.AddModelError("AccountFrom", "Cчёт не принадлежит вам");
                     else if (accFrom.Amount < (decimal) model.TransferValue)
@@ -85,17 +83,19 @@ namespace Internet_Banking.Controllers
                         accTo.Amount += (decimal) model.TransferValue;
                         entities.Accounts.First(x => x.AccountId == accFrom.AccountId).Amount = accFrom.Amount;                        
                         entities.Accounts.First(x => x.AccountId == accTo.AccountId).Amount = accTo.Amount;      
-                        TransferList newOperation = new TransferList();
-                        newOperation.AccountFrom = accFrom.Number;
-                        newOperation.AccountTo = accTo.Number;
-                        newOperation.TransferValue = model.TransferValue;
-                        newOperation.Currency = "USD";
+                        TransferList newTransfer = new TransferList();
+                        newTransfer.AccountFrom = accFrom.Number;
+                        newTransfer.AccountTo = accTo.Number;
+                        newTransfer.TransferValue = model.TransferValue;
+                        newTransfer.Currency = "USD";
+                        newTransfer.UserFromId = userId.ToString();
+                        newTransfer.UserToId = accTo.UserId.ToString();
                         var count = entities.TransferLists.Count();
                         if (count == 0)
-                            newOperation.id = 1;
+                            newTransfer.id = 1;
                         else
-                            newOperation.id = entities.TransferLists.Last().id + 1;
-                        entities.TransferLists.Add(newOperation);
+                            newTransfer.id = entities.TransferLists.Last().id + 1;
+                        entities.TransferLists.Add(newTransfer);
                         entities.SaveChanges();
                         return View("TransferConfirmation", model);
                     }

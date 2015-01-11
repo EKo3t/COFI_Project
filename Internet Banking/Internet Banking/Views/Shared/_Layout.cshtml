@@ -79,13 +79,13 @@
                      }
                          <li>&nbsp</li>
                          @if(Roles.IsUserInRole("Admin")){
-                            <li>@Html.ActionLink("Панель администрирования", "Dashboard", "Admin")</li>
+                             <li>@Html.ActionLink("Панель администрирования", "Dashboard", "Admin")</li>                             
                          }
                          else {
                              if (Request.IsAuthenticated) {
-                                <li>
-                                    @Html.ActionLink("Профиль "+User.Identity.Name, "Manage", "UserPage", routeValues: null, htmlAttributes: new { @class = "username", title = "Manage" })
-                                </li>
+                                 <li>
+                                     @Html.ActionLink("Профиль "+User.Identity.Name, "Manage", "UserPage", routeValues: null, htmlAttributes: new { @class = "username", title = "Manage" })
+                                 </li>
                              } else {
                                 <li>@Html.ActionLink("04.01.2015 : Итоги декабря", "News1", "UserPage")</li>
                                 <li>@Html.ActionLink("02.01.2015 : Перерывы в облуживании держателей банковских карт", "News2", "UserPage")</li>

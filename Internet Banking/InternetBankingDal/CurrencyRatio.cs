@@ -24,6 +24,8 @@ public partial class CurrencyRatio
 
     public double Ratio { get; set; }
 
+    public int id { get; set; }
+
 }
 
 }

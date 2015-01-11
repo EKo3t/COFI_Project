@@ -1,10 +1,9 @@
-﻿@using Microsoft.Ajax.Utilities
-@model Internet_Banking.Models.TransfersModel
+﻿@model Internet_Banking.Models.TransfersModel
 @{
     ViewBag.Title = "TransferResources";
 }
 
-<h2>Перевод между счетами</h2>
+<h3>Перевести средства</h3>
 
 @using (Html.BeginForm("TransferResources", "Transfers", FormMethod.Post))
 {
@@ -39,7 +38,7 @@
                     var list = new SelectList(
                         Model.CurrencyList.Select(x => new {Value = x, Text = x.name + "(" + x.alphacode + ")"}),
                         "Value", "Text");
-                    @Html.DropDownList("Currency", list)
+                    @Html.DropDownList("CurrencyList", list)                   
                 }
             </div>
         </div>

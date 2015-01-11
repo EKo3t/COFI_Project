@@ -12,7 +12,7 @@ namespace Internet_Banking.Controllers
     {
         //
         // GET: /Currency/
-
+        private InternetBankingEntities entities = new InternetBankingEntities();
         public ActionResult Index()
         {            
             return View();
@@ -29,14 +29,12 @@ namespace Internet_Banking.Controllers
 
         public ActionResult CurrencyEditor()
         {
-            var entities = new InternetBankingEntities();
             var currencyList = entities.Currencies;
             return View(currencyList);
         }
 
         public ActionResult Convert(string currencySource, string currencyTarget, double amount)
         {
-            var entities = new InternetBankingEntities();
             Currency currency_from = entities.Currencies.First(c => c.alphacode == currencySource);
             Currency currency_to = entities.Currencies.First(c => c.alphacode == currencyTarget);
 
@@ -49,9 +47,30 @@ namespace Internet_Banking.Controllers
             return RedirectToEditor(Math.Round(result).ToString() + " " + currencyTarget);
         }
 
+        [HttpGet]
+        [Authorize(Roles = "Admin")]
         public ActionResult ChangeCurrency()
         {
-            return View();
+            return View(entities.Currencies);
+        }
+
+        [HttpPost]
+        [Authorize(Roles = "Admin")]
+        public ActionResult ChangeCurrency(string currencySource, string currencyTarget, double amount)
+        {
+            var currency = entities.CurrencyRatios.First(r =>
+                    (r.StartCurrency == currencySource) && (r.EndCurrency == currencyTarget));
+            if (currency != null)
+            {
+                entities.CurrencyRatios.First(r =>
+                    (r.StartCurrency == currencySource) && (r.EndCurrency == currencyTarget)).Ratio = amount;
+                entities.SaveChanges();
+                return RedirectToAction("ChangeCurrency", new {Result = "Смена курса прошла успешно"});
+            }
+            else
+            {
+                return RedirectToAction("ChangeCurrency", new {Result = "Смена курса не осуществлена"});
+            }
         }
     }
 }
