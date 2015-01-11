@@ -339,10 +339,10 @@
           <Key>
             <PropertyRef Name="id" />
           </Key>
-          <Property Name="StartCurrency" Type="nvarchar" MaxLength="20" Nullable="false" />
-          <Property Name="EndCurrency" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="StartCurrency" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="EndCurrency" Type="nvarchar" MaxLength="30" Nullable="false" />
           <Property Name="Ratio" Type="float" Nullable="false" />
-          <Property Name="id" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="Deposit">
           <Key>
@@ -531,7 +531,7 @@
           <Key>
             <PropertyRef Name="id" />
           </Key>
-          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="AccountFrom" Type="nvarchar" MaxLength="20" Nullable="false" />
           <Property Name="AccountTo" Type="nvarchar" MaxLength="20" Nullable="false" />
           <Property Name="TransferValue" Type="float" Nullable="false" />
@@ -2157,8 +2157,8 @@ FROM [dbo].[vw_aspnet_WebPartState_User] AS [vw_aspnet_WebPartState_User]</Defin
           <EntitySet Name="Vendors" EntityType="InternetBankingModel.Vendor" />
           <EntitySet Name="VendorsMerchantsMaps" EntityType="InternetBankingModel.VendorsMerchantsMap" />
           <EntitySet Name="Patterns" EntityType="InternetBankingModel.Pattern" />
-          <EntitySet Name="CurrencyRatios" EntityType="InternetBankingModel.CurrencyRatio" />
           <EntitySet Name="TransferLists" EntityType="InternetBankingModel.TransferList" />
+          <EntitySet Name="CurrencyRatios" EntityType="InternetBankingModel.CurrencyRatio" />
         </EntityContainer>
         <EntityType Name="AdditionalUserData">
           <Key>
@@ -3246,28 +3246,26 @@ FROM [dbo].[vw_aspnet_WebPartState_User] AS [vw_aspnet_WebPartState_User]</Defin
           <Property Name="CounterValue" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
           <Property Name="PatternName" Type="String" MaxLength="30" FixedLength="true" Unicode="true" />
         </EntityType>
-        <EntityType Name="CurrencyRatio">
-          <Key>
-            <PropertyRef Name="StartCurrency" />
-            <PropertyRef Name="EndCurrency" />
-            <PropertyRef Name="Ratio" />
-          </Key>
-          <Property Name="StartCurrency" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
-          <Property Name="EndCurrency" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
-          <Property Name="Ratio" Type="Double" Nullable="false" />
-          <Property Name="id" Type="Int32" Nullable="false" />
-        </EntityType>
         <EntityType Name="TransferList">
           <Key>
             <PropertyRef Name="id" />
           </Key>
-          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="AccountFrom" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
           <Property Name="AccountTo" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
           <Property Name="TransferValue" Type="Double" Nullable="false" />
           <Property Name="Currency" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
           <Property Name="UserFromId" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="UserToId" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="CurrencyRatio">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="StartCurrency" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="EndCurrency" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="Ratio" Type="Double" Nullable="false" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -4073,16 +4071,6 @@ FROM [dbo].[vw_aspnet_WebPartState_User] AS [vw_aspnet_WebPartState_User]</Defin
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="CurrencyRatios">
-            <EntityTypeMapping TypeName="InternetBankingModel.CurrencyRatio">
-              <MappingFragment StoreEntitySet="CurrencyRatio">
-                <ScalarProperty Name="id" ColumnName="id" />
-                <ScalarProperty Name="Ratio" ColumnName="Ratio" />
-                <ScalarProperty Name="EndCurrency" ColumnName="EndCurrency" />
-                <ScalarProperty Name="StartCurrency" ColumnName="StartCurrency" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="TransferLists">
             <EntityTypeMapping TypeName="InternetBankingModel.TransferList">
               <MappingFragment StoreEntitySet="TransferList">
@@ -4092,6 +4080,16 @@ FROM [dbo].[vw_aspnet_WebPartState_User] AS [vw_aspnet_WebPartState_User]</Defin
                 <ScalarProperty Name="TransferValue" ColumnName="TransferValue" />
                 <ScalarProperty Name="AccountTo" ColumnName="AccountTo" />
                 <ScalarProperty Name="AccountFrom" ColumnName="AccountFrom" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CurrencyRatios">
+            <EntityTypeMapping TypeName="InternetBankingModel.CurrencyRatio">
+              <MappingFragment StoreEntitySet="CurrencyRatio">
+                <ScalarProperty Name="Ratio" ColumnName="Ratio" />
+                <ScalarProperty Name="EndCurrency" ColumnName="EndCurrency" />
+                <ScalarProperty Name="StartCurrency" ColumnName="StartCurrency" />
                 <ScalarProperty Name="id" ColumnName="id" />
               </MappingFragment>
             </EntityTypeMapping>

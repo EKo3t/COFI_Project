@@ -85,8 +85,8 @@
         <EntityTypeShape EntityType="InternetBankingModel.Vendor" Width="1.5" PointX="12.25" PointY="0.75" />
         <EntityTypeShape EntityType="InternetBankingModel.VendorsMerchantsMap" Width="1.5" PointX="11.875" PointY="3.375" />
         <EntityTypeShape EntityType="InternetBankingModel.Pattern" Width="1.5" PointX="12.375" PointY="10.75" />
-        <EntityTypeShape EntityType="InternetBankingModel.CurrencyRatio" Width="1.5" PointX="14.375" PointY="0.75" />
         <EntityTypeShape EntityType="InternetBankingModel.TransferList" Width="1.5" PointX="0.75" PointY="14.75" />
+        <EntityTypeShape EntityType="InternetBankingModel.CurrencyRatio" Width="1.5" PointX="14.375" PointY="0.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

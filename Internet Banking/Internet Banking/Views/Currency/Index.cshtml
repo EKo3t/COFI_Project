@@ -2,9 +2,9 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Редактирование валют</h2>
+<h2>Операции с валютами</h2>
 
-<fieldset>
-    <div>@Html.ActionLink("Конвертер валют", "CurrencyEditor", "Currency")</div>
-    <div>@Html.ActionLink("Сменить курс", "ChangeCurrency", "Currency")</div>
-</fieldset>
+<ul class="nav nav-pills nav-stacked">
+    <li>@Html.ActionLink("Конвертер валют", "CurrencyEditor", "Currency")</li>
+    <li>@Html.ActionLink("Сменить курс", "ChangeCurrency", "Currency")</li>
+</ul>
