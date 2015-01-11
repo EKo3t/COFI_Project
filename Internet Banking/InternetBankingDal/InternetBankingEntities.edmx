@@ -335,17 +335,14 @@
           <Property Name="alphacode" Type="nvarchar" MaxLength="10" Nullable="false" />
           <Property Name="name" Type="nvarchar" MaxLength="50" />
         </EntityType>
-        <!--Ошибки, обнаруженные при создании:
-предупреждение 6002: В таблице или представлении "InternetBanking.dbo.CurrencyRatio" не определен первичный ключ. Ключ был выведен, а определение таблицы или представления было создано в режиме только для чтения.-->
         <EntityType Name="CurrencyRatio">
           <Key>
-            <PropertyRef Name="StartCurrency" />
-            <PropertyRef Name="EndCurrency" />
-            <PropertyRef Name="Ratio" />
+            <PropertyRef Name="id" />
           </Key>
           <Property Name="StartCurrency" Type="nvarchar" MaxLength="20" Nullable="false" />
           <Property Name="EndCurrency" Type="nvarchar" MaxLength="20" Nullable="false" />
           <Property Name="Ratio" Type="float" Nullable="false" />
+          <Property Name="id" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="Deposit">
           <Key>
@@ -1419,6 +1416,7 @@
           <EntitySet Name="CreditOperations" EntityType="Self.CreditOperations" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="CreditPayments" EntityType="Self.CreditPayments" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Currency" EntityType="Self.Currency" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CurrencyRatio" EntityType="Self.CurrencyRatio" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Deposit" EntityType="Self.Deposit" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="DepositOperations" EntityType="Self.DepositOperations" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Genre" EntityType="Self.Genre" Schema="dbo" store:Type="Tables" />
@@ -1434,13 +1432,6 @@
           <EntitySet Name="TransferList" EntityType="Self.TransferList" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Vendors" EntityType="Self.Vendors" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="VendorsMerchantsMap" EntityType="Self.VendorsMerchantsMap" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="CurrencyRatio" EntityType="Self.CurrencyRatio" store:Type="Tables" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-[CurrencyRatio].[StartCurrency] AS [StartCurrency], 
-[CurrencyRatio].[EndCurrency] AS [EndCurrency], 
-[CurrencyRatio].[Ratio] AS [Ratio]
-FROM [dbo].[CurrencyRatio] AS [CurrencyRatio]</DefiningQuery>
-          </EntitySet>
           <EntitySet Name="Patterns" EntityType="Self.Patterns" store:Type="Tables" store:Schema="dbo">
             <DefiningQuery>SELECT 
 [Patterns].[Id] AS [Id], 
@@ -3264,6 +3255,7 @@ FROM [dbo].[vw_aspnet_WebPartState_User] AS [vw_aspnet_WebPartState_User]</Defin
           <Property Name="StartCurrency" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
           <Property Name="EndCurrency" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
           <Property Name="Ratio" Type="Double" Nullable="false" />
+          <Property Name="id" Type="Int32" Nullable="false" />
         </EntityType>
         <EntityType Name="TransferList">
           <Key>
@@ -4084,6 +4076,7 @@ FROM [dbo].[vw_aspnet_WebPartState_User] AS [vw_aspnet_WebPartState_User]</Defin
           <EntitySetMapping Name="CurrencyRatios">
             <EntityTypeMapping TypeName="InternetBankingModel.CurrencyRatio">
               <MappingFragment StoreEntitySet="CurrencyRatio">
+                <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="Ratio" ColumnName="Ratio" />
                 <ScalarProperty Name="EndCurrency" ColumnName="EndCurrency" />
                 <ScalarProperty Name="StartCurrency" ColumnName="StartCurrency" />
