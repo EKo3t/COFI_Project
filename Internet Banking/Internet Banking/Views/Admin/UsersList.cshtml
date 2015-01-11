@@ -48,7 +48,7 @@ else
     @Html.ActionLink("Добавить нового пользователя", "AddUser", "Admin")
     <br />
 }
-Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
+@*Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount*@
 @Html.PagedListPager(Model, page => Url.Action("UsersList", new { page }))
 
 @section Scripts { @Scripts.Render("~/bundles/jqueryval")}

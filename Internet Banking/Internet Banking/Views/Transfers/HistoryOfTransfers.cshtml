@@ -1,5 +1,4 @@
-﻿@using System.Globalization
-@model PagedList.IPagedList<InternetBankingDal.TransferList>
+﻿@model PagedList.IPagedList<InternetBankingDal.TransferList>
 @using PagedList.Mvc;
 <link href="/Content/PagedList.css" rel="stylesheet" type="text/css" />
 
@@ -7,7 +6,7 @@
     ViewBag.Title = "История переводов";
 }
 
-<h2>Мои счета</h2>
+<h2>История переводов средств</h2>
 <hr />
 
 <table class="table">
@@ -48,7 +47,6 @@
         }
     }
 </table>
-Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
 @Html.PagedListPager(Model, page => Url.Action("HistoryOfTransfers", new { page }))
 <br />
 @section Scripts { @Scripts.Render("~/bundles/jqueryval")}
