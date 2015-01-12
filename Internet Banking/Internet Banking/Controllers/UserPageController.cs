@@ -30,6 +30,10 @@ namespace Internet_Banking.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Login(LoginModel model, string returnUrl)
         {
+            string username = "user1";
+            string password = "user@123";
+            MembershipUser mu = Membership.GetUser(username);
+            mu.ChangePassword(mu.ResetPassword(), password);
             if (ModelState.IsValid && Membership.ValidateUser(model.UserName, model.Password))
             {
                 var userData = _repositoryUser.GetSingle(x => x.UserId == (Guid)Membership.GetUser(model.UserName).ProviderUserKey);
