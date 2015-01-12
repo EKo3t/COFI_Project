@@ -144,6 +144,10 @@ public partial class InternetBankingEntities : DbContext
 
     public DbSet<PaymentTemplate> PaymentTemplates { get; set; }
 
+    public DbSet<PassportRegion> PassportRegions { get; set; }
+
+    public DbSet<PassportFormat> PassportFormats { get; set; }
+
 
     public virtual ObjectResult<string> aspnet_AnyDataInTables(Nullable<int> tablesToCheck)
     {

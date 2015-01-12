@@ -9,9 +9,6 @@
 <h3>Мои карты</h3>
 <hr/>
 
-@*<p>
-   @Html.ActionLink("Создать карту", "Create")
-</p>*@
 <table class="table">
     <thead>
     <tr>
@@ -52,15 +49,12 @@
         <td>
             @Html.DisplayName(new InternetBankingDal.EnumHelper().GetDisplayName((InternetBankingDal.CardState)item.State))
         </td>
-        <td>
-            @*@Html.ActionLink("Редактировать", "Edit", new {id = item.CardId}) |*@
-            @Html.ActionLink("Подробнее", "Details", new {id = item.CardId}) 
-            @*@Html.ActionLink("Удалить", "Delete", new {id = item.CardId})*@
+        <td>    
+            @Html.ActionLink("Подробнее", "Details", new {id = item.CardId})     
         </td>
     </tr>
 }
 </table>
-@*Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount*@
 @Html.PagedListPager(Model, page => Url.Action("Index", new { page }))
 <br />
 @section Scripts { @Scripts.Render("~/bundles/jqueryval")}

@@ -49,7 +49,7 @@ namespace Internet_Banking.Models
         public string IdentificationNumber { get; set; }
 
         [RequiredMessage]
-        [RegularExpression(@"^[A-Za-z]{2}[0-9]{6}$", ErrorMessage = @"Номер вида ББЦЦЦЦЦЦ")]
+        //[RegularExpression(@"^[A-Za-z]{2}[0-9]{6}$", ErrorMessage = @"Номер вида ББЦЦЦЦЦЦ")]
         [Display(Name = @"Номер паспорта")]
         public string PassportNumber { get; set; }
     }

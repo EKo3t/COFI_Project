@@ -1,4 +1,4 @@
-﻿// Создание кода T4 для модели "z:\GitHub_Repositories\COFI_project\Internet Banking\InternetBankingDal\InternetBankingEntities.edmx" включено. 
+﻿// Создание кода T4 для модели "Z:\GitHub_Repositories\COFI_project\Internet Banking\InternetBankingDal\InternetBankingEntities.edmx" включено. 
 // Чтобы включить формирование кода прежних версий, измените значение свойства "Стратегия создания кода" конструктора
 // на "Legacy ObjectContext". Это свойство доступно в окне "Свойства", если модель
 // открыта в конструкторе.

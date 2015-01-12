@@ -15,6 +15,7 @@ namespace Internet_Banking.Services.Implements
     {
         IUsersService userService;
         private IAccountsProvider _accountsProvider;
+        private readonly InternetBankingEntities entities = new InternetBankingEntities();
 
         public AccountsService() {
             userService = new UsersService();
@@ -63,7 +64,11 @@ namespace Internet_Banking.Services.Implements
 
         public List<AccountDetailModel> GetAccounts(Guid userId)
         {
-            var accounts = _accountsProvider.GetAccounts().Where(x => x.UserId == userId).Select(x =>
+            Guid roleId = entities.vw_aspnet_UsersInRoles.First(x => x.UserId == userId).RoleId;
+            var allAccounts = _accountsProvider.GetAccounts();
+            if (entities.vw_aspnet_Roles.First(x => x.RoleId == roleId).RoleName != "Admin")
+                allAccounts = allAccounts.Where(x => x.UserId == userId);
+            var accounts = allAccounts.Select(x =>
                 {
                     var model = AccountMapper.FromDBToViewModel(x);
                     return model;

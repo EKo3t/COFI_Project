@@ -230,6 +230,7 @@
     <Compile Include="Services\Interfaces\ICardService.cs" />
     <Compile Include="Services\Interfaces\IUsersService.cs" />
     <Compile Include="Utilities\CurrencyConverter.cs" />
+    <Compile Include="Utilities\PassportChecker.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap-responsive.css" />

@@ -31,14 +31,7 @@
     </div>
     <div class="display-field">
         @Html.DisplayFor(model => model.CurrencyName)
-    </div>
-    <div class="display-label" style="color: Black;">
-        @* @Html.DisplayNameFor(model => model.Cards) *@
-    </div>
-    <div class="display-field">
-        @* @Html.DisplayFor(model => model.Cards.Count)  *@
-    </div>
-    
+    </div>    
     <div class="display-label" style="color: Black;">
         @Html.DisplayNameFor(model => model.StartDate)
     </div>
@@ -96,6 +89,9 @@
         }
     </table>
 </fieldset>
-<p style="color: Black;">
-    @Html.ActionLink("Назад к спику", "Index")
+
+
+<p style="color: Black; ">
+    <br/>    
+    <b>@Html.ActionLink("Назад к списку", "Index")</b>
 </p>

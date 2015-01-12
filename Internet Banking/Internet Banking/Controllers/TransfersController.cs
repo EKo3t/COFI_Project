@@ -34,8 +34,15 @@ namespace Internet_Banking.Controllers
                 var userId = (Guid)Membership.GetUser(User.Identity.Name).ProviderUserKey;
                 var userIdStr = userId.ToString();
                 var entities = new InternetBankingEntities();
-                var list = entities.TransferLists.Where(x => (x.UserFromId == userIdStr) || (x.UserToId == userIdStr)).ToList();
-                return View(list.ToPagedList(pageNumber, pageSize));
+                var list = entities.TransferLists;
+                if (!User.IsInRole("Admin"))
+                    return
+                        View(
+                            list.Where(x => (x.UserFromId == userIdStr) || (x.UserToId == userIdStr)).ToList()
+                                .ToPagedList(pageNumber, pageSize));
+                else
+                    return View(list.ToList().ToPagedList(pageNumber, pageSize));
+
             }            
             return View();
         }

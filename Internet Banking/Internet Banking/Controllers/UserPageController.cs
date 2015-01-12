@@ -153,7 +153,7 @@ namespace Internet_Banking.Controllers
             ViewBag.StatusMessage =
                 message == ManageMessageId.ChangePasswordSuccess ? "Ваш пароль был изменен."
                 : message == ManageMessageId.SetPasswordSuccess ? "Ваш пароль успешно установлен."
-                : message == ManageMessageId.RemoveLoginSuccess ? "The external login was removed."
+                : message == ManageMessageId.RemoveLoginSuccess ? "Дополнительный логин был удалён."
                 : "";
             ViewBag.ReturnUrl = Url.Action("Manage");
             return View();
@@ -223,16 +223,16 @@ namespace Internet_Banking.Controllers
             switch (createStatus)
             {
                 case MembershipCreateStatus.DuplicateUserName:
-                    return "User name already exists. Please enter a different user name.";
+                    return "Данный логин уже существует. Введите, пожалуйста, другой";
 
                 case MembershipCreateStatus.DuplicateEmail:
-                    return "A user name for that e-mail address already exists. Please enter a different e-mail address.";
+                    return "Данный емейл уже зарегистрирован. Введите, пожалуйста, другой адрес";
 
                 case MembershipCreateStatus.InvalidPassword:
-                    return "The password provided is invalid. Please enter a valid password value.";
+                    return "Введенный пароль не является корректным. Введите, пожалуйста, другой пароль";
 
                 case MembershipCreateStatus.InvalidEmail:
-                    return "The e-mail address provided is invalid. Please check the value and try again.";
+                    return "Введенный электронный адрес не является корректным. Пожалуйста, проверьте правильность введенных данных";
 
                 case MembershipCreateStatus.InvalidAnswer:
                     return "The password retrieval answer provided is invalid. Please check the value and try again.";

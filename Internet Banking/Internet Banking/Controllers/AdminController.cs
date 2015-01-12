@@ -4,6 +4,7 @@ using InternetBankingDal.Providers.Implements;
 using Internet_Banking.Models;
 using Internet_Banking.Services.Implements;
 using Internet_Banking.Services.Interfaces;
+using Internet_Banking.Utilities;
 using System;
 using System.Linq;
 using System.Web.Mvc;
@@ -89,6 +90,14 @@ namespace Internet_Banking.Controllers
                 if (DateTime.TryParse(model.BirthDate, out birthday))
                     ValidateBirthday(birthday);
             }
+            PassportChecker checker = new PassportChecker();
+            string nationality = Internet_Banking.Mappers.AdditionalUserDataMapper.GetNationality(model.Nationality);
+            string pasCheckResult = checker.CheckPassportFormat(model.PassportNumber, nationality);
+            if (pasCheckResult != String.Empty)
+                ModelState.AddModelError("PassportNumber", pasCheckResult);
+            string pasRegionResult = checker.CheckRegion(model.PassportNumber, nationality);
+            if (pasRegionResult != String.Empty)
+                ModelState.AddModelError("PassportNumber", pasRegionResult);
             if (ModelState.IsValid)
             {
                 if (Membership.FindUsersByName(model.UserName).Count == 0)
@@ -213,11 +222,18 @@ namespace Internet_Banking.Controllers
                 var acc = db.Accounts.FirstOrDefault(x => x.Number == accounts.Number);
                 if (acc != null)
                 {
-                    acc.Amount += accounts.Amount;
-                    db.Entry(acc).State = System.Data.EntityState.Modified;
+                    if (accounts.Amount > 0)
+                    {
+                        acc.Amount += accounts.Amount;
+                        db.Entry(acc).State = System.Data.EntityState.Modified;
+                        ModelState.AddModelError("", "Операция прошла успешно.");
+                        db.SaveChanges();
+                    }
+                    else
+                        ModelState.AddModelError("", "Введите корректное значение суммы");
                 }
-                db.SaveChanges();
-                ModelState.AddModelError("", "Операция прошла успешно.");
+                else
+                    ModelState.AddModelError("", "Введенный счет не существует");                
                 return View(accounts);
             }
             catch (Exception e)

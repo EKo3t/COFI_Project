@@ -187,6 +187,12 @@
     <Compile Include="OrderDetail.cs">
       <DependentUpon>InternetBankingEntities.tt</DependentUpon>
     </Compile>
+    <Compile Include="PassportFormat.cs">
+      <DependentUpon>InternetBankingEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PassportRegion.cs">
+      <DependentUpon>InternetBankingEntities.tt</DependentUpon>
+    </Compile>
     <Compile Include="Payments.cs">
       <DependentUpon>InternetBankingEntities.tt</DependentUpon>
     </Compile>

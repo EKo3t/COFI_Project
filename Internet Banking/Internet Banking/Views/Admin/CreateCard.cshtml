@@ -59,30 +59,6 @@
             @Html.DropDownListFor(model => model.Duration, Model.Durations)
             @Html.ValidationMessageFor(model => model.Durations)
         </div>
-
-        @*<div class="editor-label">
-            @Html.Label("Срок действия")
-        </div>
-        <div class="editor-field">
-            @{
-                var listItems = new List<SelectListItem>
-                {
-                    new SelectListItem {Text = "1 год", Value = "1"}, 
-                    new SelectListItem {Text = "2 года", Value = "2", Selected = true}, 
-                    new SelectListItem {Text = "3 года", Value = "3"}, 
-                    new SelectListItem {Text = "4 года", Value = "4"}};
-            }
-            @Html.DropDownList("selectedDuration", listItems)
-        </div>*@
-
-        @*<div class="editor-label">
-            @Html.LabelFor(model => model.State, "Статус карты:")
-        </div>
-        <div class="editor-field">
-            @Html.DropDownListFor(model => model.State, ViewBag.CardStatus as SelectList)
-            @Html.ValidationMessageFor(model => model.State)
-        </div>*@
-        
         <div class="editor-label">
             @Html.LabelFor(model => model.CardStates)
         </div>
@@ -99,7 +75,8 @@
     </fieldset>
 }
 <div>
-    @Html.ActionLink("Назад", "Dashboard")
+    <br/>
+    <b>@Html.ActionLink("Назад", "Dashboard")</b>
 </div>
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")

@@ -60,14 +60,19 @@ namespace Internet_Banking.Controllers
 
         [HttpPost]
         [Authorize(Roles = "Admin")]
-        public ActionResult ChangeCurrency(string currencySource, string currencyTarget, double amount)
+        public ActionResult ChangeCurrency(string currencySource, string currencyTarget, double? amount)
         {
+            if (currencySource == currencyTarget)
+                return RedirectToAction("ChangeCurrency", new { Result = "Валюты не должны совпадать" });
+            if (amount == null)
+                return RedirectToAction("ChangeCurrency", new { Result = "Поле значения не может быть пустым и должно быть числом" });
+            if (amount <= 0)
+                return RedirectToAction("ChangeCurrency", new { Result = "Поле значения должно быть положительным" });
             var currency = entities.CurrencyRatios.First(r =>
                     (r.StartCurrency == currencySource) && (r.EndCurrency == currencyTarget));
             if (currency != null)
             {
-                entities.CurrencyRatios.First(r =>
-                    (r.StartCurrency == currencySource) && (r.EndCurrency == currencyTarget)).Ratio = amount;
+                currency.Ratio = (double)amount;
                 entities.SaveChanges();
                 return RedirectToAction("ChangeCurrency", new {Result = "Смена курса прошла успешно"});
             }

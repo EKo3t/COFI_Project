@@ -87,6 +87,8 @@
         <EntityTypeShape EntityType="InternetBankingModel.TransferList" Width="1.5" PointX="0.75" PointY="14.75" />
         <EntityTypeShape EntityType="InternetBankingModel.CurrencyRatio" Width="1.5" PointX="14.375" PointY="0.75" />
         <EntityTypeShape EntityType="InternetBankingModel.PaymentTemplate" Width="1.5" PointX="1.788783286599807" PointY="2.5692909818930976" />
+        <EntityTypeShape EntityType="InternetBankingModel.PassportRegion" Width="1.5" PointX="12.125" PointY="10.75" />
+        <EntityTypeShape EntityType="InternetBankingModel.PassportFormat" Width="1.5" PointX="12.375" PointY="13.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

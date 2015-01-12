@@ -72,7 +72,7 @@ namespace Internet_Banking.Models
 
         [DataType(DataType.Password)]
         [Display(Name = "Подтвержение пароля:")]
-        [Compare("Password", ErrorMessage = "Неправильное подтверждение пароля")]  //TODO придумать.)
+        [Compare("Password", ErrorMessage = "Введенные пароли не совпадают")] 
         public string ConfirmPassword { get; set; }
     }
 

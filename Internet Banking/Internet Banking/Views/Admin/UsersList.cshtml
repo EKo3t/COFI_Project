@@ -17,11 +17,7 @@
             <tr>
                 <th class="borderedTable">Логин</th>
                 <th class="borderedTable">ФИО</th>
-                @*<th class="borderedTable">Дата рождения</th>
-                <th class="borderedTable">Гражданство</th>*@
-                @*<th class="borderedTable">Идентификационный номер</th>*@
-                <th class="borderedTable">Номер паспорта</th>
-                @*<th class="borderedTable">Пароль</th>*@
+                <th class="borderedTable">Номер паспорта</th>                
                 <th class="borderedTable">Действия</th>
             </tr>
 
@@ -30,11 +26,7 @@
                 <tr>
                     <td class="borderedTable">@user.UserName</td>
                     <td class="borderedTable">@user.FIO</td>
-                    @*<td class="borderedTable">@user.BirthDate</td>
-                    <td class="borderedTable">@user.Nationality</td>
-                    <td class="borderedTable">@user.IdentificationNumber</td>*@
-                    <td class="borderedTable">@user.PassportNumber</td>
-                    @*<td class="borderedTable">@user.Password</td>*@
+                    <td class="borderedTable">@user.PassportNumber</td>                    
                     <td class="borderedTable">@Html.ActionLink("Удалить", "DeleteUser", "Admin", new { id = user.UserId }, new { })</td>
                     <td class="borderedTable">@Html.ActionLink("Подробнее", "UserDetails", "Admin", new { id = user.UserId }, new { })</td>
                 </tr>
@@ -49,7 +41,6 @@ else
     @Html.ActionLink("Добавить нового пользователя", "AddUser", "Admin")
     <br />
 }
-@*Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount*@
 @Html.PagedListPager(Model, page => Url.Action("UsersList", new { page }))
 
 @section Scripts { @Scripts.Render("~/bundles/jqueryval")}

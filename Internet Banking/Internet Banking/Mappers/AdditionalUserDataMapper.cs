@@ -63,9 +63,12 @@ namespace Internet_Banking.Mappers
                 {"CZ", "Чешская Респ."},
                 {"AU", "Австралия"},
                 {"CA", "Канада"},
-                {"CH", "Швейцария"}
+                {"CH", "Швейцария"},
             };
-            return nation[nationality].ToString();
+            if ((nationality == null) || (nation[nationality] == null))
+                return "Беларусь";
+            else
+                return nation[nationality].ToString();
         }
     }
 }

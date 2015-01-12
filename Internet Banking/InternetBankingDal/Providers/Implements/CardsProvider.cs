@@ -26,7 +26,11 @@ namespace InternetBankingDal.Providers.Implements
 
         public IEnumerable<Cards> GetCardsByUserId(Guid userId)
         {
-            return _internetBankingEntities.Cards.Where(x => x.Accounts.UserId == userId);
+            Guid roleId = _internetBankingEntities.vw_aspnet_UsersInRoles.First(x => x.UserId == userId).RoleId;
+            if (_internetBankingEntities.vw_aspnet_Roles.First(x => x.RoleId == roleId).RoleName == "Admin")
+                return _internetBankingEntities.Cards;
+            else
+                return _internetBankingEntities.Cards.Where(x => x.Accounts.UserId == userId);
         }
     }
 }

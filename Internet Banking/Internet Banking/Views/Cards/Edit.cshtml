@@ -4,7 +4,7 @@
     ViewBag.Title = "Edit";
 }
 
-<h2>Edit</h2>
+<h2>Редактирование карточки</h2>
 
 @using (Html.BeginForm()) {
     @Html.AntiForgeryToken()
@@ -52,7 +52,7 @@
 }
 
 <div>
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Вернуться к карточкам", "Index")
 </div>
 
 @section Scripts {
